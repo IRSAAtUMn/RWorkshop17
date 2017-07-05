@@ -13,7 +13,9 @@ IF we choose to collate the materials into a single git book:
     
     3. Create an Rmd for your chapter of the book.  The file should start with a number that indicates its order in the book.  For example the first Intro to R chapter is named "01-IntroToR.Rmd".   
     
-    4. "Build the book" and push the changes to the "docs" folder to github.  
+    4. "Build the book".  This will update the files in the "docs" folder of your project.    
+    
+    5. Push the changes to the "docs" folder to github.  
     
 
 
