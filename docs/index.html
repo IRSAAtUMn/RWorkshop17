@@ -22,10 +22,7 @@
   
   
 
-<<<<<<< HEAD
 <meta name="author" content="Institute for Research in Statistics and its Applications at the University of Minnesota">
-=======
->>>>>>> cd48dcf80d344ca239019114ac6639b0fdb8dc14
 
 
 
@@ -49,8 +46,50 @@
 
 
 
+<script src="libs/htmlwidgets-0.8/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 </head>
 
@@ -64,13 +103,21 @@
       <nav role="navigation">
 
 <ul class="summary">
-<<<<<<< HEAD
-<li><a href="index.html#section"></a></li>
-=======
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Home</a></li>
->>>>>>> cd48dcf80d344ca239019114ac6639b0fdb8dc14
-<li class="chapter" data-level="1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R &amp; RStudio</a></li>
-<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R &amp; RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#getting-started"><i class="fa fa-check"></i><b>1.1</b> Getting Started</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#basic-features"><i class="fa fa-check"></i><b>1.2</b> Basic features</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#working-with-data"><i class="fa fa-check"></i><b>1.4</b> Working with data</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#exercises"><i class="fa fa-check"></i><b>1.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-visualization.html"><a href="data-visualization.html#ggplot"><i class="fa fa-check"></i><b>2.1</b> ggplot</a></li>
+<li class="chapter" data-level="2.2" data-path="data-visualization.html"><a href="data-visualization.html#univariate-visualizations"><i class="fa fa-check"></i><b>2.2</b> Univariate visualizations</a></li>
+<li class="chapter" data-level="2.3" data-path="data-visualization.html"><a href="data-visualization.html#visualizing-relationships"><i class="fa fa-check"></i><b>2.3</b> Visualizing Relationships</a></li>
+<li class="chapter" data-level="2.4" data-path="data-visualization.html"><a href="data-visualization.html#exercises-1"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+<li class="chapter" data-level="2.5" data-path="data-visualization.html"><a href="data-visualization.html#extra"><i class="fa fa-check"></i><b>2.5</b> Extra</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -90,16 +137,10 @@
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">Introduction to Data Analysis with R &amp; Reproducible Data Science</h1>
-<<<<<<< HEAD
 <h4 class="author"><em>Institute for Research in Statistics and its Applications at the University of Minnesota</em></h4>
-</div>
-<div id="section" class="section level1 unnumbered">
-<h1></h1>
-=======
 </div>
 <div id="home" class="section level1 unnumbered">
 <h1>Home</h1>
->>>>>>> cd48dcf80d344ca239019114ac6639b0fdb8dc14
 <center>
 <div class="image">
 <p><img src="images/data-transfer-vector.jpg" style="width: 475px"/></p>
@@ -159,6 +200,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
