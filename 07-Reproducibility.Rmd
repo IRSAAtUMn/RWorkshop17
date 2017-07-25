@@ -1,0 +1,76 @@
+# Using R Reproducibly 
+
+
+\
+\
+\
+
+Most scientific work is **iterative**
+
+
+<center>
+<div class="image">
+<img src="images/data-science.png" style="width: 475px"/>
+<div>source: [Wickham & Grolemund: R for Data Science](http://r4ds.had.co.nz/) </div>
+</div>
+</center>
+\
+
+
+The process between input and output needs to be **transparent** and **repeatable**. 
+
+\
+\
+\
+
+
+## General Principles of Reproducibility
+
+1. Don't do things by hand
+
+* Difficult to track "point & click" edits
+* May not be able to reverse errors (rounding, copy/paste, overwriting)
+* Time consuming to redo
+
+\
+\
+
+2. Automate where you can
+
+* Repeatitive tasks are prone to errors (and are inefficient)
+* R is useful for many automation tasks
+  * file manipulation (file.create(), dir.create(), list.files(), file.copy(), write())
+  * looping over mutiple files/items (for(), while())
+  * vectorized functions (apply(), lappy(), Vectorize())
+
+* paying attention to your inputs and outputs - all transformations should be done in the script. All outputs should be generated from commands in your script. 
+* don't do things by hand
+* don't point and click - save the commands that result instead
+* All you really need is your data + code 
+
+
+## How do be more reproducible in R
+### Organization 
+* Use R projects, open .Rproj file - working directory, git and github add ons
+* Mindful file names & directory organization - use relative paths in your scripts (folders for raw data, for scripts, for plots, for reports, etc)
+* Order matters in a script
+
+### Documentation
+* Document each command with human readable comments (Markdown is a great way to do this); include metadata at top of file so you know what each script is doing
+* Use white space in your scripts (it's free)
+* Try to make your code human friendly (example of dplyr versus base R), sections
+
+### Transparency
+* IF you point and click in RStudio, always PASTE command into script
+* Load all necessary data and libraries at the very begining of your script, pacman
+* Use relative paths - reference working directory, rather than the long computer path
+* Set seed when doing any random number generation
+* Do not save your Workspace! Tell R not to ask you. 
+* Clear console/environment/restart R often to check yourself
+* If you save any outputs, make sure they are done by your script. ggsave(), png(), pdf()
+
+### Openness & Long-Term Preservation
+* Consider using packrat for package dependecy management
+* Share your data and code as widely as possible - github, CRAN, archival repositories 
+
+

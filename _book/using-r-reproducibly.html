@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to Data Analysis with R &amp; Reproducible Data Science</title>
+  <meta name="description" content="Introduction to Data Analysis with R &amp; Reproducible Data Science">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="IRSAAtUMn/RWorkshop17/docs" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  
+  
+  
+
+<meta name="author" content="Institute for Research in Statistics and its Applications at the University of Minnesota">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data-visualization.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Home</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R &amp; RStudio</a></li>
+<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a></li>
+<li class="chapter" data-level="3" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html"><i class="fa fa-check"></i><b>3</b> Using R Reproducibly</a><ul>
+<li class="chapter" data-level="3.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#general-principles-of-reproducibility"><i class="fa fa-check"></i><b>3.1</b> General Principles of Reproducibility</a></li>
+<li class="chapter" data-level="3.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#how-do-be-more-reproducible-in-r"><i class="fa fa-check"></i><b>3.2</b> How do be more reproducible in R</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#organization"><i class="fa fa-check"></i><b>3.2.1</b> Organization</a></li>
+<li class="chapter" data-level="3.2.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#documentation"><i class="fa fa-check"></i><b>3.2.2</b> Documentation</a></li>
+<li class="chapter" data-level="3.2.3" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#transparency"><i class="fa fa-check"></i><b>3.2.3</b> Transparency</a></li>
+<li class="chapter" data-level="3.2.4" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#openness-long-term-preservation"><i class="fa fa-check"></i><b>3.2.4</b> Openness &amp; Long-Term Preservation</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R &amp; Reproducible Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="using-r-reproducibly" class="section level1">
+<h1><span class="header-section-number">3</span> Using R Reproducibly</h1>
+<p><br />
+<br />
+<br />
+Most scientific work is <strong>iterative</strong></p>
+<center>
+<div class="image">
+<img src="images/data-science.png" style="width: 475px"/>
+<div>
+source: <a href="http://r4ds.had.co.nz/">Wickham &amp; Grolemund: R for Data Science</a>
+</div>
+</div>
+</center>
+<p><br />
+</p>
+<p>There needs to be a transparent and repeatable process between input and output.</p>
+<p><br />
+<br />
+<br />
+</p>
+<div id="general-principles-of-reproducibility" class="section level2">
+<h2><span class="header-section-number">3.1</span> General Principles of Reproducibility</h2>
+<ul>
+<li>paying attention to your inputs and outputs - all transformations should be done in the script. All outputs should be generated from commands in your script.</li>
+<li>don’t do things by hand</li>
+<li>don’t point and click - save the commands that result instead</li>
+<li>All you really need is your data + code</li>
+</ul>
+</div>
+<div id="how-do-be-more-reproducible-in-r" class="section level2">
+<h2><span class="header-section-number">3.2</span> How do be more reproducible in R</h2>
+<div id="organization" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Organization</h3>
+<ul>
+<li>Use R projects, open .Rproj file - working directory, git and github add ons</li>
+<li>Mindful file names &amp; directory organization - use relative paths in your scripts (folders for raw data, for scripts, for plots, for reports, etc)</li>
+<li>Order matters in a script</li>
+</ul>
+</div>
+<div id="documentation" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Documentation</h3>
+<ul>
+<li>Document each command with human readable comments (Markdown is a great way to do this); include metadata at top of file so you know what each script is doing</li>
+<li>Use white space in your scripts (it’s free)</li>
+<li>Try to make your code human friendly (example of dplyr versus base R), sections</li>
+</ul>
+</div>
+<div id="transparency" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Transparency</h3>
+<ul>
+<li>Load all necessary data and libraries at the very begining of your script, pacman</li>
+<li>Use relative paths - reference working directory, rather than the long computer path</li>
+<li>Set seed when doing any random number generation</li>
+<li>Do not save your Workspace! Tell R not to ask you.</li>
+<li>Clear console/environment/restart R often to check yourself</li>
+<li>If you save any outputs, make sure they are done by your script. ggsave(), png(), pdf()</li>
+</ul>
+</div>
+<div id="openness-long-term-preservation" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Openness &amp; Long-Term Preservation</h3>
+<ul>
+<li>Consider using packrat for package dependecy management</li>
+<li>Share your data and code as widely as possible - github, CRAN, archival repositories</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-visualization.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "section",
+"depth": 2,
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>
