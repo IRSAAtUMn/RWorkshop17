@@ -7,7 +7,6 @@
 
 Most scientific work is **iterative**
 
-
 <center>
 <div class="image">
 <img src="images/data-science.png" style="width: 475px"/>
@@ -26,22 +25,79 @@ The process between input and output needs to be **transparent** and **repeatabl
 
 ## General Principles of Reproducibility
 
-1. Don't do things by hand
+### Don't do things by hand
 
-* Difficult to track "point & click" edits
-* May not be able to reverse errors (rounding, copy/paste, overwriting)
-* Time consuming to redo
+
+<center>
+<div class="image">
+<img src="images/script-data.png" style="width: 475px"/>
+</div>
+</center>
+
+Everything that happens between the raw data and final output should be captured in the script. "Point & click" edits can't be tracked, and it may be impossible to reverse any errors (rounding, copy/paste, overwriting). 
+
+It can also be time consuming to re-do "by hand" edits. 
+
+
+### Automate where you can
+
+Repeatitive tasks are prone to errors (and are inefficient).
+
+As a programmatic language, R is useful for many automation tasks.
+
+* **File manipulation** *file.create(), dir.create(), list.files(), file.copy(), write()*
+* **Looped processing** *for(), while()*
+* **Vectorized functions** *apply(), lappy(), Vectorize()*
+
+**Automation Example 1: File manipulation** (file.create(), dir.create(), list.files(), file.copy(), write())
+
+
+
+```{r, echo=FALSE, results='hide'}
+if (dir.exists("~/Desktop/New_Folder")) unlink("~/Desktop/New_Folder", recursive = TRUE, force=TRUE) 
+if (file.exists("~/Desktop/Data.csv")==FALSE) file.create("~/Desktop/Data.csv")
+```
+
+Lists all the files in a folder:
+```{r, warning=FALSE}
+list.files("~/Desktop")
+```
+  
+Creates a new folder on the desktop:
+```{r, }
+dir.create("~/Desktop/New_Folder")
+```
+    
+Move file "Data.csv" into new folder:
+```{r, results='hide'}
+file.rename(from = "~/Desktop/Data.csv", to ="~/Desktop/New_Folder/Data.csv")
+```
+
+```{r}
+list.files("~/Desktop")
+list.files("~/Desktop/New_Folder")
+```
 
 \
 \
+\
 
-2. Automate where you can
+R can ooping over mutiple files/items (for(), while())
+    ```{r, eval=FALSE}
+    
+  for (i in list.files()) {
+    temp <- read.csv(i)
+    #processing steps here...
+    write.csv(temp, file=paste(gsub(".csv", "", i), "processed.csv", sep="_"))
+  }
+    ```
+    
+    * vectorized functions (apply(), lappy(), Vectorize())
 
-* Repeatitive tasks are prone to errors (and are inefficient)
-* R is useful for many automation tasks
-  * file manipulation (file.create(), dir.create(), list.files(), file.copy(), write())
-  * looping over mutiple files/items (for(), while())
-  * vectorized functions (apply(), lappy(), Vectorize())
+\
+\
+\
+
 
 * paying attention to your inputs and outputs - all transformations should be done in the script. All outputs should be generated from commands in your script. 
 * don't do things by hand
