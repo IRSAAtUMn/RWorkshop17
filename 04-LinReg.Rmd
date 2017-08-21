@@ -1,0 +1,228 @@
+---
+title: "Linear Regression in R"
+author: "Nathaniel E. Helwig"
+date: "Aug 31, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Chapter Outline and Goals
+
+In this chapter, we will cover how to...
+
+* Fit simple and multiple linear regression models
+* Test the significance of regression coefficients
+* Plot and interpret the regression results
+* Make predictions from fit regression models
+
+R's **lm** (linear model) function will be the primary tool used in the chapter.
+
+
+## Minnesota Beer Data (Reminder)
+
+### Overview
+
+The Minnesota beer data has 44 beers measured on 7 variables: 
+
+1) *Brewery*: Name of the brewery (**factor** with 8 levels)
+2) *Beer*: Name of the beer (**factor** with 44 levels)
+3) *Description*: Description of the beer (**factor** with 37 levels)
+4) *Style*: Style of the beer (**factor** with 3 levels)
+5) *ABV*: Alcohol by volume (**numeric**)
+6) *IBU*: International bitterness units (**integer**)
+7) *Rating*: Beer Advocate rating (**integer**)
+
+Data obtained by NEH from [Beer Advocate](http://beeradvocate.com) and the websites of the eight breweries.
+
+### Load and Look at the Data
+
+Use the **read.csv** function to load the *beer* data into R
+```{r}
+beer <- read.csv("http://users.stat.umn.edu/~helwig/notes/MNbeer.csv")
+```
+
+
+The **head** function returns the first six lines of a data frame
+```{r}
+head(beer)
+```
+
+
+
+## Simple Linear Regression
+
+### Fit the Model
+
+Consider a simple linear regression model of the form
+\[
+y_i = \beta_0 + \beta_1 x_i + \epsilon_i
+\]
+where $y_i$ is the Rating of the *i*-th beer (response), $x_i$ is the ABV of the *i*-th beer (predictor), $\beta_0$ is the unknown regression intercept, $\beta_1$ is the unknown regression slope, and $\epsilon_i \sim \mathrm{N}(0, \sigma^2)$ is a latent Gaussian error term. To fit the model, we can use the **lm** function
+```{r}
+mod <- lm(Rating ~ ABV, data = beer)
+```
+The first input is the regression formula (Response ~ Predictor), and the second input is the data frame containing the variables in the regression formula. Note that *mod* is an object of class *lm*, which is a list containing information about the fit model. 
+```{r}
+class(mod)
+names(mod)
+```
+For example, the *$coefficients* element contains the estimated regression coefficients
+```{r}
+mod$coefficients
+```
+which reveal that the expected Rating increases by about 2.26 points for every 1 unit (i.e., 1%) increaese in ABV.
+
+### Inference Information
+
+To obtain a more detailed summary of the fit model, use the **summary** function
+```{r}
+modsum <- summary(mod)
+names(modsum)
+modsum
+```
+Note that summarizing an *lm* object returns the estimated error standard deviation *sigma* ($\hat{\sigma}  = 3.28$), the coefficient of determination *r.squared* ($R^2 = 0.2452$), and a *coefficient* inference table for testing $H_0: \beta_j = 0$ versus $H_1: \beta_j \neq 0$. The observed *t* statistic for testing the slope parameter is $t = 3.69$ with 42 degrees of freedom, resulting in a p-value less than 0.001---we reject $H_0$ using any standard $\alpha$ level.
+
+Use the **confint** function to obtain confidence intervals for regression coefficients
+```{r}
+confint(mod, "ABV")
+```
+The 95% confidence interval for $\beta_1$ reveals that we expect the average Rating to increase by 1.03 to 3.49 points for each additional 1% ABV.
+
+### Plot the Regression Line
+
+The **abline** function makes it easy to include the least-squares regression line on a scatterplot
+```{r}
+plot(beer$ABV, beer$Rating, xlab = "Alcohol By Volume", 
+     ylab = "Beer Advocate Rating", main = "Alcohol by Rating")
+abline(mod)
+```
+
+
+### Diagnostic and Influence Plots
+
+R makes it really easy to create simple diagnostic and influence plots for a fit regression model:
+```{r}
+plot(mod)
+```
+
+
+### Predction for New Data
+
+We often want to use a fit regression model to create predictions for new data. In R, this involves first creating the data frame of new predictor scores
+```{r}
+newdata <- data.frame(ABV = seq(4.2, 7.5, by = 0.1))
+```
+which we input to the **predict** function along with the fit model
+```{r}
+newfit <- predict(mod, newdata)
+newfit
+```
+
+By default, the **predict** function returns a vector of predictions $\hat{y}_{i(\mbox{new})} = \hat{\beta}_0 + \hat{\beta}_1 x_{i(\mbox{new})}$. To obtain the corresponding standard errors of the predictions, we can use the *se.fit* input
+```{r}
+newfitse <- predict(mod, newdata, se.fit = TRUE)
+newfitse
+```
+
+The *interval* input can be used to create confidence and prediction intervals
+```{r}
+newfitCI <- predict(mod, newdata, interval = "confidence")
+newfitPI <- predict(mod, newdata, interval = "prediction")
+head(newfitCI)
+head(newfitPI)
+```
+
+The confidence and prediction intervals can be plotted using
+```{r}
+plot(beer$ABV, beer$Rating, xlab = "Alcohol By Volume", 
+     ylab = "Beer Advocate Rating", main = "Alcohol by Rating",
+     ylim = c(75, 100))
+lines(newdata$ABV, newfitCI[,1])
+lines(newdata$ABV, newfitCI[,2], lty = 2, col = "blue")
+lines(newdata$ABV, newfitCI[,3], lty = 2, col = "blue")
+lines(newdata$ABV, newfitPI[,2], lty = 3, col = "red")
+lines(newdata$ABV, newfitPI[,3], lty = 3, col = "red")
+legend("bottomright", lty = 1:3, legend = c("fit", "95% CI", "95% PI"),
+       col = c("black", "blue", "red"), bty = "n")
+```
+
+
+## Multiple Linear Regression
+
+### Overview
+
+A multiple linear regression model has the form
+\[
+y_i = \beta_0 + \sum_{j=1}^p \beta_j x_{ij} + \epsilon_i
+\]
+where $y_i$ is the response for the $i$-th observation, $x_{ij}$ is the *j*-th predictor for the *i*-th observation, $\beta_0$ is the unknown regression intercept, $\beta_j$ is the unknown regression slope for the *j*-th predictor, and $\epsilon_i \sim \mathrm{N}(0, \sigma^2)$ is a latent Gaussian error term. Note that $\beta_j$ gives the expected change in the response variable for a 1-unit change in the *j*-th predictor variable conditioned on the other predictors, i.e., holding all other predictors constant.
+
+
+### Additive Effects
+
+We will start by considering a model predicting the Rating from the additive effects of ABV and Brewery
+```{r}
+amod <- lm(Rating ~ ABV + Brewery, data = beer)
+```
+Note that this model allows each Brewery to have a unique regression intercept (Bauhaus is the baseline), but assumes that the slope between ABV and Rating is the same for each Brewery. We can summarize the model using the same approach as before:
+```{r}
+amodsum <- summary(amod)
+amodsum
+```
+Compared to the simple linear regression model containing only the ABV predictor, we have noticeably reduced the residual standard deviation estimate *sigma* ($\hat{\sigma} = 2.622$) and increased the coefficient of (multiple) determination *r.squared* ($R^2 = 0.5979$).
+
+The **anova** and **Anova** functions can be used to test the significance of terms
+```{r}
+library(car)
+anova(amod)  # Type I (sequential) SS test
+Anova(amod)  # Type II SS test
+```
+Note that **anova** tests the effects sequentially (ABV alone, then Brewery given ABV), whereas the **Anova** function (in the *car* package) tests the effects conditioned on the other effect (ABV given Brewery, Brewery given ABV). Using the Type II tests from the **Anova** function, we see that both ABV ($F_{1,35} = 8.83, p = 0.005$) and Brewery ($F_{7,35} = 4.39, p = 0.001$) significantly add to the prediction of the beer's Rating.
+
+### Interaction Effects
+
+Next we consider a model predicting the Rating from the interaction effects of ABV and Brewery
+```{r}
+imod <- lm(Rating ~ ABV * Brewery, data = beer)
+```
+Note that formula notation is shorthand for *Rating ~ ABV + Brewery + ABV:Brewery*, so this model allows each Brewery to have a unique regression intercept and slope relating ABV and Rating. We can summarize the model using the same approach as before:
+```{r}
+imodsum <- summary(imod)
+imodsum
+```
+Compared to the additive model, we have slightly increased the residual standard deviation estimate *sigma* ($\hat{\sigma} = 2.813$) and increased the coefficient of (multiple) determination *r.squared* ($R^2 = 0.6297$).
+
+Use the **Anova** function to test the signifiance of the effects
+```{r}
+library(car)
+Anova(imod)  # Type II SS test
+```
+The results reveal that the interaction effect is not significant ($F_{7,28} = 0.34, p = 0.927$), but the main effects of ABV ($F_{1,28} = 7.67, p = 0.01$) and Brewery ($F_{7,28} = 3.81, p = 0.005$) are significant at the classic $\alpha = 0.05$ significance level.
+
+### Comparing Fit Models
+
+To compare the fit models, we can use the **anova** function for *F*-tests
+```{r}
+anova(mod, amod, imod)
+```
+or the **AIC** function to extract Akaike's information criterion
+```{r}
+AIC(mod, amod, imod)
+```
+
+In this case, the *F*-tests and AIC values suggest that the additive model should be preferred. We conclude that each Brewery has a unique baseline Rating, and increasing the ABV by 1% corresponds to an expected 1.59 point increase in the Rating.
+
+## Exercises
+
+1) Load the Minnesota Beer Data into R.
+2) Make a scatterplot of the IBU (x-axis) by Rating (y-axis)
+3) Fit a simple linear regression model predicting Rating from IBU.
+4) Is there a significant linear relationship between IBU and Rating?
+5) Plot the linear relationship, along with 95% confidence and prediction intervals.
+6) Fit a multiple linear regression model predicting Rating from the additive effects of IBU and Brewery.
+7) Fit a multiple linear regression model predicting Rating from the additive and interaction effects of IBU and Brewery.
+8) Considering the models you fit in Ex 3, 7, 8, which do you prefer and why?
