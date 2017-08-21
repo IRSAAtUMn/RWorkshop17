@@ -1,0 +1,5 @@
+book_filename: "RWorkshop17"
+language:
+  ui:
+    chapter_name: " "
+output_dir: "docs"
