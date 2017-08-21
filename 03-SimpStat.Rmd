@@ -1,13 +1,7 @@
----
-title: "Simple Statistics in R"
-author: "Nathaniel E. Helwig"
-date: "Aug 31, 2017"
-output: html_document
----
+# Simple Statistics in R
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+*Author: Nathan Helwig*
+
 
 
 ## Chapter Outline and Goals

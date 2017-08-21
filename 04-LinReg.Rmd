@@ -1,13 +1,8 @@
----
-title: "Linear Regression in R"
-author: "Nathaniel E. Helwig"
-date: "Aug 31, 2017"
-output: html_document
----
+# Linear Regression in R
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+*Author: Nathan Helwig*
+
+
 
 
 ## Chapter Outline and Goals
