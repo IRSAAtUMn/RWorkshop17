@@ -74,13 +74,13 @@ MyColors <- brewer.pal(nlevels(beer$Style), "Pastel1")
 ```
 
 The **boxplot** function creates simple boxplots
-```{r}
+```{r fig.width=5, fig.height=4, fig.align="center"}
 boxplot(ABV ~ Style, data = beer, ylab = "Alcohol By Volume (ABV)",
         main = "Alcohol by Style of Beer", col = MyColors)
 ```
 
 The **plot** function creates generic X-Y scatterplots
-```{r}
+```{r fig.width=5, fig.height=4, fig.align="center"}
 StyleInt <- as.integer(beer$Style)
 plot(beer$IBU, beer$ABV, xlab = "International Bitterness Units (IBU)",
      ylab = "Alcohol By Volume (ABV)", pch = StyleInt + 14,

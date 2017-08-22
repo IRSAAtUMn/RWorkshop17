@@ -90,7 +90,7 @@ The 95% confidence interval for $\beta_1$ reveals that we expect the average Rat
 ### Plot the Regression Line
 
 The **abline** function makes it easy to include the least-squares regression line on a scatterplot
-```{r}
+```{r fig.width=5, fig.height=4, fig.align="center"}
 plot(beer$ABV, beer$Rating, xlab = "Alcohol By Volume", 
      ylab = "Beer Advocate Rating", main = "Alcohol by Rating")
 abline(mod)
@@ -105,7 +105,7 @@ plot(mod)
 ```
 
 
-### Predction for New Data
+### Prediction for New Data
 
 We often want to use a fit regression model to create predictions for new data. In R, this involves first creating the data frame of new predictor scores
 ```{r}
