@@ -100,7 +100,7 @@ abline(mod)
 ### Diagnostic and Influence Plots
 
 R makes it really easy to create simple diagnostic and influence plots for a fit regression model:
-```{r}
+```{r fig.width=5, fig.height=4, fig.align="center"}
 plot(mod)
 ```
 
@@ -132,7 +132,7 @@ head(newfitPI)
 ```
 
 The confidence and prediction intervals can be plotted using
-```{r}
+```{r fig.width=5, fig.height=4, fig.align="center"}
 plot(beer$ABV, beer$Rating, xlab = "Alcohol By Volume", 
      ylab = "Beer Advocate Rating", main = "Alcohol by Rating",
      ylim = c(75, 100))
