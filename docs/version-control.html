@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to Data Analysis with R &amp; Reproducible Data Science</title>
+  <meta name="description" content="Introduction to Data Analysis with R &amp; Reproducible Data Science">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="IRSAAtUMn/RWorkshop17/docs" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  
+  
+  
+
+<meta name="author" content="Institute for Research in Statistics and its Applications at the University of Minnesota">
+
+
+<meta name="date" content="2017-08-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="r.html">
+<link rel="next" href="git.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Home</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R &amp; RStudio</a></li>
+<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a></li>
+<li class="chapter" data-level="3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html"><i class="fa fa-check"></i><b>3</b> Simple Statistics in R</a></li>
+<li class="chapter" data-level="4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html"><i class="fa fa-check"></i><b>4</b> Linear Regression in R</a></li>
+<li class="chapter" data-level="5" data-path="license.html"><a href="license.html"><i class="fa fa-check"></i><b>5</b> License</a></li>
+<li class="chapter" data-level="6" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>6</b> R</a></li>
+<li class="chapter" data-level="7" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>7</b> Version Control</a><ul>
+<li class="chapter" data-level="7.1" data-path="version-control.html"><a href="version-control.html#what-is-it"><i class="fa fa-check"></i><b>7.1</b> What is It?</a></li>
+<li class="chapter" data-level="7.2" data-path="version-control.html"><a href="version-control.html#very-old-fashioned-version-control"><i class="fa fa-check"></i><b>7.2</b> Very Old Fashioned Version Control</a></li>
+<li class="chapter" data-level="7.3" data-path="version-control.html"><a href="version-control.html#a-plethora-of-version-control-systems"><i class="fa fa-check"></i><b>7.3</b> A Plethora of Version Control Systems</a></li>
+<li class="chapter" data-level="7.4" data-path="version-control.html"><a href="version-control.html#mindshare"><i class="fa fa-check"></i><b>7.4</b> Mindshare</a></li>
+<li class="chapter" data-level="7.5" data-path="version-control.html"><a href="version-control.html#why"><i class="fa fa-check"></i><b>7.5</b> Why?</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="git.html"><a href="git.html"><i class="fa fa-check"></i><b>8</b> Git</a><ul>
+<li class="chapter" data-level="8.1" data-path="git.html"><a href="git.html#getting-git"><i class="fa fa-check"></i><b>8.1</b> Getting Git</a></li>
+<li class="chapter" data-level="8.2" data-path="git.html"><a href="git.html#what"><i class="fa fa-check"></i><b>8.2</b> What?</a></li>
+<li class="chapter" data-level="8.3" data-path="git.html"><a href="git.html#using-git"><i class="fa fa-check"></i><b>8.3</b> Using Git</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="git.html"><a href="git.html#from-the-command-line"><i class="fa fa-check"></i><b>8.3.1</b> From the Command Line</a></li>
+<li class="chapter" data-level="8.3.2" data-path="git.html"><a href="git.html#rstudio"><i class="fa fa-check"></i><b>8.3.2</b> RStudio</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="license-1.html"><a href="license-1.html"><i class="fa fa-check"></i><b>9</b> License</a></li>
+<li class="chapter" data-level="10" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html"><i class="fa fa-check"></i><b>10</b> Using R Reproducibly</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R &amp; Reproducible Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="version-control" class="section level1">
+<h1><span class="header-section-number"> 7</span> Version Control</h1>
+<div id="what-is-it" class="section level2">
+<h2><span class="header-section-number">7.1</span> What is It?</h2>
+<ul>
+<li><p>revision control</p></li>
+<li><p>version control</p></li>
+<li><p>version control system (VCS)</p></li>
+<li><p>source code control</p></li>
+<li><p>source code management (SCM)</p></li>
+<li><p>content tracking</p></li>
+</ul>
+<p>all mean the same thing.</p>
+<p>It isn’t just for source code. It’s for any “content.”</p>
+<p>I use it for</p>
+<ul>
+<li><p>classes (slides, handouts, homework assignments, tests, solutions),</p></li>
+<li><p>papers (versions of the paper, tech reports, data, R scripts for data analysis),</p></li>
+<li><p>R packages (the traditional source code control, although there is a lot besides source code in an R package),</p></li>
+<li><p>notes (long before they turn into papers, I put them under version control).</p></li>
+</ul>
+</div>
+<div id="very-old-fashioned-version-control" class="section level2">
+<h2><span class="header-section-number">7.2</span> Very Old Fashioned Version Control</h2>
+<pre><code>asterLA.7-3-09.tex    asterLA.10-3.tex
+asterLA.7-16.tex      asterLA.10-3c.tex
+asterLA.7-16c.tex     asterLA10-4.tex
+asterLA.7-19.tex      asterLA10-4c.tex
+asterLA.7-19c.tex     asterLA10-4d.tex
+asterLA.7-19z.tex     asterLA01-12.tex
+asterLA8-19.tex       asterLA01-12c.tex
+asterLA8-19c.tex      asterLA01-20.tex
+asterLA.9-1.tex       asterLA01-20c.tex
+asterLA.9-1c.tex      asterLA02-22.tex
+asterLA.9-11.tex</code></pre>
+<p>A real example, file names of versions of a paper I wrote with a co-author without version control. This works but is highly sub-optimal. Only one author can work at a time because there is no good way to merge simultaneous changes. Nor is there any obvious ownership of the versions. It is hard to tell who did what when.</p>
+</div>
+<div id="a-plethora-of-version-control-systems" class="section level2">
+<h2><span class="header-section-number">7.3</span> A Plethora of Version Control Systems</h2>
+<p>Ripped off from Wikipedia (<a href="https://en.wikipedia.org/wiki/Version_control">under “Version control”</a>).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Local Only</th>
+<th align="center">Client-Server</th>
+<th align="center">Distributed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SCCS (1972)</td>
+<td align="center">CVS (1986)</td>
+<td align="center">BitKeeper (1998)</td>
+</tr>
+<tr class="even">
+<td align="center">RCS (1982)</td>
+<td align="center">ClearCase (1992)</td>
+<td align="center">GNU arch (2001)</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">Perforce (1995)</td>
+<td align="center">Darcs (2002)</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">Subversion (2000)</td>
+<td align="center">Monotone (2003)</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Bazaar (2005)</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Git (2005)</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Mercurial (2005)</td>
+</tr>
+</tbody>
+</table>
+<p>There were more, but I’ve only kept the ones I’d heard of.</p>
+<p>Don’t worry. We’re only going to talk about one (git).</p>
+<p>\end{frame}</p>
+</div>
+<div id="mindshare" class="section level2">
+<h2><span class="header-section-number">7.4</span> Mindshare</h2>
+<p>Starting from nowhere in 2005, <code>git</code> has gotten dominant mindshare, at least among free and open source systems.</p>
+<p>In <a href="http://www.google.com/trends/explore#q=%2Fm%2F05vqwg%2C%20%2Fm%2F012ct9%2C%20%2Fm%2F09d6g%2C%20%2Fm%2F08441_%2C%20%2Fm%2F04g0kcw&amp;cmpt=q&amp;tz=">Google Trends</a>, the only searches that are trending up are for <code>git</code> and github. Searches for competing version control systems are trending down.</p>
+<p>Many well known open-source projects are on git. The Linux kernel (of course since Linus Torvalds wrote git to be the VCS for the kernel), android (as in phones), Ruby on Rails, Gnome, Qt, KDE, X, Perl, and GNU Emacs.</p>
+<p>Some aren’t. R is still on Subversion. Firefox, Go, Python, Vim are on Mercurial.</p>
+</div>
+<div id="why" class="section level2">
+<h2><span class="header-section-number">7.5</span> Why?</h2>
+<p>Section 28.1.1.1 of the GNU Emacs manual.</p>
+<p>Version control systems provide you with three important capabilities:</p>
+<ul>
+<li><p><strong>Reversibility:</strong> the ability to back up to a previous state if you discover that some modification you did was a mistake or a bad idea.</p></li>
+<li><p><strong>Concurrency:</strong> the ability to have many people modifying the same collection of files knowing that conflicting modifications can be detected and resolved.</p></li>
+<li><p><strong>History:</strong> the ability to attach historical data to your data, such as explanatory comments about the intention behind each change to it. Even for a programmer working solo, change histories are an important aid to memory; for a multi-person project, they are a vitally important form of communication among developers.</p></li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "section",
+"depth": 2,
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

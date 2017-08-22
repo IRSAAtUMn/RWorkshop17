@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to Data Analysis with R &amp; Reproducible Data Science</title>
+  <meta name="description" content="Introduction to Data Analysis with R &amp; Reproducible Data Science">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="IRSAAtUMn/RWorkshop17/docs" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  
+  
+  
+
+<meta name="author" content="Institute for Research in Statistics and its Applications at the University of Minnesota">
+
+
+<meta name="date" content="2017-08-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="version-control.html">
+<link rel="next" href="license-1.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Home</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R &amp; RStudio</a></li>
+<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a></li>
+<li class="chapter" data-level="3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html"><i class="fa fa-check"></i><b>3</b> Simple Statistics in R</a></li>
+<li class="chapter" data-level="4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html"><i class="fa fa-check"></i><b>4</b> Linear Regression in R</a></li>
+<li class="chapter" data-level="5" data-path="license.html"><a href="license.html"><i class="fa fa-check"></i><b>5</b> License</a></li>
+<li class="chapter" data-level="6" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>6</b> R</a></li>
+<li class="chapter" data-level="7" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>7</b> Version Control</a><ul>
+<li class="chapter" data-level="7.1" data-path="version-control.html"><a href="version-control.html#what-is-it"><i class="fa fa-check"></i><b>7.1</b> What is It?</a></li>
+<li class="chapter" data-level="7.2" data-path="version-control.html"><a href="version-control.html#very-old-fashioned-version-control"><i class="fa fa-check"></i><b>7.2</b> Very Old Fashioned Version Control</a></li>
+<li class="chapter" data-level="7.3" data-path="version-control.html"><a href="version-control.html#a-plethora-of-version-control-systems"><i class="fa fa-check"></i><b>7.3</b> A Plethora of Version Control Systems</a></li>
+<li class="chapter" data-level="7.4" data-path="version-control.html"><a href="version-control.html#mindshare"><i class="fa fa-check"></i><b>7.4</b> Mindshare</a></li>
+<li class="chapter" data-level="7.5" data-path="version-control.html"><a href="version-control.html#why"><i class="fa fa-check"></i><b>7.5</b> Why?</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="git.html"><a href="git.html"><i class="fa fa-check"></i><b>8</b> Git</a><ul>
+<li class="chapter" data-level="8.1" data-path="git.html"><a href="git.html#getting-git"><i class="fa fa-check"></i><b>8.1</b> Getting Git</a></li>
+<li class="chapter" data-level="8.2" data-path="git.html"><a href="git.html#what"><i class="fa fa-check"></i><b>8.2</b> What?</a></li>
+<li class="chapter" data-level="8.3" data-path="git.html"><a href="git.html#using-git"><i class="fa fa-check"></i><b>8.3</b> Using Git</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="git.html"><a href="git.html#from-the-command-line"><i class="fa fa-check"></i><b>8.3.1</b> From the Command Line</a></li>
+<li class="chapter" data-level="8.3.2" data-path="git.html"><a href="git.html#rstudio"><i class="fa fa-check"></i><b>8.3.2</b> RStudio</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="license-1.html"><a href="license-1.html"><i class="fa fa-check"></i><b>9</b> License</a></li>
+<li class="chapter" data-level="10" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html"><i class="fa fa-check"></i><b>10</b> Using R Reproducibly</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R &amp; Reproducible Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="git" class="section level1">
+<h1><span class="header-section-number"> 8</span> Git</h1>
+<div id="getting-git" class="section level2">
+<h2><span class="header-section-number">8.1</span> Getting Git</h2>
+<p>Type ``git’’ into Google and follow the first link it gives you <a href="http://git-scm.com/" class="uri">http://git-scm.com/</a>.</p>
+<p>Under “downloads” it tells you how to get <code>git</code> for Windows and for Mac OS X.</p>
+<p>If you have Linux, it just comes with (use the installer for your distribution).</p>
+<p>E. g., on Ubuntu</p>
+<pre><code>sudo apt-get update
+sudo apt-get install git</code></pre>
+</div>
+<div id="what" class="section level2">
+<h2><span class="header-section-number">8.2</span> What?</h2>
+<p>From Wikipedia under <a href="https://en.wikipedia.org/wiki/Git">Git</a>:</p>
+<ul>
+<li><p>Torvalds has quipped about the name <em>git,</em> which is British English slang meaning “unpleasant person.” Torvalds said: “I’m an egotistical bastard, and I name all my projects after myself. First ‘Linux’, now ‘git’.”</p></li>
+<li><p>The man page describes Git as “the stupid content tracker”.</p></li>
+</ul>
+<p>From memory:</p>
+<ul>
+<li>Linus has also said that it was a short name that hadn’t already been used for a UNIX command.</li>
+</ul>
+</div>
+<div id="using-git" class="section level2">
+<h2><span class="header-section-number">8.3</span> Using Git</h2>
+<div id="from-the-command-line" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> From the Command Line</h3>
+</div>
+<div id="rstudio" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> RStudio</h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="version-control.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="license-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "section",
+"depth": 2,
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

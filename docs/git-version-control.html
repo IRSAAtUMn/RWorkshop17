@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction-to-r-rstudio.html">
+<link rel="prev" href="linear-regression-in-r.html">
+<link rel="next" href="an-r-markdown-demo.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -247,29 +247,170 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Introduction to Data Analysis with R &amp; Reproducible Data Science</h1>
-<h4 class="author"><em>Institute for Research in Statistics and its Applications at the University of Minnesota</em></h4>
+<div id="git-version-control" class="section level1">
+<h1><span class="header-section-number"> 5</span> Git (Version Control)</h1>
+<p><em>Author: Charles J. Geyer</em></p>
+<div id="license" class="section level2">
+<h2><span class="header-section-number">5.1</span> License</h2>
+<p>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (<a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a>).</p>
 </div>
-<div id="home" class="section level1 unnumbered">
-<h1>Home</h1>
-<center>
-<div class="image">
-<p><img src="images/data-transfer-vector.jpg" style="width: 475px"/></p>
+<div id="r" class="section level2">
+<h2><span class="header-section-number">5.2</span> R</h2>
+<ul>
+<li><p>The version of R used to make this document is 3.3.2.</p></li>
+<li><p>The version of the <code>rmarkdown</code> package used to make this document is 1.5.</p></li>
+<li><p>The version of the <code>knitr</code> package used to make this document is 1.16.</p></li>
+</ul>
 </div>
-</center>
-<p>With the increasing availability of data with broad applications (and the sheer size of some of these data), it is more important than ever to be able to elucidate trends, decisions, and stories from data.  Our team will offer a hands on introduction to Data Science and Statistics using the free and publicly available software R. Assuming no background knowledge of software or Statistics, we will bring you up to speed on some of the most useful, modern, and popular data analysis techniques.</p>
-<p>This short course is divided into multiple modules.  On day one we will explore the basic features of R and the power of R for constructing visualizations, summaries, hypothesis tests, and statistical models from data.  The modules on day two will cover a gentle introduction to quantile regression and conclude with an in-depth discussion on best practices for reproducible Data Science research and practice using R Markdown and github.</p>
-<p>The material herein is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License<br /><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /></a>. <br></p>
+<div id="version-control" class="section level2">
+<h2><span class="header-section-number">5.3</span> Version Control</h2>
+<div id="what-is-it" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> What is It?</h3>
+<ul>
+<li><p>revision control</p></li>
+<li><p>version control</p></li>
+<li><p>version control system (VCS)</p></li>
+<li><p>source code control</p></li>
+<li><p>source code management (SCM)</p></li>
+<li><p>content tracking</p></li>
+</ul>
+<p>all mean the same thing.</p>
+<p>It isn’t just for source code. It’s for any “content.”</p>
+<p>I use it for</p>
+<ul>
+<li><p>classes (slides, handouts, homework assignments, tests, solutions),</p></li>
+<li><p>papers (versions of the paper, tech reports, data, R scripts for data analysis),</p></li>
+<li><p>R packages (the traditional source code control, although there is a lot besides source code in an R package),</p></li>
+<li><p>notes (long before they turn into papers, I put them under version control).</p></li>
+</ul>
+</div>
+<div id="very-old-fashioned-version-control" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Very Old Fashioned Version Control</h3>
+<pre><code>asterLA.7-3-09.tex    asterLA.10-3.tex
+asterLA.7-16.tex      asterLA.10-3c.tex
+asterLA.7-16c.tex     asterLA10-4.tex
+asterLA.7-19.tex      asterLA10-4c.tex
+asterLA.7-19c.tex     asterLA10-4d.tex
+asterLA.7-19z.tex     asterLA01-12.tex
+asterLA8-19.tex       asterLA01-12c.tex
+asterLA8-19c.tex      asterLA01-20.tex
+asterLA.9-1.tex       asterLA01-20c.tex
+asterLA.9-1c.tex      asterLA02-22.tex
+asterLA.9-11.tex</code></pre>
+<p>A real example, file names of versions of a paper I wrote with a co-author without version control. This works but is highly sub-optimal. Only one author can work at a time because there is no good way to merge simultaneous changes. Nor is there any obvious ownership of the versions. It is hard to tell who did what when.</p>
+</div>
+<div id="a-plethora-of-version-control-systems" class="section level3">
+<h3><span class="header-section-number">5.3.3</span> A Plethora of Version Control Systems</h3>
+<p>Ripped off from Wikipedia (<a href="https://en.wikipedia.org/wiki/Version_control">under “Version control”</a>).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Local Only</th>
+<th align="center">Client-Server</th>
+<th align="center">Distributed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">SCCS (1972)</td>
+<td align="center">CVS (1986)</td>
+<td align="center">BitKeeper (1998)</td>
+</tr>
+<tr class="even">
+<td align="center">RCS (1982)</td>
+<td align="center">ClearCase (1992)</td>
+<td align="center">GNU arch (2001)</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center">Perforce (1995)</td>
+<td align="center">Darcs (2002)</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center">Subversion (2000)</td>
+<td align="center">Monotone (2003)</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Bazaar (2005)</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Git (2005)</td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Mercurial (2005)</td>
+</tr>
+</tbody>
+</table>
+<p>There were more, but I’ve only kept the ones I’d heard of.</p>
+<p>Don’t worry. We’re only going to talk about one (git).</p>
+</div>
+<div id="mindshare" class="section level3">
+<h3><span class="header-section-number">5.3.4</span> Mindshare</h3>
+<p>Starting from nowhere in 2005, <code>git</code> has gotten dominant mindshare, at least among free and open source systems.</p>
+<p>In <a href="http://www.google.com/trends/explore#q=%2Fm%2F05vqwg%2C%20%2Fm%2F012ct9%2C%20%2Fm%2F09d6g%2C%20%2Fm%2F08441_%2C%20%2Fm%2F04g0kcw&amp;cmpt=q&amp;tz=">Google Trends</a>, the only searches that are trending up are for <code>git</code> and github. Searches for competing version control systems are trending down.</p>
+<p>Many well known open-source projects are on git. The Linux kernel (of course since Linus Torvalds wrote git to be the VCS for the kernel), android (as in phones), Ruby on Rails, Gnome, Qt, KDE, X, Perl, and GNU Emacs.</p>
+<p>Some aren’t. R is still on Subversion. Firefox, Go, Python, Vim are on Mercurial.</p>
+</div>
+<div id="why" class="section level3">
+<h3><span class="header-section-number">5.3.5</span> Why?</h3>
+<p>Section 28.1.1.1 of the GNU Emacs manual.</p>
+<p>Version control systems provide you with three important capabilities:</p>
+<ul>
+<li><p><strong>Reversibility:</strong> the ability to back up to a previous state if you discover that some modification you did was a mistake or a bad idea.</p></li>
+<li><p><strong>Concurrency:</strong> the ability to have many people modifying the same collection of files knowing that conflicting modifications can be detected and resolved.</p></li>
+<li><p><strong>History:</strong> the ability to attach historical data to your data, such as explanatory comments about the intention behind each change to it. Even for a programmer working solo, change histories are an important aid to memory; for a multi-person project, they are a vitally important form of communication among developers.</p></li>
+</ul>
+</div>
+</div>
+<div id="git" class="section level2">
+<h2><span class="header-section-number">5.4</span> Git</h2>
+<div id="getting-git" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Getting Git</h3>
+<p>Type ``git’’ into Google and follow the first link it gives you <a href="http://git-scm.com/" class="uri">http://git-scm.com/</a>.</p>
+<p>Under “downloads” it tells you how to get <code>git</code> for Windows and for Mac OS X.</p>
+<p>If you have Linux, it just comes with (use the installer for your distribution).</p>
+<p>E. g., on Ubuntu</p>
+<pre><code>sudo apt-get update
+sudo apt-get install git</code></pre>
+</div>
+<div id="what" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> What?</h3>
+<p>From Wikipedia under <a href="https://en.wikipedia.org/wiki/Git">Git</a>:</p>
+<ul>
+<li><p>Torvalds has quipped about the name <em>git,</em> which is British English slang meaning “unpleasant person.” Torvalds said: “I’m an egotistical bastard, and I name all my projects after myself. First ‘Linux’, now ‘git’.”</p></li>
+<li><p>The man page describes Git as “the stupid content tracker”.</p></li>
+</ul>
+<p>From memory:</p>
+<ul>
+<li>Linus has also said that it was a short name that hadn’t already been used for a UNIX command.</li>
+</ul>
+</div>
+<div id="using-git" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> Using Git</h3>
+<div id="from-the-command-line" class="section level4">
+<h4><span class="header-section-number">5.4.3.1</span> From the Command Line</h4>
+</div>
+<div id="rstudio" class="section level4">
+<h4><span class="header-section-number">5.4.3.2</span> RStudio</h4>
 
+</div>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction-to-r-rstudio.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-regression-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="an-r-markdown-demo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
