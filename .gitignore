@@ -2,5 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-*.Rproj
-*.DS_Store
+IRSA_Rworkshop17.Rproj
+.DS_Store
