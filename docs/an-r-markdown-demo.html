@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to Data Analysis with R &amp; Reproducible Data Science</title>
+  <meta name="description" content="Introduction to Data Analysis with R &amp; Reproducible Data Science">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="IRSAAtUMn/RWorkshop17/docs" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  
+  
+  
+
+<meta name="author" content="Institute for Research in Statistics and its Applications at the University of Minnesota">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="git-version-control.html">
+<link rel="next" href="using-r-reproducibly.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Home</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R &amp; RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#getting-started"><i class="fa fa-check"></i><b>1.1</b> Getting Started</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#basic-features"><i class="fa fa-check"></i><b>1.2</b> Basic features</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#working-with-data"><i class="fa fa-check"></i><b>1.4</b> Working with data</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#exercises"><i class="fa fa-check"></i><b>1.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-visualization.html"><a href="data-visualization.html#ggplot"><i class="fa fa-check"></i><b>2.1</b> ggplot</a></li>
+<li class="chapter" data-level="2.2" data-path="data-visualization.html"><a href="data-visualization.html#univariate-visualizations"><i class="fa fa-check"></i><b>2.2</b> Univariate visualizations</a></li>
+<li class="chapter" data-level="2.3" data-path="data-visualization.html"><a href="data-visualization.html#visualizing-relationships"><i class="fa fa-check"></i><b>2.3</b> Visualizing Relationships</a></li>
+<li class="chapter" data-level="2.4" data-path="data-visualization.html"><a href="data-visualization.html#exercises-1"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+<li class="chapter" data-level="2.5" data-path="data-visualization.html"><a href="data-visualization.html#extra"><i class="fa fa-check"></i><b>2.5</b> Extra</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html"><i class="fa fa-check"></i><b>3</b> Simple Statistics in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#chapter-outline-and-goals"><i class="fa fa-check"></i><b>3.1</b> Chapter Outline and Goals</a></li>
+<li class="chapter" data-level="3.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#minnesota-beer-data"><i class="fa fa-check"></i><b>3.2</b> Minnesota Beer Data</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#overview"><i class="fa fa-check"></i><b>3.2.1</b> Overview</a></li>
+<li class="chapter" data-level="3.2.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#load-the-data"><i class="fa fa-check"></i><b>3.2.2</b> Load the Data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#look-at-the-data"><i class="fa fa-check"></i><b>3.2.3</b> Look at the Data</a></li>
+<li class="chapter" data-level="3.2.4" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#plot-the-data"><i class="fa fa-check"></i><b>3.2.4</b> Plot the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>3.3</b> Descriptive Statistics in R</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#overview-1"><i class="fa fa-check"></i><b>3.3.1</b> Overview</a></li>
+<li class="chapter" data-level="3.3.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#minimum-and-maximum"><i class="fa fa-check"></i><b>3.3.2</b> Minimum and Maximum</a></li>
+<li class="chapter" data-level="3.3.3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#mean-standard-deviation-and-variance"><i class="fa fa-check"></i><b>3.3.3</b> Mean, Standard Deviation, and Variance</a></li>
+<li class="chapter" data-level="3.3.4" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#medians-and-quantiles"><i class="fa fa-check"></i><b>3.3.4</b> Medians and Quantiles</a></li>
+<li class="chapter" data-level="3.3.5" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#factor-level-information"><i class="fa fa-check"></i><b>3.3.5</b> Factor Level Information</a></li>
+<li class="chapter" data-level="3.3.6" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#covariances-and-correlations"><i class="fa fa-check"></i><b>3.3.6</b> Covariances and Correlations</a></li>
+<li class="chapter" data-level="3.3.7" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#applying-functions-to-multiple-variables"><i class="fa fa-check"></i><b>3.3.7</b> Applying Functions to Multiple Variables</a></li>
+<li class="chapter" data-level="3.3.8" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#applying-functions-at-levels-of-factors"><i class="fa fa-check"></i><b>3.3.8</b> Applying Functions at Levels of Factors</a></li>
+<li class="chapter" data-level="3.3.9" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#making-a-table"><i class="fa fa-check"></i><b>3.3.9</b> Making a Table</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#students-t-test-in-r"><i class="fa fa-check"></i><b>3.4</b> Student’s t-Test in R</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#one-sample-t-test"><i class="fa fa-check"></i><b>3.4.1</b> One Sample t-Test</a></li>
+<li class="chapter" data-level="3.4.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#two-sample-t-test"><i class="fa fa-check"></i><b>3.4.2</b> Two Sample t-Test</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#one-way-anova-in-r"><i class="fa fa-check"></i><b>3.5</b> One-Way ANOVA in R</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#omnibus-f-test"><i class="fa fa-check"></i><b>3.5.1</b> Omnibus F-Test</a></li>
+<li class="chapter" data-level="3.5.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#pairwise-comparisons-tukeys-hsd"><i class="fa fa-check"></i><b>3.5.2</b> Pairwise Comparisons (Tukey’s HSD)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#correlation-tests-in-r"><i class="fa fa-check"></i><b>3.6</b> Correlation Tests in R</a></li>
+<li class="chapter" data-level="3.7" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#exercises-2"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html"><i class="fa fa-check"></i><b>4</b> Linear Regression in R</a><ul>
+<li class="chapter" data-level="4.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#chapter-outline-and-goals-1"><i class="fa fa-check"></i><b>4.1</b> Chapter Outline and Goals</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#minnesota-beer-data-reminder"><i class="fa fa-check"></i><b>4.2</b> Minnesota Beer Data (Reminder)</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#overview-2"><i class="fa fa-check"></i><b>4.2.1</b> Overview</a></li>
+<li class="chapter" data-level="4.2.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#load-and-look-at-the-data"><i class="fa fa-check"></i><b>4.2.2</b> Load and Look at the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#simple-linear-regression"><i class="fa fa-check"></i><b>4.3</b> Simple Linear Regression</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#fit-the-model"><i class="fa fa-check"></i><b>4.3.1</b> Fit the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#inference-information"><i class="fa fa-check"></i><b>4.3.2</b> Inference Information</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#plot-the-regression-line"><i class="fa fa-check"></i><b>4.3.3</b> Plot the Regression Line</a></li>
+<li class="chapter" data-level="4.3.4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#diagnostic-and-influence-plots"><i class="fa fa-check"></i><b>4.3.4</b> Diagnostic and Influence Plots</a></li>
+<li class="chapter" data-level="4.3.5" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#prediction-for-new-data"><i class="fa fa-check"></i><b>4.3.5</b> Prediction for New Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#multiple-linear-regression"><i class="fa fa-check"></i><b>4.4</b> Multiple Linear Regression</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#overview-3"><i class="fa fa-check"></i><b>4.4.1</b> Overview</a></li>
+<li class="chapter" data-level="4.4.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#additive-effects"><i class="fa fa-check"></i><b>4.4.2</b> Additive Effects</a></li>
+<li class="chapter" data-level="4.4.3" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#interaction-effects"><i class="fa fa-check"></i><b>4.4.3</b> Interaction Effects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#comparing-fit-models"><i class="fa fa-check"></i><b>4.4.4</b> Comparing Fit Models</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html"><i class="fa fa-check"></i><b>5</b> Examples of Quantile Regression in R</a><ul>
+<li class="chapter" data-level="5.1" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#goals"><i class="fa fa-check"></i><b>5.1</b> Goals</a></li>
+<li class="chapter" data-level="5.2" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#r-package-quantreg"><i class="fa fa-check"></i><b>5.2</b> R Package quantreg</a></li>
+<li class="chapter" data-level="5.3" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#fitting-linear-quantile-regression-in-r"><i class="fa fa-check"></i><b>5.3</b> Fitting linear quantile regression in R</a></li>
+<li class="chapter" data-level="5.4" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#example-1-fit-quantile-regression-at-one-quantile-level"><i class="fa fa-check"></i><b>5.4</b> Example 1: Fit quantile regression at one quantile level</a></li>
+<li class="chapter" data-level="5.5" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#example-2-fit-quantile-regression-at-multiple-quantile-levels-simultaneously"><i class="fa fa-check"></i><b>5.5</b> Example 2: Fit quantile regression at multiple quantile levels simultaneously</a></li>
+<li class="chapter" data-level="5.6" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#inference-on-linear-quantile-regression-in-r"><i class="fa fa-check"></i><b>5.6</b> Inference on linear quantile regression in R</a></li>
+<li class="chapter" data-level="5.7" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#resampling-methods-for-inference-on-quantile-regression"><i class="fa fa-check"></i><b>5.7</b> Resampling methods for inference on quantile regression</a></li>
+<li class="chapter" data-level="5.8" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#pointwise-confidence-intervals"><i class="fa fa-check"></i><b>5.8</b> Pointwise confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="git-version-control.html"><a href="git-version-control.html"><i class="fa fa-check"></i><b>6</b> Git (Version Control)</a><ul>
+<li class="chapter" data-level="6.1" data-path="git-version-control.html"><a href="git-version-control.html#license"><i class="fa fa-check"></i><b>6.1</b> License</a></li>
+<li class="chapter" data-level="6.2" data-path="git-version-control.html"><a href="git-version-control.html#r"><i class="fa fa-check"></i><b>6.2</b> R</a></li>
+<li class="chapter" data-level="6.3" data-path="git-version-control.html"><a href="git-version-control.html#version-control"><i class="fa fa-check"></i><b>6.3</b> Version Control</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="git-version-control.html"><a href="git-version-control.html#what-is-it"><i class="fa fa-check"></i><b>6.3.1</b> What is It?</a></li>
+<li class="chapter" data-level="6.3.2" data-path="git-version-control.html"><a href="git-version-control.html#very-old-fashioned-version-control"><i class="fa fa-check"></i><b>6.3.2</b> Very Old Fashioned Version Control</a></li>
+<li class="chapter" data-level="6.3.3" data-path="git-version-control.html"><a href="git-version-control.html#a-plethora-of-version-control-systems"><i class="fa fa-check"></i><b>6.3.3</b> A Plethora of Version Control Systems</a></li>
+<li class="chapter" data-level="6.3.4" data-path="git-version-control.html"><a href="git-version-control.html#mindshare"><i class="fa fa-check"></i><b>6.3.4</b> Mindshare</a></li>
+<li class="chapter" data-level="6.3.5" data-path="git-version-control.html"><a href="git-version-control.html#why"><i class="fa fa-check"></i><b>6.3.5</b> Why?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="git-version-control.html"><a href="git-version-control.html#git"><i class="fa fa-check"></i><b>6.4</b> Git</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="git-version-control.html"><a href="git-version-control.html#getting-git"><i class="fa fa-check"></i><b>6.4.1</b> Getting Git</a></li>
+<li class="chapter" data-level="6.4.2" data-path="git-version-control.html"><a href="git-version-control.html#what"><i class="fa fa-check"></i><b>6.4.2</b> What?</a></li>
+<li class="chapter" data-level="6.4.3" data-path="git-version-control.html"><a href="git-version-control.html#using-git"><i class="fa fa-check"></i><b>6.4.3</b> Using Git</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html"><i class="fa fa-check"></i><b>7</b> An R Markdown Demo</a><ul>
+<li class="chapter" data-level="7.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#license-1"><i class="fa fa-check"></i><b>7.1</b> License</a></li>
+<li class="chapter" data-level="7.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#r-1"><i class="fa fa-check"></i><b>7.2</b> R</a></li>
+<li class="chapter" data-level="7.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#rendering"><i class="fa fa-check"></i><b>7.3</b> Rendering</a></li>
+<li class="chapter" data-level="7.4" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#markdown"><i class="fa fa-check"></i><b>7.4</b> Markdown</a></li>
+<li class="chapter" data-level="7.5" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#r-markdown"><i class="fa fa-check"></i><b>7.5</b> R Markdown</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#look"><i class="fa fa-check"></i><b>7.5.1</b> Look</a></li>
+<li class="chapter" data-level="7.5.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#rdo"><i class="fa fa-check"></i><b>7.5.2</b> What Does It Do?</a></li>
+<li class="chapter" data-level="7.5.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#why-do-we-want-it"><i class="fa fa-check"></i><b>7.5.3</b> Why Do We Want It?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#examples-not-involving-r"><i class="fa fa-check"></i><b>7.6</b> Examples Not Involving R</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#title-author-date"><i class="fa fa-check"></i><b>7.6.1</b> Title, Author, Date</a></li>
+<li class="chapter" data-level="7.6.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#headers"><i class="fa fa-check"></i><b>7.6.2</b> Headers</a></li>
+<li class="chapter" data-level="7.6.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#paragraphs"><i class="fa fa-check"></i><b>7.6.3</b> Paragraphs</a></li>
+<li class="chapter" data-level="7.6.4" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#fonts"><i class="fa fa-check"></i><b>7.6.4</b> Fonts</a></li>
+<li class="chapter" data-level="7.6.5" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#lists"><i class="fa fa-check"></i><b>7.6.5</b> Lists</a></li>
+<li class="chapter" data-level="7.6.6" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#html-links"><i class="fa fa-check"></i><b>7.6.6</b> HTML Links</a></li>
+<li class="chapter" data-level="7.6.7" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#tables"><i class="fa fa-check"></i><b>7.6.7</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#examples-involving-r"><i class="fa fa-check"></i><b>7.7</b> Examples Involving R</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#code-chunks"><i class="fa fa-check"></i><b>7.7.1</b> Code Chunks</a></li>
+<li class="chapter" data-level="7.7.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#code-chunks-with-options"><i class="fa fa-check"></i><b>7.7.2</b> Code Chunks With Options</a></li>
+<li class="chapter" data-level="7.7.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#plots"><i class="fa fa-check"></i><b>7.7.3</b> Plots</a></li>
+<li class="chapter" data-level="7.7.4" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#r-in-text"><i class="fa fa-check"></i><b>7.7.4</b> R in Text</a></li>
+<li class="chapter" data-level="7.7.5" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#rtables"><i class="fa fa-check"></i><b>7.7.5</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#latex-math"><i class="fa fa-check"></i><b>7.8</b> LaTeX Math</a></li>
+<li class="chapter" data-level="7.9" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#caching-computation"><i class="fa fa-check"></i><b>7.9</b> Caching Computation</a></li>
+<li class="chapter" data-level="7.10" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#summary"><i class="fa fa-check"></i><b>7.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html"><i class="fa fa-check"></i><b>8</b> Using R Reproducibly</a><ul>
+<li class="chapter" data-level="8.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#types-of-reproducibility"><i class="fa fa-check"></i><b>8.1</b> Types of Reproducibility</a></li>
+<li class="chapter" data-level="8.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#general-principles-of-reproducibility"><i class="fa fa-check"></i><b>8.2</b> General Principles of Reproducibility</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#dont-do-things-by-hand"><i class="fa fa-check"></i><b>8.2.1</b> Don’t do things by hand</a></li>
+<li class="chapter" data-level="8.2.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#automate-where-you-can"><i class="fa fa-check"></i><b>8.2.2</b> Automate where you can</a></li>
+<li class="chapter" data-level="8.2.3" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#use-version-control"><i class="fa fa-check"></i><b>8.2.3</b> Use Version Control</a></li>
+<li class="chapter" data-level="8.2.4" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#document-your-environment"><i class="fa fa-check"></i><b>8.2.4</b> Document your environment</a></li>
+<li class="chapter" data-level="8.2.5" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#document-your-analysis"><i class="fa fa-check"></i><b>8.2.5</b> Document your analysis</a></li>
+<li class="chapter" data-level="8.2.6" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#make-your-data-open"><i class="fa fa-check"></i><b>8.2.6</b> Make your data open</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#starting-a-reproducible-workflow-in-r"><i class="fa fa-check"></i><b>8.3</b> Starting a Reproducible Workflow in R</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#organization"><i class="fa fa-check"></i><b>8.3.1</b> Organization</a></li>
+<li class="chapter" data-level="8.3.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#anantomy-of-a-script"><i class="fa fa-check"></i><b>8.3.2</b> Anantomy of a script</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R &amp; Reproducible Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="an-r-markdown-demo" class="section level1">
+<h1><span class="header-section-number"> 7</span> An R Markdown Demo</h1>
+<p><em>Author: Charles J. Geyer</em></p>
+<div id="license-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> License</h2>
+<p>This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (<a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a>).</p>
+</div>
+<div id="r-1" class="section level2">
+<h2><span class="header-section-number">7.2</span> R</h2>
+<ul>
+<li><p>The version of R used to make this document is 3.4.0.</p></li>
+<li><p>The version of the <code>rmarkdown</code> package used to make this document is 1.6.</p></li>
+<li><p>The version of the <code>knitr</code> package used to make this document is 1.16.</p></li>
+</ul>
+</div>
+<div id="rendering" class="section level2">
+<h2><span class="header-section-number">7.3</span> Rendering</h2>
+<p>This is a demo for using the R package <code>rmarkdown</code>. To turn this file into HTML, use the R commands</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;rmarkdown&quot;</span>)
+<span class="kw">render</span>(<span class="st">&quot;rmark.Rmd&quot;</span>)</code></pre></div>
+<p>The same rendering can be accomplished in RStudio by loading the document into Rstudio and clicking the “Knit” button (this also does not seem to need the <code>rmarkdown</code> package).</p>
+<p>If instead you wish to make a PDF document or some other output format (many are possible), use the optional argument <code>output_format</code> to the <code>render</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;rmarkdown&quot;</span>)
+<span class="kw">render</span>(<span class="st">&quot;rmark.Rmd&quot;</span>, <span class="dt">output_format=</span><span class="st">&quot;pdf_document&quot;</span>)</code></pre></div>
+<p>Many other output formats are <a href="http://rmarkdown.rstudio.com/lesson-9.html">explained in the Rmarkdown documentation</a>.</p>
+</div>
+<div id="markdown" class="section level2">
+<h2><span class="header-section-number">7.4</span> Markdown</h2>
+<p>Markdown (<a href="https://en.wikipedia.org/wiki/Markdown">Wikipedia page</a>) is “markup language” like HTML and LaTeX but much simpler. Variants of the original markdown language are used by GitHub (<a href="https://github.com" class="uri">https://github.com</a>) for formatting README files and other documentation, by reddit (<a href="https://www.reddit.com/" class="uri">https://www.reddit.com/</a>) for formatting posts and comments, and by R Markdown (<a href="http://rmarkdown.rstudio.com/" class="uri">http://rmarkdown.rstudio.com/</a>) for making documents that contain R computations and graphics.</p>
+<p>Markdown is fast becoming an internet standard for “easy” markup.</p>
+<div class="figure">
+<img src="https://imgs.xkcd.com/comics/standards.png" alt="xkcd:927 Standards" title="Fortunately, the charging one has been solved now that we&#39;ve all standardized on mini-USB. Or is it micro-USB? Shit." />
+<p class="caption">xkcd:927 Standards</p>
+</div>
+<p>Markdown is way too simple to replace HTML or LaTeX, but it gets the job done, even if the result isn’t as pretty as one might like.</p>
+</div>
+<div id="r-markdown" class="section level2">
+<h2><span class="header-section-number">7.5</span> R Markdown</h2>
+<div id="look" class="section level3">
+<h3><span class="header-section-number">7.5.1</span> Look</h3>
+<p>If you really need your documents to look exactly the way you want them to look, then you will have to learn LaTeX and <code>knitr</code>. But if you are willing to accept the look that R Markdown gives you, then it is satisfactory for most purposes.</p>
+</div>
+<div id="rdo" class="section level3">
+<h3><span class="header-section-number">7.5.2</span> What Does It Do?</h3>
+<p>R Markdown allows you to include R computations and graphics in documents <em>reproducibly</em>. That means that anyone anywhere who gets your R markdown file can satisfy themselves that R did you you say it did.</p>
+<p>This is very different from the old fashioned way of putting results in documents, where one just cut-and-pastes (snarf-and-barfs) the results into the document. Then there is zero evidence that these numbers or figures were produced the way you claim.</p>
+<p>For concreteness, here is a simple example.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> *<span class="st"> </span>pi
+## [1] 6.283</code></pre></div>
+<p>The result here was not cut-and-pasted into the document. Instead the R expression <code>2 * pi</code> was executed in R and the result was put in the document <em>by R Markdown, automatically</em>.</p>
+<p>This happens <em>every time the document is generated</em> so the result always matches the R code that generated it. There is no way they can fail to match (which can happen and often does happen with snarf-and-barf).</p>
+<p>Here is another concrete example.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># set.seed(42) # uncomment to always get the same plot</span>
+<span class="kw">hist</span>(<span class="kw">rnorm</span>(<span class="dv">1000</span>), <span class="dt">probability =</span> <span class="ot">TRUE</span>)
+<span class="kw">curve</span>(dnorm, <span class="dt">add =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-111-1.png" width="\textwidth" style="display: block; margin: auto;" /> Every time the document is generated, this figure is different because the random sample produced by <code>rnorm(1000)</code> is different. (If I wanted it to be the same, I could uncomment the <code>set.seed(42)</code> statement.)</p>
+<p>Again, there is no way the figure can fail to match the R code that generates it. The source code for the document (the <code>Rmd</code> file) is <em>proof</em> that everything is as the document claims. Anyone can verify the results by generating the document again.</p>
+</div>
+<div id="why-do-we-want-it" class="section level3">
+<h3><span class="header-section-number">7.5.3</span> Why Do We Want It?</h3>
+<div id="the-replication-crisis" class="section level4">
+<h4><span class="header-section-number">7.5.3.1</span> The “Replication Crisis”</h4>
+<p>Many are now saying there is a “replication crisis” in science (<a href="https://en.wikipedia.org/wiki/Replication_crisis">Wikipedia page</a>).</p>
+<p>There are many issues affecting this “crisis.”</p>
+<ul>
+<li><p>There are scientific issues, such has what experiments are done and how they are interpreted.</p></li>
+<li><p>There are statistical issues, such as too small sample sizes and publication bias.</p></li>
+<li><p>And there are computational issues: what data analysis was done and was it correct?</p></li>
+</ul>
+<p>R Markdown only directly helps with the computational issues. It also helps to document your statistical analyses (<em>Duh!</em> Do you think generating a document that includes a statistical analysis may help to document it?)</p>
+<p>Indirectly, R Markdown also helps with the other issues. Having the whole analysis from raw data to scientific findings publicly available — as many scientific journals now require — tends to make you a lot more careful in doing the analysis.</p>
+</div>
+<div id="business-and-consulting" class="section level4">
+<h4><span class="header-section-number">7.5.3.2</span> Business and Consulting</h4>
+<p>Outside of science there is no buzz about “replication crisis,” at least not yet. The hype about “big data” is so strong that hardly **anyone is questioning whether results are correct or actually support conclusions people draw from them.</p>
+<p>But even if the results are never made public, R Markdown can still help a lot. Imagine you have spent weeks doing a very complicated analysis. The day before it is finished, a co-worker tells you there is a mistake in the data that has to be fixed. If you are generating your report the old-fashioned way, it will take almost as much time to redo the report as to do it in the first place. If you have done the report with R Markdown, correct the data, rerun R Markdown, and you’re done.</p>
+<p>R Markdown takes some time to learn. And it always takes more time to do a data analysis while simultaneously documenting it than to do it while skipping the documentation. But it takes a lot less time than doing the analysis without documentation and adding documentation later. Also</p>
+<ul>
+<li><p>R Markdown documentation is far more likely to be correct, and</p></li>
+<li><p>the analysis itself is far more likely to be correct.</p></li>
+</ul>
+</div>
+<div id="newbie-data-analysis" class="section level4">
+<h4><span class="header-section-number">7.5.3.3</span> Newbie Data Analysis</h4>
+<p>The way most newbies use R or any other statistical package is to dive right in</p>
+<ul>
+<li><p>typing commands into R,</p></li>
+<li><p>typing commands into a file and cut-and-pasting them into R, or</p></li>
+<li><p>using RStudio.</p></li>
+</ul>
+<p>None of these actually document what was done because commands get edited a lot.</p>
+<p>If you are in the habit of saving your workspace when you leave R or RStudio, can you explain <em>exactly</em> how every R object in there was created? <em>Starting from raw data?</em> Probably not.</p>
+</div>
+<div id="expert-data-analysis" class="section level4">
+<h4><span class="header-section-number">7.5.3.4</span> Expert Data Analysis</h4>
+<p>The way experts use R is</p>
+<ul>
+<li>type commands into a file, say <code>foo.R</code>. Use</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R CMD BATCH --vanilla foo.R</code></pre></div>
+<p>to run R to do the analysis.</p>
+<ul>
+<li>type commands with explanations into an R Markdown file, and render it in a clean R environment (empty global environment). Either start R with a clean global environment (with <code>R --vanilla</code>) and do</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;rmarkdown&quot;</span>)
+<span class="kw">render</span>(<span class="st">&quot;foo.Rmd&quot;</span>)</code></pre></div>
+<p>or start RStudio with a clean global environment (on the “Tools” menu, select “Global Options” and uncheck “Restore .RData into workspace at startup”, then close and restart) load the R Markdown file and click “Knit”.</p>
+<p>The important thing is using a clean R environment so all calculations are fully reproducible. Same results every time the analysis is rerun by you or by anybody, anywhere, on any computer that has R.</p>
+</div>
+</div>
+</div>
+<div id="examples-not-involving-r" class="section level2">
+<h2><span class="header-section-number">7.6</span> Examples Not Involving R</h2>
+<p>One of the purposes of this document is to serve as an example of how to use R Markdown.</p>
+<p>We have already exemplified a lot, but there’s more.</p>
+<div id="title-author-date" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> Title, Author, Date</h3>
+<p>This document shows how to put in a title, author, and date using the YAML comment block (set off by lines of hyphens at the top of the document). There does not seem to be any reference where all of the stuff that can be put in a YAML comment is documented. What can be done with YAML comments is scattered in many places in the R Markdown documentation.</p>
+</div>
+<div id="headers" class="section level3">
+<h3><span class="header-section-number">7.6.2</span> Headers</h3>
+<p>Headers are indicated by hash marks (one for each level), as with all the headers in this document. There is also <a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#headers">an alternative format</a> that you can use if you want.</p>
+</div>
+<div id="paragraphs" class="section level3">
+<h3><span class="header-section-number">7.6.3</span> Paragraphs</h3>
+<p>Paragraph breaks are indicated by blank lines.</p>
+</div>
+<div id="fonts" class="section level3">
+<h3><span class="header-section-number">7.6.4</span> Fonts</h3>
+<p>Font changes are indicated by <em>stars for italic,</em> <strong>double stars for boldface,</strong> and <code>backticks for typewriter font (for code)</code> as here.</p>
+</div>
+<div id="lists" class="section level3">
+<h3><span class="header-section-number">7.6.5</span> Lists</h3>
+<p>Bulleted lists examples are shown above. Here is a numbered list</p>
+<ol style="list-style-type: decimal">
+<li><p>item one,</p></li>
+<li><p>item two, and</p></li>
+<li><p>item three.</p></li>
+</ol>
+<p>Note that one does not have to do the numbers oneself. R Markdown figures them out (so when you insert a new item in the list it gets the numbers right without you doing anything to make that happen).</p>
+<p><a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#lists">The reference material for lists</a> shows how to make sublists and more.</p>
+</div>
+<div id="html-links" class="section level3">
+<h3><span class="header-section-number">7.6.6</span> HTML Links</h3>
+<p>Links have also already been exemplified.</p>
+<p>If you want the link text to be the same as the link URL, you can just put the URL in plain text. R Markdown will make it a link. It can also go in angle brackets.</p>
+<p>If you want the link text to be different from the link URL, you can just put the link text in square brackets followed by the URL in round brackets (with no space in between the two). For example, <code>[CRAN](https://cran.r-project.org)</code> makes the link <a href="https://cran.r-project.org">CRAN</a>.</p>
+<p>For more about links, <a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#links">here is the documentation</a>.</p>
+</div>
+<div id="tables" class="section level3">
+<h3><span class="header-section-number">7.6.7</span> Tables</h3>
+<p>There is Markdown syntax for tables, but we won’t illustrate it here (<a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#tables">documentation</a>).</p>
+<p>We will be more interested in <a href="an-r-markdown-demo.html#rtables">tables created by R</a>.</p>
+</div>
+</div>
+<div id="examples-involving-r" class="section level2">
+<h2><span class="header-section-number">7.7</span> Examples Involving R</h2>
+<div id="code-chunks" class="section level3">
+<h3><span class="header-section-number">7.7.1</span> Code Chunks</h3>
+<p>Code chunks begin with <code>```{r}</code> and end with <code>```</code>. (<a href="http://rmarkdown.rstudio.com/lesson-3.html">documentation</a>). The delimiters have to begin in column one (I think).</p>
+<p>Here is an example.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> +<span class="st"> </span><span class="dv">2</span>
+## [1] 4</code></pre></div>
+<p>This is a “code chunk” processed by <code>rmarkdown</code>. When <code>rmarkdown</code> hits such a thing, it processes it, runs R to get the results, and stuffs the results (by default) in the output file it is creating. The text between code chunks is Markdown.</p>
+</div>
+<div id="code-chunks-with-options" class="section level3">
+<h3><span class="header-section-number">7.7.2</span> Code Chunks With Options</h3>
+<p>Lots of things can be made to happen by including options in the code chunk beginning delimiter. AFAIK all <a href="https://yihui.name/knitr/options/"><code>knitr</code> chunk options</a> can be used.</p>
+<p>Here are some simple ones.</p>
+<p>The option <code>eval=FALSE</code> says to show the chunk but do not evaluate it, as here</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> +<span class="st"> </span><span class="dv">2</span></code></pre></div>
+<p>The option <code>echo=FALSE</code> says to to <strong>not</strong> show the chunk but <strong>do</strong> evaluate it (just the opposite of <code>eval=FALSE</code>), as here (nothing appears in the output document because of <code>echo=FALSE</code> but the code chunk is executed).</p>
+<p>If you look at the document source you will see a hidden code chunk that assigns a value to the variable <code>hide</code> which we can see in a code chunk with no options</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hide
+## [1] 3</code></pre></div>
+<p>This example also shows that all code chunks are executed in the same R session, so R objects assigned names in earlier chunks can be used in later chunks.</p>
+<p>Many more examples of options for code chunks are exemplified below.</p>
+</div>
+<div id="plots" class="section level3">
+<h3><span class="header-section-number">7.7.3</span> Plots</h3>
+<p>We showed a simple plot above, here is a more complicated one.</p>
+<div id="make-up-data" class="section level4">
+<h4><span class="header-section-number">7.7.3.1</span> Make Up Data</h4>
+<p>Simulate regression data, and do the regression.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">50</span>
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">1</span>, n)
+a.true &lt;-<span class="st"> </span><span class="dv">3</span>
+b.true &lt;-<span class="st"> </span><span class="fl">1.5</span>
+y.true &lt;-<span class="st"> </span>a.true +<span class="st"> </span>b.true *<span class="st"> </span>x
+s.true &lt;-<span class="st"> </span><span class="fl">17.3</span>
+y &lt;-<span class="st"> </span>y.true +<span class="st"> </span>s.true *<span class="st"> </span><span class="kw">rnorm</span>(n)
+out1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x)
+<span class="kw">summary</span>(out1)
+## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -39.33  -2.79   0.57   9.90  27.43 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   -5.365      4.298   -1.25     0.22    
+## x              1.702      0.147   11.61  1.5e-15 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 15 on 48 degrees of freedom
+## Multiple R-squared:  0.737,  Adjusted R-squared:  0.732 
+## F-statistic:  135 on 1 and 48 DF,  p-value: 1.55e-15</code></pre></div>
+</div>
+<div id="figure-with-code-to-make-it-shown" class="section level4">
+<h4><span class="header-section-number">7.7.3.2</span> Figure with Code to Make It Shown</h4>
+<p>The following figure is produced by the following code</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x, y)
+<span class="kw">abline</span>(out1)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-119"></span>
+<img src="RWorkshop17_files/figure-html/unnamed-chunk-119-1.png" alt="Simple Linear Regression" width="\textwidth" />
+<p class="caption">
+Figure 7.1: Simple Linear Regression
+</p>
+</div>
+<p>Here we use the chunk options <code>fig.align='center', fig.cap='Simple Linear Regression'</code> to center the figure and to get the figure legend.</p>
+<p>Note that options are comma separated.</p>
+</div>
+<div id="figure-with-code-to-make-it-not-shown" class="section level4">
+<h4><span class="header-section-number">7.7.3.3</span> Figure with Code to Make It Not Shown</h4>
+<p>For this example we do a cubic regression on the same data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out3 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x +<span class="st"> </span><span class="kw">I</span>(x^<span class="dv">2</span>) +<span class="st"> </span><span class="kw">I</span>(x^<span class="dv">3</span>))
+<span class="kw">summary</span>(out3)
+## 
+## Call:
+## lm(formula = y ~ x + I(x^2) + I(x^3))
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -37.70  -4.00   2.23   9.14  26.86 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) -3.037732   9.246645   -0.33     0.74
+## x            1.678522   1.554667    1.08     0.29
+## I(x^2)      -0.014115   0.070458   -0.20     0.84
+## I(x^3)       0.000320   0.000909    0.35     0.73
+## 
+## Residual standard error: 15.1 on 46 degrees of freedom
+## Multiple R-squared:  0.743,  Adjusted R-squared:  0.726 
+## F-statistic: 44.2 on 3 and 46 DF,  p-value: 1.34e-13</code></pre></div>
+Then we plot this figure with a hidden code chunk (so the R commands to make it do not appear in the document).
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-121"></span>
+<img src="RWorkshop17_files/figure-html/unnamed-chunk-121-1.png" alt="Scatter Plot with Cubic Regression Curve" width="\textwidth" />
+<p class="caption">
+Figure 7.2: Scatter Plot with Cubic Regression Curve
+</p>
+</div>
+<p>This plot is made by a hidden code chunk that uses the option <code>echo=FALSE</code> in addition to <code>fig.align</code> and <code>fig.caption</code> that were also used in the preceding section.</p>
+<p>Also note that, as with the figure in <a href="an-r-markdown-demo.html#rdo">the section titled <strong>What Does It Do?</strong></a> above, every time we rerun <code>rmarkdown</code> these two figures change because the simulated data are random. (We could use <code>set.seed</code> to make the simulated data always the same, if we wanted to.)</p>
+</div>
+</div>
+<div id="r-in-text" class="section level3">
+<h3><span class="header-section-number">7.7.4</span> R in Text</h3>
+<p>The <em>no snarf and barf</em> rule must be adhered to strictly. None at all!</p>
+<p>When you want to refer to some number in R printout, either make a code chunk that contains the printout you want, or, much nicer looking, you can “inline” R printout.</p>
+<p>Here we show how to do that. The quadratic and cubic regression coefficients in the preceding regression were -0.0141 and 3.198210^{-4}. Magic! See the source for this document to see how the magic works.</p>
+<p>If you never snarf and barf, and everything in your document is computed by R, then everything is always as claimed.</p>
+</div>
+<div id="rtables" class="section level3">
+<h3><span class="header-section-number">7.7.5</span> Tables</h3>
+<p>The same goes for tables. Here is a “table” of sorts in some R printout.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x +<span class="st"> </span><span class="kw">I</span>(x^<span class="dv">2</span>))
+<span class="kw">anova</span>(out1, out2, out3)
+## Analysis of Variance Table
+## 
+## Model 1: y ~ x
+## Model 2: y ~ x + I(x^2)
+## Model 3: y ~ x + I(x^2) + I(x^3)
+##   Res.Df   RSS Df Sum of Sq    F Pr(&gt;F)
+## 1     48 10752                         
+## 2     47 10567  1     185.6 0.81   0.37
+## 3     46 10538  1      28.4 0.12   0.73</code></pre></div>
+<p>We want to turn that into a table in output format we are creating. First we have to figure out what the output of the R function <code>anova</code> is and capture it so we can use it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">foo &lt;-<span class="st"> </span><span class="kw">anova</span>(out1, out2, out3)
+<span class="kw">class</span>(foo)
+## [1] &quot;anova&quot;      &quot;data.frame&quot;</code></pre></div>
+<p>So now we are ready to turn the matrix <code>foo</code> and the simplest way to do that seems to be the <code>kable</code> option on our R chunk</p>
+<table>
+<caption><span id="tab:kable">Table 7.1: </span>ANOVA Table</caption>
+<thead>
+<tr class="header">
+<th align="right">Res.Df</th>
+<th align="right">RSS</th>
+<th align="right">Df</th>
+<th align="right">Sum of Sq</th>
+<th align="right">F</th>
+<th align="right">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">48</td>
+<td align="right">10752</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="right">47</td>
+<td align="right">10567</td>
+<td align="right">1</td>
+<td align="right">186</td>
+<td align="right">0.81</td>
+<td align="right">0.373</td>
+</tr>
+<tr class="odd">
+<td align="right">46</td>
+<td align="right">10538</td>
+<td align="right">1</td>
+<td align="right">28</td>
+<td align="right">0.12</td>
+<td align="right">0.726</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="latex-math" class="section level2">
+<h2><span class="header-section-number">7.8</span> LaTeX Math</h2>
+<p>You can put real math in R Markdown documents. The way you do it mimics LaTeX (<a href="https://en.wikipedia.org/wiki/LaTeX">Wikipedia page</a>), which is far and away the best document preparation system for ink on paper documents (it doesn’t work so well for e-readers).</p>
+<p>To actually learn LaTeX math, you have to read Section 3.3 of the <a href="https://www.amazon.com/LaTeX-Document-Preparation-System-2nd/dp/0201529831/">LaTeX book</a> and should also read the <a href="http://www.tug.org/teTeX/tetex-texmfdist/doc/latex/amsmath/amsldoc.pdf">User’s Guide for the <code>amsmath</code> Package</a>.</p>
+<p>Here are some examples to illustrate how good it is and how it works with R Markdown. <span class="math display">\[
+   f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{- (x - \mu)^2 / (2 \sigma^2)},
+   \qquad - \infty &lt; x &lt; \infty.
+\]</span></p>
+If <span class="math display">\[
+   f(x, y) = \frac{1}{2}, \qquad 0 &lt; x &lt; y &lt; 1,
+\]</span> then
+<span class="math display">\[\begin{align}
+   E(X)
+   &amp; =
+   \int_0^1 d y \int_0^y x f(x, y) \, d x
+   \\
+   &amp; =
+   \frac{1}{2}
+   \int_0^1 d y \int_0^y x \, d x
+   \\
+   &amp; =
+   \frac{1}{2}
+   \int_0^1 d y \left[ \frac{x^2}{2} \right]_0^y
+   \\
+   &amp; =
+   \frac{1}{2}
+   \int_0^1 \frac{y^2}{2} \, d y
+   \\
+   &amp; =
+   \frac{1}{2}
+   \cdot
+   \left[ \frac{y^3}{6} \right]_0^1
+   \\
+   &amp; =
+   \frac{1}{2}
+   \cdot
+   \frac{1}{6}
+   \\
+   &amp; =
+   \frac{1}{12}
+\end{align}\]</span>
+<p>Unfortunately, to get this to work for HTML output requires (at least temporarily, until the <code>rmarkdown</code> package gets fixed) some arcane magic in the YAML header (just copy the one for this document).</p>
+</div>
+<div id="caching-computation" class="section level2">
+<h2><span class="header-section-number">7.9</span> Caching Computation</h2>
+<p>If computations in an R Markdown take so much time that editing the document becomes annoying, you can “cache” the computations by adding the option <code>cache=TRUE</code> to time consuming code chunks.</p>
+<p>This feature is rather smart. Usually if anything changes in the input to the cached computations, the computations will be redone (for example if there were a change to the raw data), but if nothing has changed the computations will not be redone (the cached results will be used again) and no time is lost. So the computations are redone if and only if they need to be redone.</p>
+<p>My Stat 3701 course notes have an example that does caching:</p>
+<ul>
+<li><p><a href="http://www.stat.umn.edu/geyer/3701/notes/mcmc-bayes.Rmd">R Markdown source</a> and</p></li>
+<li><p><a href="http://www.stat.umn.edu/geyer/3701/notes/mcmc-bayes.html">HTML output</a>.</p></li>
+</ul>
+<p>There are also other examples of lots of other things at <a href="http://www.stat.umn.edu/geyer/3701/notes/" class="uri">http://www.stat.umn.edu/geyer/3701/notes/</a>.</p>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">7.10</span> Summary</h2>
+<p>Rmarkdown is terrific, so important that we cannot get along without it or its older competitors <code>Sweave</code> and <code>knitr</code>.</p>
+<p>Its virtues are</p>
+<ul>
+<li><p>The numbers and graphics you report are actually what they are claimed to be.</p></li>
+<li><p>Your analysis is reproducible. Even years later, when you’ve completely forgotten what you did, the whole write-up, every single number or pixel in a plot is reproducible.</p></li>
+<li><p>Your analysis actually works—at least in this particular instance. The code you show actually executes without error.</p></li>
+<li><p>Toward the end of your work, with the write-up almost done you discover an error. Months of rework to do? No! Just fix the error and rerun Rmarkdown. One single problem like this and you will have all the time invested in Rmarkdown repaid.</p></li>
+<li><p>This methodology provides discipline. There’s nothing that will make you clean up your code like the prospect of actually revealing it to the world.</p></li>
+</ul>
+<p>Whether we’re talking about homework, a consulting report, a textbook, or a research paper. If they involve computing and statistics, this is the way to do it.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="git-version-control.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-r-reproducibly.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "section",
+"depth": 2,
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

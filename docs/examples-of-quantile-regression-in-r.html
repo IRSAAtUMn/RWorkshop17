@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to Data Analysis with R &amp; Reproducible Data Science</title>
+  <meta name="description" content="Introduction to Data Analysis with R &amp; Reproducible Data Science">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="IRSAAtUMn/RWorkshop17/docs" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
+  
+  
+  
+
+<meta name="author" content="Institute for Research in Statistics and its Applications at the University of Minnesota">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="linear-regression-in-r.html">
+<link rel="next" href="git-version-control.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Home</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R &amp; RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#getting-started"><i class="fa fa-check"></i><b>1.1</b> Getting Started</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#basic-features"><i class="fa fa-check"></i><b>1.2</b> Basic features</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#working-with-data"><i class="fa fa-check"></i><b>1.4</b> Working with data</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#exercises"><i class="fa fa-check"></i><b>1.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-visualization.html"><a href="data-visualization.html#ggplot"><i class="fa fa-check"></i><b>2.1</b> ggplot</a></li>
+<li class="chapter" data-level="2.2" data-path="data-visualization.html"><a href="data-visualization.html#univariate-visualizations"><i class="fa fa-check"></i><b>2.2</b> Univariate visualizations</a></li>
+<li class="chapter" data-level="2.3" data-path="data-visualization.html"><a href="data-visualization.html#visualizing-relationships"><i class="fa fa-check"></i><b>2.3</b> Visualizing Relationships</a></li>
+<li class="chapter" data-level="2.4" data-path="data-visualization.html"><a href="data-visualization.html#exercises-1"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+<li class="chapter" data-level="2.5" data-path="data-visualization.html"><a href="data-visualization.html#extra"><i class="fa fa-check"></i><b>2.5</b> Extra</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html"><i class="fa fa-check"></i><b>3</b> Simple Statistics in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#chapter-outline-and-goals"><i class="fa fa-check"></i><b>3.1</b> Chapter Outline and Goals</a></li>
+<li class="chapter" data-level="3.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#minnesota-beer-data"><i class="fa fa-check"></i><b>3.2</b> Minnesota Beer Data</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#overview"><i class="fa fa-check"></i><b>3.2.1</b> Overview</a></li>
+<li class="chapter" data-level="3.2.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#load-the-data"><i class="fa fa-check"></i><b>3.2.2</b> Load the Data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#look-at-the-data"><i class="fa fa-check"></i><b>3.2.3</b> Look at the Data</a></li>
+<li class="chapter" data-level="3.2.4" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#plot-the-data"><i class="fa fa-check"></i><b>3.2.4</b> Plot the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#descriptive-statistics-in-r"><i class="fa fa-check"></i><b>3.3</b> Descriptive Statistics in R</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#overview-1"><i class="fa fa-check"></i><b>3.3.1</b> Overview</a></li>
+<li class="chapter" data-level="3.3.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#minimum-and-maximum"><i class="fa fa-check"></i><b>3.3.2</b> Minimum and Maximum</a></li>
+<li class="chapter" data-level="3.3.3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#mean-standard-deviation-and-variance"><i class="fa fa-check"></i><b>3.3.3</b> Mean, Standard Deviation, and Variance</a></li>
+<li class="chapter" data-level="3.3.4" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#medians-and-quantiles"><i class="fa fa-check"></i><b>3.3.4</b> Medians and Quantiles</a></li>
+<li class="chapter" data-level="3.3.5" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#factor-level-information"><i class="fa fa-check"></i><b>3.3.5</b> Factor Level Information</a></li>
+<li class="chapter" data-level="3.3.6" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#covariances-and-correlations"><i class="fa fa-check"></i><b>3.3.6</b> Covariances and Correlations</a></li>
+<li class="chapter" data-level="3.3.7" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#applying-functions-to-multiple-variables"><i class="fa fa-check"></i><b>3.3.7</b> Applying Functions to Multiple Variables</a></li>
+<li class="chapter" data-level="3.3.8" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#applying-functions-at-levels-of-factors"><i class="fa fa-check"></i><b>3.3.8</b> Applying Functions at Levels of Factors</a></li>
+<li class="chapter" data-level="3.3.9" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#making-a-table"><i class="fa fa-check"></i><b>3.3.9</b> Making a Table</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#students-t-test-in-r"><i class="fa fa-check"></i><b>3.4</b> Student’s t-Test in R</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#one-sample-t-test"><i class="fa fa-check"></i><b>3.4.1</b> One Sample t-Test</a></li>
+<li class="chapter" data-level="3.4.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#two-sample-t-test"><i class="fa fa-check"></i><b>3.4.2</b> Two Sample t-Test</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#one-way-anova-in-r"><i class="fa fa-check"></i><b>3.5</b> One-Way ANOVA in R</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#omnibus-f-test"><i class="fa fa-check"></i><b>3.5.1</b> Omnibus F-Test</a></li>
+<li class="chapter" data-level="3.5.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#pairwise-comparisons-tukeys-hsd"><i class="fa fa-check"></i><b>3.5.2</b> Pairwise Comparisons (Tukey’s HSD)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#correlation-tests-in-r"><i class="fa fa-check"></i><b>3.6</b> Correlation Tests in R</a></li>
+<li class="chapter" data-level="3.7" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#exercises-2"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html"><i class="fa fa-check"></i><b>4</b> Linear Regression in R</a><ul>
+<li class="chapter" data-level="4.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#chapter-outline-and-goals-1"><i class="fa fa-check"></i><b>4.1</b> Chapter Outline and Goals</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#minnesota-beer-data-reminder"><i class="fa fa-check"></i><b>4.2</b> Minnesota Beer Data (Reminder)</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#overview-2"><i class="fa fa-check"></i><b>4.2.1</b> Overview</a></li>
+<li class="chapter" data-level="4.2.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#load-and-look-at-the-data"><i class="fa fa-check"></i><b>4.2.2</b> Load and Look at the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#simple-linear-regression"><i class="fa fa-check"></i><b>4.3</b> Simple Linear Regression</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#fit-the-model"><i class="fa fa-check"></i><b>4.3.1</b> Fit the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#inference-information"><i class="fa fa-check"></i><b>4.3.2</b> Inference Information</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#plot-the-regression-line"><i class="fa fa-check"></i><b>4.3.3</b> Plot the Regression Line</a></li>
+<li class="chapter" data-level="4.3.4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#diagnostic-and-influence-plots"><i class="fa fa-check"></i><b>4.3.4</b> Diagnostic and Influence Plots</a></li>
+<li class="chapter" data-level="4.3.5" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#prediction-for-new-data"><i class="fa fa-check"></i><b>4.3.5</b> Prediction for New Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#multiple-linear-regression"><i class="fa fa-check"></i><b>4.4</b> Multiple Linear Regression</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#overview-3"><i class="fa fa-check"></i><b>4.4.1</b> Overview</a></li>
+<li class="chapter" data-level="4.4.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#additive-effects"><i class="fa fa-check"></i><b>4.4.2</b> Additive Effects</a></li>
+<li class="chapter" data-level="4.4.3" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#interaction-effects"><i class="fa fa-check"></i><b>4.4.3</b> Interaction Effects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#comparing-fit-models"><i class="fa fa-check"></i><b>4.4.4</b> Comparing Fit Models</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html"><i class="fa fa-check"></i><b>5</b> Examples of Quantile Regression in R</a><ul>
+<li class="chapter" data-level="5.1" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#goals"><i class="fa fa-check"></i><b>5.1</b> Goals</a></li>
+<li class="chapter" data-level="5.2" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#r-package-quantreg"><i class="fa fa-check"></i><b>5.2</b> R Package quantreg</a></li>
+<li class="chapter" data-level="5.3" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#fitting-linear-quantile-regression-in-r"><i class="fa fa-check"></i><b>5.3</b> Fitting linear quantile regression in R</a></li>
+<li class="chapter" data-level="5.4" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#example-1-fit-quantile-regression-at-one-quantile-level"><i class="fa fa-check"></i><b>5.4</b> Example 1: Fit quantile regression at one quantile level</a></li>
+<li class="chapter" data-level="5.5" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#example-2-fit-quantile-regression-at-multiple-quantile-levels-simultaneously"><i class="fa fa-check"></i><b>5.5</b> Example 2: Fit quantile regression at multiple quantile levels simultaneously</a></li>
+<li class="chapter" data-level="5.6" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#inference-on-linear-quantile-regression-in-r"><i class="fa fa-check"></i><b>5.6</b> Inference on linear quantile regression in R</a></li>
+<li class="chapter" data-level="5.7" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#resampling-methods-for-inference-on-quantile-regression"><i class="fa fa-check"></i><b>5.7</b> Resampling methods for inference on quantile regression</a></li>
+<li class="chapter" data-level="5.8" data-path="examples-of-quantile-regression-in-r.html"><a href="examples-of-quantile-regression-in-r.html#pointwise-confidence-intervals"><i class="fa fa-check"></i><b>5.8</b> Pointwise confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="git-version-control.html"><a href="git-version-control.html"><i class="fa fa-check"></i><b>6</b> Git (Version Control)</a><ul>
+<li class="chapter" data-level="6.1" data-path="git-version-control.html"><a href="git-version-control.html#license"><i class="fa fa-check"></i><b>6.1</b> License</a></li>
+<li class="chapter" data-level="6.2" data-path="git-version-control.html"><a href="git-version-control.html#r"><i class="fa fa-check"></i><b>6.2</b> R</a></li>
+<li class="chapter" data-level="6.3" data-path="git-version-control.html"><a href="git-version-control.html#version-control"><i class="fa fa-check"></i><b>6.3</b> Version Control</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="git-version-control.html"><a href="git-version-control.html#what-is-it"><i class="fa fa-check"></i><b>6.3.1</b> What is It?</a></li>
+<li class="chapter" data-level="6.3.2" data-path="git-version-control.html"><a href="git-version-control.html#very-old-fashioned-version-control"><i class="fa fa-check"></i><b>6.3.2</b> Very Old Fashioned Version Control</a></li>
+<li class="chapter" data-level="6.3.3" data-path="git-version-control.html"><a href="git-version-control.html#a-plethora-of-version-control-systems"><i class="fa fa-check"></i><b>6.3.3</b> A Plethora of Version Control Systems</a></li>
+<li class="chapter" data-level="6.3.4" data-path="git-version-control.html"><a href="git-version-control.html#mindshare"><i class="fa fa-check"></i><b>6.3.4</b> Mindshare</a></li>
+<li class="chapter" data-level="6.3.5" data-path="git-version-control.html"><a href="git-version-control.html#why"><i class="fa fa-check"></i><b>6.3.5</b> Why?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="git-version-control.html"><a href="git-version-control.html#git"><i class="fa fa-check"></i><b>6.4</b> Git</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="git-version-control.html"><a href="git-version-control.html#getting-git"><i class="fa fa-check"></i><b>6.4.1</b> Getting Git</a></li>
+<li class="chapter" data-level="6.4.2" data-path="git-version-control.html"><a href="git-version-control.html#what"><i class="fa fa-check"></i><b>6.4.2</b> What?</a></li>
+<li class="chapter" data-level="6.4.3" data-path="git-version-control.html"><a href="git-version-control.html#using-git"><i class="fa fa-check"></i><b>6.4.3</b> Using Git</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html"><i class="fa fa-check"></i><b>7</b> An R Markdown Demo</a><ul>
+<li class="chapter" data-level="7.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#license-1"><i class="fa fa-check"></i><b>7.1</b> License</a></li>
+<li class="chapter" data-level="7.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#r-1"><i class="fa fa-check"></i><b>7.2</b> R</a></li>
+<li class="chapter" data-level="7.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#rendering"><i class="fa fa-check"></i><b>7.3</b> Rendering</a></li>
+<li class="chapter" data-level="7.4" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#markdown"><i class="fa fa-check"></i><b>7.4</b> Markdown</a></li>
+<li class="chapter" data-level="7.5" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#r-markdown"><i class="fa fa-check"></i><b>7.5</b> R Markdown</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#look"><i class="fa fa-check"></i><b>7.5.1</b> Look</a></li>
+<li class="chapter" data-level="7.5.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#rdo"><i class="fa fa-check"></i><b>7.5.2</b> What Does It Do?</a></li>
+<li class="chapter" data-level="7.5.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#why-do-we-want-it"><i class="fa fa-check"></i><b>7.5.3</b> Why Do We Want It?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#examples-not-involving-r"><i class="fa fa-check"></i><b>7.6</b> Examples Not Involving R</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#title-author-date"><i class="fa fa-check"></i><b>7.6.1</b> Title, Author, Date</a></li>
+<li class="chapter" data-level="7.6.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#headers"><i class="fa fa-check"></i><b>7.6.2</b> Headers</a></li>
+<li class="chapter" data-level="7.6.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#paragraphs"><i class="fa fa-check"></i><b>7.6.3</b> Paragraphs</a></li>
+<li class="chapter" data-level="7.6.4" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#fonts"><i class="fa fa-check"></i><b>7.6.4</b> Fonts</a></li>
+<li class="chapter" data-level="7.6.5" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#lists"><i class="fa fa-check"></i><b>7.6.5</b> Lists</a></li>
+<li class="chapter" data-level="7.6.6" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#html-links"><i class="fa fa-check"></i><b>7.6.6</b> HTML Links</a></li>
+<li class="chapter" data-level="7.6.7" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#tables"><i class="fa fa-check"></i><b>7.6.7</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#examples-involving-r"><i class="fa fa-check"></i><b>7.7</b> Examples Involving R</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#code-chunks"><i class="fa fa-check"></i><b>7.7.1</b> Code Chunks</a></li>
+<li class="chapter" data-level="7.7.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#code-chunks-with-options"><i class="fa fa-check"></i><b>7.7.2</b> Code Chunks With Options</a></li>
+<li class="chapter" data-level="7.7.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#plots"><i class="fa fa-check"></i><b>7.7.3</b> Plots</a></li>
+<li class="chapter" data-level="7.7.4" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#r-in-text"><i class="fa fa-check"></i><b>7.7.4</b> R in Text</a></li>
+<li class="chapter" data-level="7.7.5" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#rtables"><i class="fa fa-check"></i><b>7.7.5</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#latex-math"><i class="fa fa-check"></i><b>7.8</b> LaTeX Math</a></li>
+<li class="chapter" data-level="7.9" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#caching-computation"><i class="fa fa-check"></i><b>7.9</b> Caching Computation</a></li>
+<li class="chapter" data-level="7.10" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#summary"><i class="fa fa-check"></i><b>7.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html"><i class="fa fa-check"></i><b>8</b> Using R Reproducibly</a><ul>
+<li class="chapter" data-level="8.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#types-of-reproducibility"><i class="fa fa-check"></i><b>8.1</b> Types of Reproducibility</a></li>
+<li class="chapter" data-level="8.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#general-principles-of-reproducibility"><i class="fa fa-check"></i><b>8.2</b> General Principles of Reproducibility</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#dont-do-things-by-hand"><i class="fa fa-check"></i><b>8.2.1</b> Don’t do things by hand</a></li>
+<li class="chapter" data-level="8.2.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#automate-where-you-can"><i class="fa fa-check"></i><b>8.2.2</b> Automate where you can</a></li>
+<li class="chapter" data-level="8.2.3" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#use-version-control"><i class="fa fa-check"></i><b>8.2.3</b> Use Version Control</a></li>
+<li class="chapter" data-level="8.2.4" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#document-your-environment"><i class="fa fa-check"></i><b>8.2.4</b> Document your environment</a></li>
+<li class="chapter" data-level="8.2.5" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#document-your-analysis"><i class="fa fa-check"></i><b>8.2.5</b> Document your analysis</a></li>
+<li class="chapter" data-level="8.2.6" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#make-your-data-open"><i class="fa fa-check"></i><b>8.2.6</b> Make your data open</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#starting-a-reproducible-workflow-in-r"><i class="fa fa-check"></i><b>8.3</b> Starting a Reproducible Workflow in R</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#organization"><i class="fa fa-check"></i><b>8.3.1</b> Organization</a></li>
+<li class="chapter" data-level="8.3.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#anantomy-of-a-script"><i class="fa fa-check"></i><b>8.3.2</b> Anantomy of a script</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Data Analysis with R &amp; Reproducible Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="examples-of-quantile-regression-in-r" class="section level1">
+<h1><span class="header-section-number"> 5</span> Examples of Quantile Regression in R</h1>
+<p><em>Author: Lan Wang and Ruosha Li</em></p>
+<div id="goals" class="section level2">
+<h2><span class="header-section-number">5.1</span> Goals</h2>
+<ul>
+<li>Fit a quantile regression model in R.</li>
+<li>Test the significance of regression coefficients</li>
+<li>Creat and plot pointwise confidence intervals</li>
+</ul>
+</div>
+<div id="r-package-quantreg" class="section level2">
+<h2><span class="header-section-number">5.2</span> R Package quantreg</h2>
+<ul>
+<li>R package quantreg (developed and maintained by Dr. Koenker).</li>
+<li>Documentation: <a href="https://cran.r-project.org/web/packages/quantreg/quantreg.pdf" class="uri">https://cran.r-project.org/web/packages/quantreg/quantreg.pdf</a></li>
+<li>Type the following in R for installation:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;quantreg&quot;</span>)</code></pre></div>
+<ul>
+<li>Then, load the package by typing:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantreg)
+## Loading required package: SparseM
+## 
+## Attaching package: &#39;SparseM&#39;
+## The following object is masked from &#39;package:base&#39;:
+## 
+##     backsolve</code></pre></div>
+</div>
+<div id="fitting-linear-quantile-regression-in-r" class="section level2">
+<h2><span class="header-section-number">5.3</span> Fitting linear quantile regression in R</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rq</span>(formula,tau,data,method,...)</code></pre></div>
+<ul>
+<li>method=“br” (default): simplex method. Efficient for problems with modest sample size (up to several thousands).</li>
+<li>method=“fn”: Frisch-Newton interior point method; more efficient than simplex for larger sample sizes;</li>
+<li>method=“pfn”: Frisch-Newton with pre-processing (suitable when n is very large).</li>
+</ul>
+</div>
+<div id="example-1-fit-quantile-regression-at-one-quantile-level" class="section level2">
+<h2><span class="header-section-number">5.4</span> Example 1: Fit quantile regression at one quantile level</h2>
+<p>-Engel food expenditure data used in Koenker and Bassett(1982).</p>
+<p>-This is a regression data set consisting of 235 observations on income and expenditure on food for Belgian working class households.</p>
+<ul>
+<li>income: annual household income in Belgian francs</li>
+<li>foodexp: annual household food expenditure</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(engel) 
+<span class="kw">plot</span>(engel, <span class="dt">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;&#39;engel&#39; data (log - log scale)&quot;</span>) </code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-102-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f1&lt;-<span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">tau=</span><span class="fl">0.5</span>, <span class="dt">data=</span>engel)
+f1
+## Call:
+## rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
+## 
+## Coefficients:
+##   (Intercept) log10(income) 
+##        0.1817        0.8766 
+## 
+## Degrees of freedom: 235 total; 233 residual</code></pre></div>
+</div>
+<div id="example-2-fit-quantile-regression-at-multiple-quantile-levels-simultaneously" class="section level2">
+<h2><span class="header-section-number">5.5</span> Example 2: Fit quantile regression at multiple quantile levels simultaneously</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">data =</span> engel, <span class="dt">main =</span> <span class="st">&quot;&#39;engel&#39; data (log10 - transformed)&quot;</span>) 
+taus &lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">15</span>, .<span class="dv">25</span>, .<span class="dv">50</span>, .<span class="dv">75</span>, .<span class="dv">95</span>, .<span class="dv">99</span>) 
+rqs &lt;-<span class="st"> </span><span class="kw">as.list</span>(taus) 
+for(i in <span class="kw">seq</span>(<span class="dt">along =</span> taus)) 
+  { rqs[[i]] &lt;-<span class="st"> </span><span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">tau =</span> taus[i], <span class="dt">data =</span> engel) 
+  <span class="kw">lines</span>(<span class="kw">log10</span>(engel$income), <span class="kw">fitted</span>(rqs[[i]]), <span class="dt">col =</span> i<span class="dv">+1</span>) } 
+<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="kw">paste</span>(<span class="st">&quot;tau = &quot;</span>, taus), <span class="dt">inset =</span> .<span class="dv">04</span>, <span class="dt">col =</span> <span class="dv">2</span>:(<span class="kw">length</span>(taus)+<span class="dv">1</span>), <span class="dt">lty=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-103-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+</div>
+<div id="inference-on-linear-quantile-regression-in-r" class="section level2">
+<h2><span class="header-section-number">5.6</span> Inference on linear quantile regression in R</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary.rq</span>(fit.obj,{\tblue{se=<span class="st">&quot; &quot;</span>}},...)</code></pre></div>
+<ul>
+<li>se=“rank”: provides CI by inverting a rank score test.</li>
+<li>se=“nid”: estimation of the asymptotic variance assuming non i.i.d. errors (through sparsity estimation).</li>
+<li>se=“iid”: assumes i.i.d. errors in variance estimation.</li>
+<li>se=“ker”: variance estimated using a kernel estimate (Powell Sandwich).</li>
+</ul>
+</div>
+<div id="resampling-methods-for-inference-on-quantile-regression" class="section level2">
+<h2><span class="header-section-number">5.7</span> Resampling methods for inference on quantile regression</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary.rq</span>(fit.obj,{\tblue{se=<span class="st">&quot;boot&quot;</span>}},<span class="dt">bsmethod=</span><span class="st">&quot;&quot;</span>)</code></pre></div>
+<ul>
+<li>bsmethod=“xy”: xy-paired bootstrap.</li>
+<li>bsmethod=“pwy”: perturbing the estimating equation (Parzen, 1994)</li>
+<li>bsmethod=“mcmb”: Markov chain marginal boostrap (He and Hu, 2002), computationally efficient for large n and p.</li>
+<li>bsmethod=“wxy”: generalized bootstrap with unit exponential weights.</li>
+<li>bsmethod=“wild”: wild bootstrap (Feng et al., 2011).</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f1&lt;-<span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">tau=</span><span class="fl">0.5</span>, <span class="dt">data=</span>engel)
+<span class="kw">summary.rq</span>(f1, <span class="dt">se=</span><span class="st">&quot;boot&quot;</span>, <span class="dt">bsmethod=</span><span class="st">&quot;xy&quot;</span>, <span class="dt">R=</span><span class="dv">1000</span>)
+## 
+## Call: rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
+## 
+## tau: [1] 0.5
+## 
+## Coefficients:
+##               Value    Std. Error t value  Pr(&gt;|t|)
+## (Intercept)    0.18168  0.10235    1.77497  0.07721
+## log10(income)  0.87659  0.03501   25.03803  0.00000
+<span class="kw">summary.rq</span>(f1, <span class="dt">se=</span><span class="st">&quot;boot&quot;</span>, <span class="dt">bsmethod=</span><span class="st">&quot;pwy&quot;</span>, <span class="dt">R=</span><span class="dv">1000</span>)
+## 
+## Call: rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
+## 
+## tau: [1] 0.5
+## 
+## Coefficients:
+##               Value    Std. Error t value  Pr(&gt;|t|)
+## (Intercept)    0.18168  0.10032    1.81096  0.07143
+## log10(income)  0.87659  0.03446   25.43536  0.00000</code></pre></div>
+</div>
+<div id="pointwise-confidence-intervals" class="section level2">
+<h2><span class="header-section-number">5.8</span> Pointwise confidence intervals</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tau.seq=<span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.9</span>,<span class="fl">0.01</span>)
+f2 =<span class="st"> </span><span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income),<span class="dt">tau=</span>tau.seq,<span class="dt">data=</span>engel)
+sfm =<span class="st"> </span><span class="kw">summary</span>(f2, <span class="dt">se=</span><span class="st">&quot;rank&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.05</span>)
+<span class="kw">plot</span>(sfm, <span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-107-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="linear-regression-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="git-version-control.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": null,
+"toc": {
+"collapse": "section",
+"depth": 2,
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
