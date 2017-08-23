@@ -456,6 +456,7 @@ out1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st
 ## 
 ## Residuals:
 ##    Min     1Q Median     3Q    Max 
+<<<<<<< HEAD
 ## -38.56 -14.98  -2.09  11.78  41.37 
 ## 
 ## Coefficients:
@@ -468,6 +469,20 @@ out1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st
 ## Residual standard error: 19.2 on 48 degrees of freedom
 ## Multiple R-squared:  0.641,  Adjusted R-squared:  0.634 
 ## F-statistic: 85.8 on 1 and 48 DF,  p-value: 2.92e-12</code></pre></div>
+=======
+## -50.24 -11.78   1.29  10.79  32.66 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    2.793      5.190    0.54     0.59    
+## x              1.421      0.177    8.02    2e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 18.1 on 48 degrees of freedom
+## Multiple R-squared:  0.573,  Adjusted R-squared:  0.564 
+## F-statistic: 64.4 on 1 and 48 DF,  p-value: 2.03e-10</code></pre></div>
+>>>>>>> 51fc4902839de32ad4feabba05a5069b02cc5d50
 </div>
 <div id="figure-with-code-to-make-it-shown" class="section level4">
 <h4><span class="header-section-number">6.7.3.2</span> Figure with Code to Make It Shown</h4>
@@ -494,6 +509,7 @@ Figure 6.1: Simple Linear Regression
 ## 
 ## Residuals:
 ##    Min     1Q Median     3Q    Max 
+<<<<<<< HEAD
 ## -36.96 -13.66  -0.33  13.02  46.09 
 ## 
 ## Coefficients:
@@ -506,6 +522,20 @@ Figure 6.1: Simple Linear Regression
 ## Residual standard error: 19.1 on 46 degrees of freedom
 ## Multiple R-squared:  0.659,  Adjusted R-squared:  0.637 
 ## F-statistic: 29.6 on 3 and 46 DF,  p-value: 8.13e-11</code></pre></div>
+=======
+## -50.44 -11.70   1.15  10.89  32.83 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  3.122180  11.278031    0.28     0.78
+## x            1.304386   1.896210    0.69     0.49
+## I(x^2)       0.006978   0.085937    0.08     0.94
+## I(x^3)      -0.000103   0.001108   -0.09     0.93
+## 
+## Residual standard error: 18.5 on 46 degrees of freedom
+## Multiple R-squared:  0.573,  Adjusted R-squared:  0.545 
+## F-statistic: 20.6 on 3 and 46 DF,  p-value: 1.34e-08</code></pre></div>
+>>>>>>> 51fc4902839de32ad4feabba05a5069b02cc5d50
 Then we plot this figure with a hidden code chunk (so the R commands to make it do not appear in the document).
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-121"></span>
 <img src="RWorkshop17_files/figure-html/unnamed-chunk-121-1.png" alt="Scatter Plot with Cubic Regression Curve" width="\textwidth" />
@@ -521,7 +551,11 @@ Figure 6.2: Scatter Plot with Cubic Regression Curve
 <h3><span class="header-section-number">6.7.4</span> R in Text</h3>
 <p>The <em>no snarf and barf</em> rule must be adhered to strictly. None at all!</p>
 <p>When you want to refer to some number in R printout, either make a code chunk that contains the printout you want, or, much nicer looking, you can “inline” R printout.</p>
+<<<<<<< HEAD
 <p>Here we show how to do that. The quadratic and cubic regression coefficients in the preceding regression were 0.0469 and -3.257610^{-4}. Magic! See the source for this document to see how the magic works.</p>
+=======
+<p>Here we show how to do that. The quadratic and cubic regression coefficients in the preceding regression were 0.007 and -1.028710^{-4}. Magic! See the source for this document to see how the magic works.</p>
+>>>>>>> 51fc4902839de32ad4feabba05a5069b02cc5d50
 <p>If you never snarf and barf, and everything in your document is computed by R, then everything is always as claimed.</p>
 </div>
 <div id="rtables" class="section level3">
@@ -535,9 +569,15 @@ Figure 6.2: Scatter Plot with Cubic Regression Curve
 ## Model 2: y ~ x + I(x^2)
 ## Model 3: y ~ x + I(x^2) + I(x^3)
 ##   Res.Df   RSS Df Sum of Sq    F Pr(&gt;F)
+<<<<<<< HEAD
 ## 1     48 17645                         
 ## 2     47 16807  1       838 2.30   0.14
 ## 3     46 16778  1        29 0.08   0.78</code></pre></div>
+=======
+## 1     48 15681                         
+## 2     47 15680  1      1.38 0.00   0.95
+## 3     46 15677  1      2.94 0.01   0.93</code></pre></div>
+>>>>>>> 51fc4902839de32ad4feabba05a5069b02cc5d50
 <p>We want to turn that into a table in output format we are creating. First we have to figure out what the output of the R function <code>anova</code> is and capture it so we can use it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">foo &lt;-<span class="st"> </span><span class="kw">anova</span>(out1, out2, out3)
 <span class="kw">class</span>(foo)
@@ -558,7 +598,11 @@ Figure 6.2: Scatter Plot with Cubic Regression Curve
 <tbody>
 <tr class="odd">
 <td align="right">48</td>
+<<<<<<< HEAD
 <td align="right">17645</td>
+=======
+<td align="right">15681</td>
+>>>>>>> 51fc4902839de32ad4feabba05a5069b02cc5d50
 <td align="right"></td>
 <td align="right"></td>
 <td align="right"></td>
@@ -566,6 +610,7 @@ Figure 6.2: Scatter Plot with Cubic Regression Curve
 </tr>
 <tr class="even">
 <td align="right">47</td>
+<<<<<<< HEAD
 <td align="right">16807</td>
 <td align="right">1</td>
 <td align="right">838</td>
@@ -579,6 +624,21 @@ Figure 6.2: Scatter Plot with Cubic Regression Curve
 <td align="right">29</td>
 <td align="right">0.08</td>
 <td align="right">0.778</td>
+=======
+<td align="right">15680</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.00</td>
+<td align="right">0.950</td>
+</tr>
+<tr class="odd">
+<td align="right">46</td>
+<td align="right">15677</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">0.01</td>
+<td align="right">0.926</td>
+>>>>>>> 51fc4902839de32ad4feabba05a5069b02cc5d50
 </tr>
 </tbody>
 </table>

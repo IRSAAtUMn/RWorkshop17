@@ -569,9 +569,15 @@ djm1</code></pre></div>
 Set seed when doing any random number generations</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#take a random sample twice</span>
 <span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">size=</span><span class="dv">10</span>)
+<<<<<<< HEAD
 ##  [1] 95 48 69 86 78 20 47 52 60 84
 <span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">size=</span><span class="dv">10</span>)
 ##  [1] 99 44 95 88 83 56 43 98 47 58
+=======
+##  [1] 85 93 40 69 62 51 84 19 75  2
+<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">size=</span><span class="dv">10</span>)
+##  [1] 76 55 15  6 74 30  9 47 92 10
+>>>>>>> 51fc4902839de32ad4feabba05a5069b02cc5d50
 
 <span class="co">#set seed before hand to ensure the random numbers are consistent</span>
 <span class="kw">set.seed</span>(<span class="dt">seed=</span><span class="dv">42</span>)

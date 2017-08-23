@@ -358,8 +358,13 @@ for(i in <span class="kw">seq</span>(<span class="dt">along =</span> taus))
 ## 
 ## Coefficients:
 ##               Value    Std. Error t value  Pr(&gt;|t|)
+<<<<<<< HEAD
 ## (Intercept)    0.18168  0.09977    1.82092  0.06990
 ## log10(income)  0.87659  0.03426   25.58472  0.00000
+=======
+## (Intercept)    0.18168  0.10054    1.80698  0.07206
+## log10(income)  0.87659  0.03454   25.37751  0.00000
+>>>>>>> 51fc4902839de32ad4feabba05a5069b02cc5d50
 <span class="kw">summary.rq</span>(f1, <span class="dt">se=</span><span class="st">&quot;boot&quot;</span>, <span class="dt">bsmethod=</span><span class="st">&quot;pwy&quot;</span>, <span class="dt">R=</span><span class="dv">1000</span>)
 ## 
 ## Call: rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
@@ -368,8 +373,13 @@ for(i in <span class="kw">seq</span>(<span class="dt">along =</span> taus))
 ## 
 ## Coefficients:
 ##               Value    Std. Error t value  Pr(&gt;|t|)
+<<<<<<< HEAD
 ## (Intercept)    0.18168  0.10263    1.77017  0.07801
 ## log10(income)  0.87659  0.03526   24.85900  0.00000</code></pre></div>
+=======
+## (Intercept)    0.18168  0.10221    1.77750  0.07679
+## log10(income)  0.87659  0.03507   24.99355  0.00000</code></pre></div>
+>>>>>>> 51fc4902839de32ad4feabba05a5069b02cc5d50
 </div>
 <div id="pointwise-confidence-intervals" class="section level2">
 <h2><span class="header-section-number">5.8</span> Pointwise confidence intervals</h2>
