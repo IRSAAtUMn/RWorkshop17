@@ -1,6 +1,9 @@
 # Introduction to R & RStudio
 
 
+*Author: Alicia Johnson*
+
+
 \
 \
 \
@@ -239,6 +242,7 @@ The following data were utilized in the fivethirtyeight.com article ["The Dollar
 \
 
 ```{r echo=FALSE}
+suppressPackageStartupMessages(library(DT))
 suppressPackageStartupMessages(library(fivethirtyeight))
 data(bechdel)
 subb <- bechdel[,c(1,2,3,5,6,11:13)]
