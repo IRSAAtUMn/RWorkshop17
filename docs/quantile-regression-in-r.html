@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="introduction-to-r-rstudio.html">
+<link rel="prev" href="linear-regression-in-r.html">
+<link rel="next" href="an-r-markdown-demo.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -257,29 +257,137 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Introduction to Data Analysis with R &amp; Reproducible Data Science</h1>
-<h4 class="author"><em>Institute for Research in Statistics and its Applications at the University of Minnesota</em></h4>
+<div id="quantile-regression-in-r" class="section level1">
+<h1><span class="header-section-number"> 5</span> Quantile Regression in R</h1>
+<p><em>Author: Lan Wang and Ruosha Li</em></p>
+<div id="goals" class="section level2">
+<h2><span class="header-section-number">5.1</span> Goals</h2>
+<ul>
+<li>Fit a quantile regression model in R.</li>
+<li>Test the significance of regression coefficients</li>
+<li>Creat and plot pointwise confidence intervals</li>
+</ul>
 </div>
-<div id="home" class="section level1 unnumbered">
-<h1>Home</h1>
-<center>
-<div class="image">
-<p><img src="images/data-transfer-vector.jpg" style="width: 475px"/></p>
+<div id="r-package-quantreg" class="section level2">
+<h2><span class="header-section-number">5.2</span> R Package quantreg</h2>
+<ul>
+<li>R package quantreg (developed and maintained by Dr. Koenker).</li>
+<li>Documentation: <a href="https://cran.r-project.org/web/packages/quantreg/quantreg.pdf" class="uri">https://cran.r-project.org/web/packages/quantreg/quantreg.pdf</a></li>
+<li>Type the following in R for installation:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;quantreg&quot;</span>)</code></pre></div>
+<ul>
+<li>Then, load the package by typing:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantreg)
+## Loading required package: SparseM
+## 
+## Attaching package: &#39;SparseM&#39;
+## The following object is masked from &#39;package:base&#39;:
+## 
+##     backsolve</code></pre></div>
 </div>
-</center>
-<p>With the increasing availability of data with broad applications (and the sheer size of some of these data), it is more important than ever to be able to elucidate trends, decisions, and stories from data.  Our team will offer a hands on introduction to Data Science and Statistics using the free and publicly available software R. Assuming no background knowledge of software or Statistics, we will bring you up to speed on some of the most useful, modern, and popular data analysis techniques.</p>
-<p>This short course is divided into multiple modules.  On day one we will explore the basic features of R and the power of R for constructing visualizations, summaries, hypothesis tests, and statistical models from data.  The modules on day two will cover a gentle introduction to quantile regression and conclude with an in-depth discussion on best practices for reproducible Data Science research and practice using R Markdown and github.</p>
-<p>The material herein is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License<br /><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /></a>. <br></p>
+<div id="fitting-linear-quantile-regression-in-r" class="section level2">
+<h2><span class="header-section-number">5.3</span> Fitting linear quantile regression in R</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rq</span>(formula,tau,data,method,...)</code></pre></div>
+<ul>
+<li>method=“br” (default): simplex method. Efficient for problems with modest sample size (up to several thousands).</li>
+<li>method=“fn”: Frisch-Newton interior point method; more efficient than simplex for larger sample sizes;</li>
+<li>method=“pfn”: Frisch-Newton with pre-processing (suitable when n is very large).</li>
+</ul>
+</div>
+<div id="example-1-fit-quantile-regression-at-one-quantile-level" class="section level2">
+<h2><span class="header-section-number">5.4</span> Example 1: Fit quantile regression at one quantile level</h2>
+<p>-Engel food expenditure data used in Koenker and Bassett(1982).</p>
+<p>-This is a regression data set consisting of 235 observations on income and expenditure on food for Belgian working class households.</p>
+<ul>
+<li>income: annual household income in Belgian francs</li>
+<li>foodexp: annual household food expenditure</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(engel) 
+<span class="kw">plot</span>(engel, <span class="dt">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;&#39;engel&#39; data (log - log scale)&quot;</span>) </code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-102-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f1&lt;-<span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">tau=</span><span class="fl">0.5</span>, <span class="dt">data=</span>engel)
+f1
+## Call:
+## rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
+## 
+## Coefficients:
+##   (Intercept) log10(income) 
+##        0.1817        0.8766 
+## 
+## Degrees of freedom: 235 total; 233 residual</code></pre></div>
+</div>
+<div id="example-2-fit-quantile-regression-at-multiple-quantile-levels-simultaneously" class="section level2">
+<h2><span class="header-section-number">5.5</span> Example 2: Fit quantile regression at multiple quantile levels simultaneously</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">data =</span> engel, <span class="dt">main =</span> <span class="st">&quot;&#39;engel&#39; data (log10 - transformed)&quot;</span>) 
+taus &lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">15</span>, .<span class="dv">25</span>, .<span class="dv">50</span>, .<span class="dv">75</span>, .<span class="dv">95</span>, .<span class="dv">99</span>) 
+rqs &lt;-<span class="st"> </span><span class="kw">as.list</span>(taus) 
+for(i in <span class="kw">seq</span>(<span class="dt">along =</span> taus)) 
+  { rqs[[i]] &lt;-<span class="st"> </span><span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">tau =</span> taus[i], <span class="dt">data =</span> engel) 
+  <span class="kw">lines</span>(<span class="kw">log10</span>(engel$income), <span class="kw">fitted</span>(rqs[[i]]), <span class="dt">col =</span> i<span class="dv">+1</span>) } 
+<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="kw">paste</span>(<span class="st">&quot;tau = &quot;</span>, taus), <span class="dt">inset =</span> .<span class="dv">04</span>, <span class="dt">col =</span> <span class="dv">2</span>:(<span class="kw">length</span>(taus)+<span class="dv">1</span>), <span class="dt">lty=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-103-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+</div>
+<div id="inference-on-linear-quantile-regression-in-r" class="section level2">
+<h2><span class="header-section-number">5.6</span> Inference on linear quantile regression in R</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary.rq</span>(fit.obj,{\tblue{se=<span class="st">&quot; &quot;</span>}},...)</code></pre></div>
+<ul>
+<li>se=“rank”: provides CI by inverting a rank score test.</li>
+<li>se=“nid”: estimation of the asymptotic variance assuming non i.i.d. errors (through sparsity estimation).</li>
+<li>se=“iid”: assumes i.i.d. errors in variance estimation.</li>
+<li>se=“ker”: variance estimated using a kernel estimate (Powell Sandwich).</li>
+</ul>
+</div>
+<div id="resampling-methods-for-inference-on-quantile-regression" class="section level2">
+<h2><span class="header-section-number">5.7</span> Resampling methods for inference on quantile regression</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary.rq</span>(fit.obj,{\tblue{se=<span class="st">&quot;boot&quot;</span>}},<span class="dt">bsmethod=</span><span class="st">&quot;&quot;</span>)</code></pre></div>
+<ul>
+<li>bsmethod=“xy”: xy-paired bootstrap.</li>
+<li>bsmethod=“pwy”: perturbing the estimating equation (Parzen, 1994)</li>
+<li>bsmethod=“mcmb”: Markov chain marginal boostrap (He and Hu, 2002), computationally efficient for large n and p.</li>
+<li>bsmethod=“wxy”: generalized bootstrap with unit exponential weights.</li>
+<li>bsmethod=“wild”: wild bootstrap (Feng et al., 2011).</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f1&lt;-<span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">tau=</span><span class="fl">0.5</span>, <span class="dt">data=</span>engel)
+<span class="kw">summary.rq</span>(f1, <span class="dt">se=</span><span class="st">&quot;boot&quot;</span>, <span class="dt">bsmethod=</span><span class="st">&quot;xy&quot;</span>, <span class="dt">R=</span><span class="dv">1000</span>)
+## 
+## Call: rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
+## 
+## tau: [1] 0.5
+## 
+## Coefficients:
+##               Value    Std. Error t value  Pr(&gt;|t|)
+## (Intercept)    0.18168  0.10135    1.79262  0.07433
+## log10(income)  0.87659  0.03477   25.21227  0.00000
+<span class="kw">summary.rq</span>(f1, <span class="dt">se=</span><span class="st">&quot;boot&quot;</span>, <span class="dt">bsmethod=</span><span class="st">&quot;pwy&quot;</span>, <span class="dt">R=</span><span class="dv">1000</span>)
+## 
+## Call: rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
+## 
+## tau: [1] 0.5
+## 
+## Coefficients:
+##               Value    Std. Error t value  Pr(&gt;|t|)
+## (Intercept)    0.18168  0.09979    1.82064  0.06994
+## log10(income)  0.87659  0.03424   25.59785  0.00000</code></pre></div>
+</div>
+<div id="pointwise-confidence-intervals" class="section level2">
+<h2><span class="header-section-number">5.8</span> Pointwise confidence intervals</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tau.seq=<span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.9</span>,<span class="fl">0.01</span>)
+f2 =<span class="st"> </span><span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income),<span class="dt">tau=</span>tau.seq,<span class="dt">data=</span>engel)
+sfm =<span class="st"> </span><span class="kw">summary</span>(f2, <span class="dt">se=</span><span class="st">&quot;rank&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.05</span>)
+<span class="kw">plot</span>(sfm, <span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-107-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction-to-r-rstudio.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-regression-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="an-r-markdown-demo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
