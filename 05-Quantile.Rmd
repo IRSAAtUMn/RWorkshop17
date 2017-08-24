@@ -1,4 +1,4 @@
-# Examples of Quantile Regression in R
+# Quantile Regression in R
 
 *Author: Lan Wang and Ruosha Li*
 
