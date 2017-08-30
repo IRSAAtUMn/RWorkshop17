@@ -1,6 +1,6 @@
 # Simple Statistics in R
 
-*Author: Nathan Helwig*
+*Author: Nathaniel E. Helwig*
 
 
 

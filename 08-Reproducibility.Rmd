@@ -1,5 +1,6 @@
 # Using R Reproducibly 
 
+*Author: Alicia Hofelich Mohr*
 
 \
 \

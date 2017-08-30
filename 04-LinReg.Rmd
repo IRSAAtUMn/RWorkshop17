@@ -1,6 +1,6 @@
 # Linear Regression in R
 
-*Author: Nathan Helwig*
+*Author: Nathaniel E. Helwig*
 
 
 
