@@ -1,5 +1,6 @@
 # Data Visualization
 
+*Author: Alicia Johnson*
 
 \
 \
@@ -9,6 +10,7 @@ The following data set on the 2016 election is stored as a *csv* file at [https:
 
 
 ```{r echo=FALSE}
+suppressPackageStartupMessages(library(DT))
 election <- read.csv("https://www.macalester.edu/~ajohns24/data/IMAdata1.csv")
 DT::datatable(election, options = list(pageLength = 10))
 ```

@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="git-version-control.html">
-
+<link rel="prev" href="linear-regression-in-r.html">
+<link rel="next" href="an-r-markdown-demo.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -257,357 +257,128 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-r-reproducibly" class="section level1">
-<h1><span class="header-section-number"> 8</span> Using R Reproducibly</h1>
-<p><br />
-<br />
-<br />
-Most scientific work is <strong>iterative</strong></p>
-<center>
-<div class="image">
-<img src="images/data-science.png" style="width: 475px"/>
-<div>
-source: <a href="http://r4ds.had.co.nz/">Wickham &amp; Grolemund: R for Data Science</a>
-</div>
-</div>
-</center>
-<p><br />
-</p>
-<p>The process between input and output needs to be <strong>transparent</strong> and <strong>repeatable</strong>.</p>
-<p><br />
-<br />
-<br />
-</p>
-<div id="types-of-reproducibility" class="section level2">
-<h2><span class="header-section-number">8.1</span> Types of Reproducibility</h2>
-<p>Many fields, most noteably <a href="http://www.slate.com/articles/health_and_science/future_tense/2016/04/biomedicine_facing_a_worse_replication_crisis_than_the_one_plaguing_psychology.html">biomedicine</a> and <a href="https://www.nature.com/news/over-half-of-psychology-studies-fail-reproducibility-test-1.18248">psychology</a>, have been undergoing a <strong>replication crisis</strong> - a name given to the finding that many published research results can not be reproduced.</p>
-<p>But what is meant by “reproducible”? Given the diversity of disciplines involved, not everyone uses the term in the same way. Scholars such as <a href="http://bulletin.imstat.org/2013/11/resolving-irreproducibility-in-empirical-and-computational-research/">Victoria Stodden</a> and Brian Nosek, who leads the <a href="https://cos.io/">Center for Open Science</a>, distinguish between several types of reproducibility:</p>
-<br />
-<strong>Computational Reproducibility:</strong> Given the author’s data and statistical code, can someone produce the same results?<br />
-
-<center>
-<div class="image">
-<p><img src="images/computational-reproducibility.png" style="width: 475px"/></p>
-</div>
-</center>
-<br />
-<br />
-<strong>Empirical Reproducibility:</strong> Is there enough information communicated about the study (e.g., design, experimental procedure, exclusion criteria, etc) for another researcher to repeat it in the exact same way?<br />
-
-<center>
-<div class="image">
-<p><img src="images/empirical-reproducibility.png" style="width: 375px"/></p>
-</div>
-</center>
-<br />
-<br />
-<strong>Statistical Reproducibility:</strong> Is adequate information provided about the choice of statistical tests, threshold values, corrections, and a priori hypotheses to protect against statistical biases (such as <a href="http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002106">“p-hacking”</a>)?<br />
-
-<center>
-<div class="image">
-<p><img src="images/statistical-reproducibility.png" style="width: 375px"/></p>
-</div>
-</center>
-<p><br />
-<br />
-<strong>Replicability:</strong> If someone re-runs the study with the same methods and analysis, collecting new data, do they get the same results?</p>
-<center>
-<div class="image">
-<p><img src="images/replicability.png" style="width: 275px"/></p>
-</div>
-</center>
-</div>
-<div id="general-principles-of-reproducibility" class="section level2">
-<h2><span class="header-section-number">8.2</span> General Principles of Reproducibility</h2>
-<div id="dont-do-things-by-hand" class="section level3">
-<h3><span class="header-section-number">8.2.1</span> Don’t do things by hand</h3>
-<center>
-<div class="image">
-<p><img src="images/script-data.png" style="width: 475px"/></p>
-</div>
-</center>
-<p>Everything that happens between the raw data and final output should be captured in the script. Point and click edits can’t be tracked, and it may be impossible to reverse any errors (rounding, copy/paste, overwriting).</p>
-<p>It can also be time consuming to re-do “by hand” edits.</p>
-</div>
-<div id="automate-where-you-can" class="section level3">
-<h3><span class="header-section-number">8.2.2</span> Automate where you can</h3>
-<p>Repetitive tasks are prone to errors (and are inefficient).</p>
-<p>As a programmatic language, R is useful for many automation tasks.</p>
+<div id="quantile-regression-in-r" class="section level1">
+<h1><span class="header-section-number"> 5</span> Quantile Regression in R</h1>
+<p><em>Author: Lan Wang and Ruosha Li</em></p>
+<div id="goals" class="section level2">
+<h2><span class="header-section-number">5.1</span> Goals</h2>
 <ul>
-<li><strong>File manipulation</strong> <em>file.create(), dir.create(), list.files(), file.copy(), write()</em></li>
-<li><strong>Looped processing</strong> <em>for(), while()</em></li>
-<li><strong>Vectorized functions</strong> <em>apply(), lappy(), Vectorize()</em></li>
+<li>Fit a quantile regression model in R.</li>
+<li>Test the significance of regression coefficients</li>
+<li>Creat and plot pointwise confidence intervals</li>
 </ul>
-<p><br />
-For example, our lab had an oscilloscope that collected data in around 100 separate .wav files. Before analysis, we needed to down sample, cut the time to the first five seconds, and remove the baseline each of the collected files.</p>
-<p>You could do this by opening each of the 100 files one at a time in an audio program, doing all the steps, and resaving (not so fun!).</p>
-<p>Or, automate with a few lines of R code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tuneR)
-<span class="kw">setwd</span>(<span class="st">&quot;~/Documents/wav_files&quot;</span>)
-for (i in <span class="kw">list.files</span>()) {
-  wavdata &lt;-<span class="st"> </span><span class="kw">readWave</span>(<span class="kw">paste0</span>(<span class="kw">getwd</span>(), <span class="st">&quot;/&quot;</span>, i), <span class="dt">header=</span>F)
-  <span class="co">#take correct channel</span>
-  wavdata &lt;-<span class="st"> </span><span class="kw">ts</span>(<span class="kw">attr</span>(wavdata, <span class="st">&quot;left&quot;</span>), <span class="dt">deltat=</span>(<span class="dv">1</span>/<span class="dv">64000</span>))
-  <span class="co">#downsample</span>
-  wavdata &lt;-<span class="st"> </span><span class="kw">downsample</span>(wavdata, <span class="dt">samp.rate =</span> <span class="dv">2004</span>)
-  <span class="co">#cut file</span>
-  wavdata &lt;-<span class="st"> </span><span class="kw">window</span>(wavdata,<span class="dt">start=</span><span class="dv">1</span>, <span class="dt">end=</span><span class="dv">5</span>)
-  <span class="co">#Take out the moving baseline with a spline</span>
-  wavdata &lt;-<span class="st"> </span><span class="kw">smooth.spline</span>(<span class="dt">x=</span>wavdata, <span class="dt">nknots=</span><span class="dv">100</span>)
-  
-  <span class="co">#save processed file</span>
-  <span class="kw">save</span>(wavdata, <span class="dt">file=</span><span class="kw">paste0</span>(<span class="kw">gsub</span>(<span class="st">&quot;.wav&quot;</span>, <span class="st">&quot;&quot;</span>, i), <span class="st">&quot;_processed&quot;</span>, <span class="st">&quot;.Rdata&quot;</span>))
-}  </code></pre></div>
-<p><br />
-</p>
 </div>
-<div id="use-version-control" class="section level3">
-<h3><span class="header-section-number">8.2.3</span> Use Version Control</h3>
-<center>
-<div class="image">
-<p><img src="images/githublogo.png" style="width: 275px"/></p>
-</div>
-</center>
-<p>In addition to using tools such as Git and Github, think about how you will identify milestone versions of a project.</p>
-<p><br />
-Can you easily identify which version of your code and data was used for your submitted article? The revised article? A related conference presentation?</p>
-</div>
-<div id="document-your-environment" class="section level3">
-<h3><span class="header-section-number">8.2.4</span> Document your environment</h3>
-<center>
-<div class="image">
-<img src="images/package_dependency_network.png" style="width: 475px"/>
-<div>
-source: <a href="https://www.r-bloggers.com/analyzing-package-dependencies-and-download-logs-from-rstudio-and-a-start-towards-building-an-r-recommendation-engine/">tlvincent, Rbloggers; Data: CRAN archive</a>
-</div>
-</div>
-</center>
-<p>The open source nature of R is what makes it a powerful tool for reproducible research, but it can also be part of the challenge. Although many packages allow backwards compatibility, not all do, and code run with one version of a package may not run (or worse, produce different results) than another.</p>
-<p><br />
-To ensure your code can be run in long after your current laptop is functioning, documentation is key. At a minimum, think about documenting:</p>
+<div id="r-package-quantreg" class="section level2">
+<h2><span class="header-section-number">5.2</span> R Package quantreg</h2>
 <ul>
-<li><strong>Infrastructure</strong> What software and hardware are you using to run your code?</li>
-<li><strong>Packages</strong> What version of packages are used in your code?</li>
-<li><strong>Workflow</strong> How did your data get to this script, where is it going?</li>
-<li><strong>Functional requirements</strong> What is your script supposed to do?</li>
+<li>R package quantreg (developed and maintained by Dr. Koenker).</li>
+<li>Documentation: <a href="https://cran.r-project.org/web/packages/quantreg/quantreg.pdf" class="uri">https://cran.r-project.org/web/packages/quantreg/quantreg.pdf</a></li>
+<li>Type the following in R for installation:</li>
 </ul>
-<p><br />
-<br />
-Capturing your session info does a lot of this for you:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()
-## R version 3.3.2 (2016-10-31)
-## Platform: x86_64-apple-darwin13.4.0 (64-bit)
-## Running under: macOS Sierra 10.12.5
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;quantreg&quot;</span>)</code></pre></div>
+<ul>
+<li>Then, load the package by typing:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantreg)
+## Loading required package: SparseM
 ## 
-## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## Attaching package: &#39;SparseM&#39;
+## The following object is masked from &#39;package:base&#39;:
 ## 
-## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets  methods  
-## [7] base     
+##     backsolve</code></pre></div>
+</div>
+<div id="fitting-linear-quantile-regression-in-r" class="section level2">
+<h2><span class="header-section-number">5.3</span> Fitting linear quantile regression in R</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rq</span>(formula,tau,data,method,...)</code></pre></div>
+<ul>
+<li>method=“br” (default): simplex method. Efficient for problems with modest sample size (up to several thousands).</li>
+<li>method=“fn”: Frisch-Newton interior point method; more efficient than simplex for larger sample sizes;</li>
+<li>method=“pfn”: Frisch-Newton with pre-processing (suitable when n is very large).</li>
+</ul>
+</div>
+<div id="example-1-fit-quantile-regression-at-one-quantile-level" class="section level2">
+<h2><span class="header-section-number">5.4</span> Example 1: Fit quantile regression at one quantile level</h2>
+<p>-Engel food expenditure data used in Koenker and Bassett(1982).</p>
+<p>-This is a regression data set consisting of 235 observations on income and expenditure on food for Belgian working class households.</p>
+<ul>
+<li>income: annual household income in Belgian francs</li>
+<li>foodexp: annual household food expenditure</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(engel) 
+<span class="kw">plot</span>(engel, <span class="dt">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;&#39;engel&#39; data (log - log scale)&quot;</span>) </code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-102-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f1&lt;-<span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">tau=</span><span class="fl">0.5</span>, <span class="dt">data=</span>engel)
+f1
+## Call:
+## rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
 ## 
-## other attached packages:
-##  [1] quantreg_5.33         SparseM_1.77          car_2.1-4            
-##  [4] knitr_1.16            RColorBrewer_1.1-2    bindrcpp_0.2         
-##  [7] dplyr_0.7.2           gridExtra_2.2.1       ggplot2_2.2.1        
-## [10] fivethirtyeight_0.2.0 DT_0.2               
+## Coefficients:
+##   (Intercept) log10(income) 
+##        0.1817        0.8766 
 ## 
-## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.12       nloptr_1.0.4       plyr_1.8.4        
-##  [4] highr_0.6          bindr_0.1          tools_3.3.2       
-##  [7] lme4_1.1-12        digest_0.6.12      nlme_3.1-128      
-## [10] lattice_0.20-34    jsonlite_1.4       evaluate_0.10     
-## [13] tibble_1.3.3       gtable_0.2.0       mgcv_1.8-15       
-## [16] pkgconfig_2.0.1    rlang_0.1.1        Matrix_1.2-7.1    
-## [19] rstudioapi_0.6     parallel_3.3.2     yaml_2.1.14       
-## [22] stringr_1.2.0      MatrixModels_0.4-1 htmlwidgets_0.8   
-## [25] nnet_7.3-12        rprojroot_1.2      grid_3.3.2        
-## [28] glue_1.1.1         R6_2.2.2           rmarkdown_1.5     
-## [31] bookdown_0.5       minqa_1.2.4        magrittr_1.5      
-## [34] splines_3.3.2      MASS_7.3-45        backports_1.0.5   
-## [37] scales_0.4.1       htmltools_0.3.6    pbkrtest_0.4-7    
-## [40] assertthat_0.2.0   colorspace_1.3-2   labeling_0.3      
-## [43] stringi_1.1.5      lazyeval_0.2.0     munsell_0.4.3</code></pre></div>
+## Degrees of freedom: 235 total; 233 residual</code></pre></div>
 </div>
-<div id="document-your-analysis" class="section level3">
-<h3><span class="header-section-number">8.2.5</span> Document your analysis</h3>
-<p>While code is technically “self-documenting”, it doesn’t always make sense to another user (or yourself six months after you wrote it!). Comment code heavily, including instructions on the order different scripts should be executed.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Comment</span>
-
-<span class="co">#Comment</span>
-
-<span class="co">#Comment!</span></code></pre></div>
-<p>Using a “literate programming” tool, such as R Markdown, that combines analysis and interpretation can make it easy to document your analysis as you go.</p>
+<div id="example-2-fit-quantile-regression-at-multiple-quantile-levels-simultaneously" class="section level2">
+<h2><span class="header-section-number">5.5</span> Example 2: Fit quantile regression at multiple quantile levels simultaneously</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">data =</span> engel, <span class="dt">main =</span> <span class="st">&quot;&#39;engel&#39; data (log10 - transformed)&quot;</span>) 
+taus &lt;-<span class="st"> </span><span class="kw">c</span>(.<span class="dv">15</span>, .<span class="dv">25</span>, .<span class="dv">50</span>, .<span class="dv">75</span>, .<span class="dv">95</span>, .<span class="dv">99</span>) 
+rqs &lt;-<span class="st"> </span><span class="kw">as.list</span>(taus) 
+for(i in <span class="kw">seq</span>(<span class="dt">along =</span> taus)) 
+  { rqs[[i]] &lt;-<span class="st"> </span><span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">tau =</span> taus[i], <span class="dt">data =</span> engel) 
+  <span class="kw">lines</span>(<span class="kw">log10</span>(engel$income), <span class="kw">fitted</span>(rqs[[i]]), <span class="dt">col =</span> i<span class="dv">+1</span>) } 
+<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="kw">paste</span>(<span class="st">&quot;tau = &quot;</span>, taus), <span class="dt">inset =</span> .<span class="dv">04</span>, <span class="dt">col =</span> <span class="dv">2</span>:(<span class="kw">length</span>(taus)+<span class="dv">1</span>), <span class="dt">lty=</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-103-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 </div>
-<div id="make-your-data-open" class="section level3">
-<h3><span class="header-section-number">8.2.6</span> Make your data open</h3>
-<p>One essential part of reproducibility is that your code (and data, where appropriate) are made available for verification or reuse. Many grants or journals may also require you to make your data and code available.</p>
-<p>There are many options for sharing:</p>
-<p><strong>Github</strong></p>
-<p>If you are a student, faculty, or staff at the University of Minnesota, you have access to two versions of Github:</p>
-<center>
-<div class="image">
-<p><img src="images/githuboptions.png" style="width: 675px"/></p>
-</div>
-</center>
-<p>Pros of sharing with github:</p>
+<div id="inference-on-linear-quantile-regression-in-r" class="section level2">
+<h2><span class="header-section-number">5.6</span> Inference on linear quantile regression in R</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary.rq</span>(fit.obj,{\tblue{se=<span class="st">&quot; &quot;</span>}},...)</code></pre></div>
 <ul>
-<li>Version control/backup</li>
-<li>Easy to “open up” a private repo</li>
-<li>Great for reuse or contribution from others</li>
-</ul>
-<p>Cons of github:</p>
-<ul>
-<li>Clunky to point users to past milestone versions</li>
-<li>Limited project metadata (indexing, searchability)</li>
-<li>No formal archival actions</li>
-</ul>
-<p><strong>Data &amp; Archival Repositories</strong></p>
-<p>Data repositories are another option for sharing datasets and related documents, such as statistical code, procedures, or other supplemental material. These sites are specifically designed for hosting data, and many include services to make the data more findable, accessible, and preserved in the long-term. There are many different kinds of repositories for different kinds of data, and some journals or grants may require data to be shared in a specific repository</p>
-<center>
-<div class="image">
-<p><img src="images/datarepo.png" style="width: 475px"/></p>
-</div>
-</center>
-<p>Pros of data repositories:</p>
-<ul>
-<li>Enhance findability (metadata, Google Scholar indexing)</li>
-<li>Data citations, Digital Object Identifiers (DOIs) for persistent access</li>
-<li>May offer curation and archival services</li>
-<li>Some manage access to data, allowing access to data that may not be suitable for public access</li>
-</ul>
-<p>Cons of data repositories:</p>
-<ul>
-<li>Not every discipline has a dedicated repository</li>
-<li>Data services vary widely</li>
-<li>Can take a lot of work to prepare data for submission</li>
+<li>se=“rank”: provides CI by inverting a rank score test.</li>
+<li>se=“nid”: estimation of the asymptotic variance assuming non i.i.d. errors (through sparsity estimation).</li>
+<li>se=“iid”: assumes i.i.d. errors in variance estimation.</li>
+<li>se=“ker”: variance estimated using a kernel estimate (Powell Sandwich).</li>
 </ul>
 </div>
-</div>
-<div id="starting-a-reproducible-workflow-in-r" class="section level2">
-<h2><span class="header-section-number">8.3</span> Starting a Reproducible Workflow in R</h2>
-<p>Want to get started with a more reproducible workflow in R? Here are some quick tips and suggestions for using good <a href="http://adv-r.had.co.nz/Style.html">R style</a></p>
-<div id="organization" class="section level3">
-<h3><span class="header-section-number">8.3.1</span> Organization</h3>
-<p>Create an R project for the main folder for a research project. This will make it easy to add git and github to your project.</p>
-<center>
-<div class="image">
-<p><img src="images/rprojects.png" style="width: 675px"/></p>
-</div>
-</center>
-<p>Use consistent directory organization in your project folder (e.g., separate folders for raw data, scripts, plots, reports), and reference the relative paths to these folders in your scripts.</p>
-<p><br />
-</p>
-<p>Give files descriptive and meaningful names. Avoid special characters (/ , . # ?), spaces between words, or very lengthy file names.</p>
-</div>
-<div id="anantomy-of-a-script" class="section level3">
-<h3><span class="header-section-number">8.3.2</span> Anantomy of a script</h3>
-<p>Order matters in a script; data used in an analysis needs to be loaded at an earlier point in the script.</p>
-<p><strong>At the beginning of the script:</strong></p>
-<p>Start with metadata (data about the script or dataset). This helps you quickly identify what the script does without pouring through the code.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">##########################################
-## Analysis Script for Project A
-##   2017-09-01
-##
-##  Script takes in &quot;A_processed_data.csv&quot;
-##  Creates Tables 1-4, Figures 1, 2 for submission to
-##    Journal of Cool Results
-#########################################</code></pre></div>
-<p>Load all packages you use in one spot. Consider using package management tools such as pacman or packrat.</p>
+<div id="resampling-methods-for-inference-on-quantile-regression" class="section level2">
+<h2><span class="header-section-number">5.7</span> Resampling methods for inference on quantile regression</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary.rq</span>(fit.obj,{\tblue{se=<span class="st">&quot;boot&quot;</span>}},<span class="dt">bsmethod=</span><span class="st">&quot;&quot;</span>)</code></pre></div>
 <ul>
-<li><em>pacman</em> Makes it easy to load required packages, and install any that are missing. Very useful when sending scripts to collaborators.</li>
+<li>bsmethod=“xy”: xy-paired bootstrap.</li>
+<li>bsmethod=“pwy”: perturbing the estimating equation (Parzen, 1994)</li>
+<li>bsmethod=“mcmb”: Markov chain marginal boostrap (He and Hu, 2002), computationally efficient for large n and p.</li>
+<li>bsmethod=“wxy”: generalized bootstrap with unit exponential weights.</li>
+<li>bsmethod=“wild”: wild bootstrap (Feng et al., 2011).</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># &quot;p_load&quot; will load packages, installing any that are missing</span>
-pacman::<span class="kw">p_load</span>(<span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;dplyr&quot;</span>)  </code></pre></div>
-<ul>
-<li><em>packrat</em> Creates a project-specific library for packages, so that the same versions of packages used in the script stay packaged with the script.</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Set up a private package library for a project</span>
-packrat::<span class="kw">init</span>(<span class="st">&quot;~/Documents/MyProject&quot;</span>)</code></pre></div>
-<p>Set the working directory at start, and use relative file paths throughout. If you do this through RStudio’s interface, copy the generated syntax into your script.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;~/Documents/MyProject&quot;</span>)
-rawdata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;raw_data/Myrawdatafile.csv&quot;</span>)</code></pre></div>
-<p>Load all data in one spot. Again, if you are loading through the interface windows, copy the syntax generated in the console.</p>
-<p><br />
-<br />
-<strong>Throughout your script:</strong></p>
-<p>Use sections in R Studio to organize and quickly navigate your code. Press cmd-shift-R on a Mac or cntrl-shift-R on a PC to insert a section.</p>
-<center>
-<div class="image">
-<p><img src="images/rscriptsections.png" style="width: 475px"/></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f1&lt;-<span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income), <span class="dt">tau=</span><span class="fl">0.5</span>, <span class="dt">data=</span>engel)
+<span class="kw">summary.rq</span>(f1, <span class="dt">se=</span><span class="st">&quot;boot&quot;</span>, <span class="dt">bsmethod=</span><span class="st">&quot;xy&quot;</span>, <span class="dt">R=</span><span class="dv">1000</span>)
+## 
+## Call: rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
+## 
+## tau: [1] 0.5
+## 
+## Coefficients:
+##               Value    Std. Error t value  Pr(&gt;|t|)
+## (Intercept)    0.18168  0.10135    1.79262  0.07433
+## log10(income)  0.87659  0.03477   25.21227  0.00000
+<span class="kw">summary.rq</span>(f1, <span class="dt">se=</span><span class="st">&quot;boot&quot;</span>, <span class="dt">bsmethod=</span><span class="st">&quot;pwy&quot;</span>, <span class="dt">R=</span><span class="dv">1000</span>)
+## 
+## Call: rq(formula = log10(foodexp) ~ log10(income), tau = 0.5, data = engel)
+## 
+## tau: [1] 0.5
+## 
+## Coefficients:
+##               Value    Std. Error t value  Pr(&gt;|t|)
+## (Intercept)    0.18168  0.09979    1.82064  0.06994
+## log10(income)  0.87659  0.03424   25.59785  0.00000</code></pre></div>
 </div>
-</center>
-<p><br />
-Use lots of white space (it’s free). Use spaces between arguments and between different lines of code.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-average &lt;-<span class="st"> </span><span class="kw">mean</span>(feet /<span class="st"> </span><span class="dv">12</span> +<span class="st"> </span>inches, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+<div id="pointwise-confidence-intervals" class="section level2">
+<h2><span class="header-section-number">5.8</span> Pointwise confidence intervals</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tau.seq=<span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.9</span>,<span class="fl">0.01</span>)
+f2 =<span class="st"> </span><span class="kw">rq</span>(<span class="kw">log10</span>(foodexp) ~<span class="st"> </span><span class="kw">log10</span>(income),<span class="dt">tau=</span>tau.seq,<span class="dt">data=</span>engel)
+sfm =<span class="st"> </span><span class="kw">summary</span>(f2, <span class="dt">se=</span><span class="st">&quot;rank&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.05</span>)
+<span class="kw">plot</span>(sfm, <span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</code></pre></div>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-107-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 
-<span class="co"># Bad</span>
-average&lt;-<span class="kw">mean</span>(feet/<span class="dv">12</span>+inches,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre></div>
-<p><br />
-</p>
-<p>Comment extensively.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#What does this do again?</span>
-x[i][[<span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">do.call</span>(rbind, y)</code></pre></div>
-<p><br />
-Use sensible names for data objects and variables. Keep it simple but meaningful.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Good</span>
-day_one
-day1
-
-<span class="co"># Bad</span>
-first_day_of_the_month
-DayOne
-dayone
-djm1</code></pre></div>
-<p><br />
-Set seed when doing any random number generations</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#take a random sample twice</span>
-<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">size=</span><span class="dv">10</span>)
-##  [1] 12 23 54 40 34 85 79 31 49 38
-<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">size=</span><span class="dv">10</span>)
-##  [1] 57 24  1 99 79  4 60  5 72 39
-
-<span class="co">#set seed before hand to ensure the random numbers are consistent</span>
-<span class="kw">set.seed</span>(<span class="dt">seed=</span><span class="dv">42</span>)
-<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">size=</span><span class="dv">10</span>)
-##  [1] 92 93 29 81 62 50 70 13 61 65
-
-<span class="kw">set.seed</span>(<span class="dt">seed=</span><span class="dv">42</span>)
-<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">100</span>, <span class="dt">size=</span><span class="dv">10</span>)
-##  [1] 92 93 29 81 62 50 70 13 61 65</code></pre></div>
-<p><br />
-If you save any outputs, make sure they are done by your script. ggsave(), png(), pdf()</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Base R: Creates &quot;Figure1.png&quot; in the working directory</span>
-<span class="kw">png</span>(<span class="dt">file=</span><span class="st">&quot;Figure1.png&quot;</span>)
-<span class="kw">ggplot</span>(election, <span class="kw">aes</span>(<span class="dt">x=</span>winrep_2016)) +<span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_bar</span>() +
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Trump win&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of counties&quot;</span>)
-<span class="kw">dev.off</span>()
-
-<span class="co">#ggplot2: Creates &quot;Figure1.png&quot; in working directory</span>
-g &lt;-<span class="st"> </span><span class="kw">ggplot</span>(election, <span class="kw">aes</span>(<span class="dt">x=</span>winrep_2016)) +<span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_bar</span>() +
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Trump win&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of counties&quot;</span>)
-<span class="kw">ggsave</span>(<span class="dt">filename=</span><span class="st">&quot;Figure1.png&quot;</span>, <span class="dt">plot=</span>g, <span class="dt">device=</span><span class="st">&quot;png&quot;</span>)</code></pre></div>
-<p><br />
-<br />
-<strong>At the end of your R session</strong></p>
-<p>Do not save your “R workspace” at the end of your R sessions. The R workspace contains all the objects currently loaded in your R environment. Instead, your script should generate all the objects needed. You can set R options to ensure it does not get saved.</p>
-<center>
-<div class="image">
-<p><img src="images/roptions.png" style="width: 475px"/></p>
-</div>
-</center>
-<p>You can also clear your environment at any time with the broom icon in the Environment window.</p>
-<center>
-<div class="image">
-<p><img src="images/broom.png" style="width: 275px"/></p>
-</div>
-</center>
-<p>Clear the console in RStudio with cntl-l.</p>
-
-</div>
 </div>
 </div>
             </section>
@@ -615,8 +386,8 @@ g &lt;-<span class="st"> </span><span class="kw">ggplot</span>(election, <span c
           </div>
         </div>
       </div>
-<a href="git-version-control.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="linear-regression-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="an-r-markdown-demo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
