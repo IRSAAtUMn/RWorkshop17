@@ -80,7 +80,7 @@ boxplot(ABV ~ Style, data = beer, ylab = "Alcohol By Volume (ABV)",
 ```
 
 The **plot** function creates generic X-Y scatterplots
-```{r fig.width=5, fig.height=4, fig.align="center"}
+```{r beercolors, fig.width=5, fig.height=4, fig.align="center"}
 StyleInt <- as.integer(beer$Style)
 plot(beer$IBU, beer$ABV, xlab = "International Bitterness Units (IBU)",
      ylab = "Alcohol By Volume (ABV)", pch = StyleInt + 14,
