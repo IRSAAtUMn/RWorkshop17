@@ -74,6 +74,8 @@ at a time because there is no good way to merge simultaneous changes.
 Nor is there any obvious ownership of the versions.  It is hard to tell
 who did what when.
 
+Using Dropbox for version control isn't any better.
+
 ### A Plethora of Version Control Systems
 
 Ripped off from Wikipedia ([under "Version control"](https://en.wikipedia.org/wiki/Version_control)).
@@ -92,22 +94,6 @@ There were more, but I've only kept the ones I'd heard of.
 
 Don't worry.  We're only going to talk about one (git).
 
-
-### Mindshare
-
-Starting from nowhere in 2005, `git` has gotten dominant mindshare, at least
-among free and open source systems.
-
-In [Google Trends](http://www.google.com/trends/explore#q=%2Fm%2F05vqwg%2C%20%2Fm%2F012ct9%2C%20%2Fm%2F09d6g%2C%20%2Fm%2F08441_%2C%20%2Fm%2F04g0kcw&cmpt=q&tz=), the only searches that are trending up are for `git` and github.
-Searches for competing version control systems are trending down.
-
-Many well known open-source projects are on git.  The Linux kernel (of course
-since Linus Torvalds wrote git to be the VCS for the kernel), android (as in
-phones), Ruby on Rails, Gnome, Qt, KDE, X, Perl, and GNU Emacs.
-
-Some aren't.  R is still on Subversion.  Firefox, Go, Python, Vim are
-on Mercurial.
-
 ### Why?
 
 Section 28.1.1.1 of the GNU Emacs manual.
@@ -120,14 +106,57 @@ Version control systems provide you with three important capabilities:
 
  * **History:** the ability to attach historical data to your data, such as explanatory comments about the intention behind each change to it. Even for a programmer working solo, change histories are an important aid to memory; for a multi-person project, they are a vitally important form of communication among developers. 
 
+### Mindshare
+
+Starting from nowhere in 2005, `git` and GitHub (<https://github.com/>) have
+gotten dominant mindshare, at least among free and open source systems.
+
+In [Google Trends](http://www.google.com/trends/explore#q=%2Fm%2F05vqwg%2C%20%2Fm%2F012ct9%2C%20%2Fm%2F09d6g%2C%20%2Fm%2F08441_%2C%20%2Fm%2F04g0kcw&cmpt=q&tz=), the only searches that are trending up are for `git` and github.
+Searches for competing version control systems are trending down.
+
+Many well known open-source projects are on git.  The Linux kernel (of course
+since Linus Torvalds wrote git to be the VCS for the kernel), android (as in
+phones), Ruby on Rails, Gnome, Qt, KDE, X, Perl, and GNU Emacs.
+
+Some aren't.  R is still on Subversion.  Firefox, Go, Python, Vim are
+on Mercurial.
+
 ## Git
+
+### Git versus GitHub
+
+Git is a version control system.  It is a command line program that can be
+used by itself (and, in fact, is best used that way).
+
+[GUI](https://en.wikipedia.org/wiki/Graphical_user_interface) applications
+are available on all platforms to dumb down Git with menus and buttons.
+
+GitHub is a company, like Facebook or Google, that is just as famous as them
+in the geek world.  It offers "social coding."  Thus it is something like
+Facebook for software developers.  You can use `git` without GitHub (or one
+of its competitors) but GitHub helps you show the world what you do and
+collaborate with the world.
+
+One of the GitHub developers wrote the best book introducing Git;
+[Pro Git](https://git-scm.com/book/en/v2).
+
+Still, I want to emphasize that you do not need GitHub to use Git
+any more than you need RStudio to use R.
+
+### Git and GitHub and RStudio
+
+RStudio facilitates using Git for R projects.  It seems to require also using
+GitHub (but this can be worked around).
+
+But if you only know how to use Git via RStudio, you will not know how to use
+Git for non-R projects.
 
 ### Getting Git
 
 Type ``git'' into Google and follow the first link it gives you
 http://git-scm.com/.
 
-Under "downloads" it tells you how to get `git` for Windows and for Mac OS X.
+Under "downloads" it tells you how to get Git for Windows and for Mac OS X.
 
 If you have Linux, it just comes with (use the installer for your distribution).
 
@@ -153,5 +182,505 @@ From memory:
 
 #### From the Command Line
 
-#### RStudio
+There is only one command to use Git and it is called `git`.  The first
+command line argument specifies one of many subcommands.
+```
+git help
+```
+shows the frequently used subcommands (many more than we will discuss here).
+
+As this also says at the bottom `git help -a` shows all subcommands and
+`git help -g` shows "concept guides."
+
+For example
+```
+git help everyday
+```
+shows about 20 git subcommands that are enough for straightforward use of git.
+(We won't even discuss that many.)
+
+#### With a GUI Application
+
+We won't discuss this.  They are all different.
+
+If you are using a GUI application there is usually a way to get a UNIX
+command line.  So anything that cannot be done graphically (menus and buttons,
+drag and drop) can still be done.  The GUI is not as helpful as you might
+think.
+
+#### With RStudio
+
+On the "File" menu select "New Project" and then select "Version Control" and
+then select "Git".
+
+Then you fill in the "Repository URL" which is something like
+```
+git@github.umn.edu:geyer/Foo.git
+```
+(more on this later, Section [GitHub and SSH keys](#keys) below)
+and "Create project as a subdirectory of".  The latter
+is the directory (which Windows and Macintosh call "folder") into which
+you want to put the Git repository.
+
+Then click "Create Project", and you have an R project that both RStudio
+and GitHub know about.
+
+The "Repository URL" can also be something like
+```
+https://github.umn.edu/geyer/Foo.git
+```
+(This is easier to use in the beginning but rapidly becomes a nuisance.
+More on this later.  Section [GitHub and SSH keys](#keys) below.)
+
+In RStudio, you can also get a UNIX command line to execute commands.
+The "Shell" item on the "Tools" menu, gives you a UNIX command line.
+
+## Tell Git Who You Are
+
+Before doing anything else.  You have to tell Git who you are.
+
+The UNIX commands
+```
+git config --global user.name "Charles J. Geyer"
+git config --global user.email charlie@stat.umn.edu
+```
+do this.  Of course, replace my name and e-mail address with yours.
+
+If you are using a GUI application or RStudio, you probably need to escape
+to the command line to do this.
+
+## Starting a New Project Locally
+
+Create a directory (a. k. a. folder) that will contain your project.
+Change directory into it and do `git init`.  In UNIX (e. g. Linux or OS X),
+if the directory is `Foo`, then
+```
+cd Foo
+git init
+```
+does the job.
+
+The UNIX command
+```
+ls -A
+```
+shows that there is a new directory `.git` that is the hallmark of a git
+repository ("repo" for short).  Now all Git subcommands work in this directory.
+The `.git` subdirectory is where Git stores all information it keeps track of.
+The rest of the directory is where you work.
+
+If you have created the project using RStudio (as discussed above), then
+RStudio has run `git init` for you so you do not have to do it yourself.
+
+## Starting a R Project that will be a CRAN Package
+
+If you are starting an R Project that will provide an R package,
+especially one intended to eventually be on [CRAN](https://cran.r-project.org),
+put the directory that contains the package *in* the Git repo.  Do not try
+to make the Git repo the same directory as the R package.  A Git repo
+contains a lot of stuff that an R package is not allowed to have.
+
+## Cloning an Existing Project
+
+```
+git clone git://github.com/cjgeyer/foo.git
+```
+clones an already existing project on which a lot of work has been done
+(and you get it all, including all of the version control history).
+
+This requires that you have set up
+[SSH](https://en.wikipedia.org/wiki/Secure_Shell) for use with Git,
+which will be discussed below (Section [GitHub and SSH keys](#keys)).
+
+Alternatively,
+```
+git clone https://github.com/cjgeyer/foo.git
+```
+(This is easier to use in the beginning but rapidly becomes a nuisance.)
+
+This (clone an existing project) is what RStudio wants us to do and what
+we discussed above.
+
+## GitHub and SSH keys {#keys}
+
+To use GitHub productively, you need to make an SSH key pair and tell
+GitHub about the public key.  This allows you to only type the SSH
+passphrase for the key once per reboot of your computer.  This is secure.
+Your computer remembers what it needs to remember to access github
+(or use SSH in other ways without typing a password or passphrase,
+but we won't cover that).
+
+If you don't do this, you will have to type your GitHub password frequently
+to use Git.  This is a nuisance.
+
+Since Microsoft Windows does not come with SSH, extra work is needed to make
+SSH work there.  [This web page](http://guides.beanstalkapp.com/version-control/git-on-windows.html#installing-ssh-keys) explains.
+
+Having gotten set up on Windows, or if you are using UNIX (Linux or OS X),
+where SSH just works.  You do from the UNIX command line
+```
+ssh-keygen
+```
+(this is one UNIX command, the hyphen is part of the name).  Do what it says
+(successfully type the same passphrase twice and after having accepted the
+default location for the keys or having specified another location).
+
+If you manage to do this successfully, there will be two new files
+```
+id_rsa
+id_rsa.pub
+```
+created somewhere (the default is the `.ssh` subdirectory of your home
+directory).  The first is the private key; the second is the public key.
+
+Upload the public key to GitHub.  Log in to your account; on the menu triangle
+next to your picture (upper right corner) choose "Settings"; on the settings
+page, choose "SSH and GPG keys" in the navigation area on the left; then on
+the page that takes you to click the green button labeled "New SSH key" and
+fill in the resulting text area.  The title can be anything.  Into the "Key"
+textarea you cut-and-paste the contents of the `id_rsa.pub` file.  To get
+the contents in UNIX, do
+```
+cat id_rsa.pub
+```
+at the command line.  What you see is what you cut-and-paste into the GitHub
+textarea.  Then click the green button labeled "Add SSH key".
+If you did this successfully, it will show the "fingerprint" of the key.
+
+## Halftime Summary
+
+We are perhaps not halfway done, but the worst is over.  Everything we
+have talked about so far only needs to be done once.  It is painfully
+complicated, but once it is done you only need to do it again very rarely.
+
+ * You do `git init` at most once per project.
+
+ * You do `git clone` at most once per project on each computer you want
+   to use for development.
+
+ * You create an SSH key at most once per computer you buy or get an account
+   on (or after each reinstall of the operating system that blows away your
+   account, if any).
+
+ * You tell GitHub about the SSH key once per SSH key.
+
+ * You tell Git your name and e-mail address similarly, at most once per
+   per each computer you buy or get an account on. 
+
+Now we are ready to talk about everyday use of Git.
+
+## Everyday Git: One Computer, No Collaboration
+
+### Commits
+
+What Git remembers is *commits* created by the git subcommand `git commit`.
+
+If you never commit, then Git never does anything.
+
+A Git commit consists of exactly what you say it does.
+Git allows precise control over what it does.
+
+Most of the time you do not want such precise control.  You just want
+Git to do the obvious.  It can do that too.
+
+So first the hard way, and then the easy way.
+
+#### The Edit, Add, Commit Cycle.
+
+There is no need to commit unless the Git repo has changed.  So you edit
+some file in the repo so it is different from what Git remembers
+(in a previous commit).
+
+Now if you want Git to remember the new version, you tell it first that
+you want it to remember the new version and second to do the commit.
+For example, if the file is `foo.R`, then
+```
+git add foo.R
+git commit -m "A message about what the changes are"
+```
+does these two steps.  If there are multiple files that have been edited,
+then you must do `git add` for each one you want changes remembered in
+the commit.
+
+The `-m` argument to `git commit` is not necessary if you have told either
+UNIX or git what editor you use.
+```
+git config --global core.editor vim
+```
+or whatever editor you use instead of vim will do that job (this too is
+only done once per computer account you have).  Then
+```
+git commit
+```
+will pop up an editor instance to type in the commit message.
+
+#### The Cycle without Add Most of the Time
+
+Doing a bunch of `git add` commands before each commit is what allows
+precise control of what you want the commit to remember.
+
+But usually, you want the commit to remember all the changes to files
+Git is already tracking.  One command does this:
+```
+git commit -a
+```
+(the `-a` flag tells Git to add all files it is already tracking).
+
+When you use this pattern, you only need to say `git add` filename for
+new files either created since the last commit or not tracked before
+(not added in any previous commit).
+
+#### Using RStudio
+
+The edit-add-commit cycle can also be done entirely with RStudio.
+
+One can edit the file in the upper left window and commit in the upper
+right window.  Clicking the button labeled "Commit" will pop up a window
+in which you can select files to add, provide a commit message, and commit.
+
+### Status
+
+Before doing a commit, it is often useful to do
+```
+git status
+```
+This tells you what would be committed (either with or without `-a`) if you
+were to do a commit.  It also lists untracked files that will not be
+committed unless you do `git add` on them.
+
+### The File `.gitignore`
+
+The file `.gitignore` in the top directory of the repo list files that
+`git status` and other git subcommands should ignore.
+
+It uses wildcards
+(the [gitignore documentation](https://git-scm.com/docs/gitignore) explains).
+For example, a `.gitignore` file that contains
+```
+*.html
+*.Rout
+*.pdf
+```
+ignores all files with those extensions (the character `*` is the wildcard
+character: it matches any string).
+
+RStudio provides a `.gitignore` file in any Git repo it creates, but you
+may want to add to it.
+
+### Log
+
+The command
+```
+git log
+```
+lists all commits that have been done, showing (by default) all the commit
+messages, the date and time, and the committer.
+
+It provides an overview of the whole history of the repo.
+
+### Diff
+
+The command
+```
+git diff
+```
+shows (by default) all of the changes between the "staging area," which contains
+any results of `git add` that you may have done, and the working directory.
+
+If have not done any `git add` since the last commit, then it shows all of your
+edits to tracked files since the last commit.
+
+This can be very useful.
+
+ * If working with collaborators, this is Git's competitor to "track changes"
+   in Microsoft Office or Libre Office.  It allows you to just look at changes.
+
+ * Even if there are no collaborators, it is often useful just to look at
+   changes you made, especially just before a commit (to look even harder
+   for mistakes).
+
+## Everyday Git: GitHub or Multiple Computers
+
+If you made the repo by cloning a GitHub repository, then
+```
+git push origin master
+```
+will copy the latest commit to the GitHub repo.  Now it is backed up there.
+
+If you are using multiple computers, then you can use GitHub for communication
+between them.  To start working on another computer, do all of the one time
+stuff (tell Git your name and e-mail address, make SSH keys, and put the public
+key on GitHub (there is a different public key for each computer, or at least
+for each computer account if different computers share file storage)).
+
+Then clone (with `git clone`) the GitHub repo on this computer.
+
+And you are ready to work on this other computer.
+
+When you are finished working on this computer, do a commit, then
+```
+git push origin master
+```
+to push the changes to GitHub.  Then on another computer (assuming no
+changes have been made to the working directory since the last commit
+on this computer; `git status` will tell you)
+```
+git pull origin master
+```
+will get all of the changes from GitHub.
+
+**Warning:** Either of these (`git push` or `git pull`) can fail because
+you did effectively simultaneous (as far as Git can tell)
+editing on the two computers.
+Then you have to figure out how to fix the issue.  The commands `git merge`
+and `git stash` may help.  The former will be discussed below, but the latter
+we will skip.  Most of the time, there will be no trouble (there is only
+trouble when you make changes on both computers with no commits; then you
+have to somehow reconcile the changes).
+
+## Everyday Git: Collaboration
+
+### Setup
+
+When working with collaborators, the simplest workflow is for
+each collaborator to have their own GitHub repository and for everyone
+to pull from everyone else.
+
+Suppose you are working with one collaborator <https://github.com/jfmuggs>
+who has an already existing GitHub repo named `blurfle`.
+
+You clone it
+```
+git clone git://github.com/jfmuggs/blurfle.git
+```
+Now you have the `blurfle` repo on your computer.  You have all of the
+code and all of the history.  But you want to be able to push changes
+to where your collaborator (J. Fred Muggs, call him Fred) can see them.
+So you need a GitHub repo in your account.
+
+So create an empty public repo (using the button labeled "New").  Don't
+put a "README" file or a Gitignore file or anything.
+Then follow GitHub's instructions to push the local repo to GitHub
+```
+git remote add origin https://github.com/cjgeyer/blurfle.git
+git push -u origin master
+```
+except that doesn't work because there is already a remote repository name
+`origin` (in the `jfmuggs` account).  So let's change that, and while we
+are at it, call neither of the GitHub repos `origin`.
+```
+git remote rename origin fred
+git remote add me https://github.com/cjgeyer/blurfle.git
+git push -u me master
+```
+Now there are two GitHub repos, both exactly the same (one in the `jfmuggs`
+account and one in the `cjgeyer` account).  Of course, if you were doing this,
+you would replace my account name with yours.
+
+Now Fred and I each have two repos, one local and one remote (on GitHub)
+that we can commit and push to.  I also have another remote repo named
+(locally) `fred` that I can pull from.  Fred should also give my GitHub
+repo a name; say he does
+```
+git remote add charlie https://github.com/cjgeyer/blurfle.git
+```
+
+### Workflow
+
+I make some changes and do a commit, then I push them
+```
+git push me master
+```
+Then I tell Fred "pull from me" (either by e-mail or by a GitHub pull request).
+
+Then Fred can pull my changes
+```
+git pull charlie master
+```
+
+As always `git push` and `git pull` should only be done in a clean repo
+(just after a commit).
+
+It gets complicated when we both make changes simultaneously.  Then someone
+may have to reconcile any incompatible changes.
+
+I get a "Pull from me" from Fred.  I have uncommitted changes, so I do a
+commit (never pull when there are uncommitted changes).  Then I do
+```
+git pull fred master
+```
+and it doesn't work.  Git says
+```
+Auto-merging foo.txt
+CONFLICT (content): Merge conflict in foo.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+(if the file in which merge conflicts exist is named `foo.txt` and there
+may be multiple such files).
+
+When we edit this file we see something like this
+```
+<<<<<<< HEAD
+Foo that Foos is not static Foo.
+=======
+Foo! Bar! Baz! Qux!
+>>>>>>> a26ce42b351548fb0efd61f7902358b1f69d3266
+```
+
+Schematically, this is
+```
+<<<<<<< HEAD
+```
+then some text that was my version of what goes here, then
+```
+=======
+```
+then some text that was Fred's version of what goes here, then
+```
+>>>>>>> [some very long hexadecimal string, the SHA1 hash for the remote commit]
+```
+
+I edit the file, replacing all of this with what I think the text should be
+here (naturally, I think I'm right, although not always), in this case
+just the one line
+```
+Foo that Foos is not static Foo.
+```
+and then I have to do a commit (because the pull that failed with merge
+conflicts did not do a commit)
+```
+git commit -a
+```
+accepting the default commit message that Git suggests
+```
+Merge branch 'master' of github.com/jfmuggs/blurfle
+```
+Then I push and tell Fred to "Pull from me".
+
+Most pulls will work.  If changes are made to two different parts of the
+file, Git just makes them automatically and commits the merge.
+It is only overlapping changes that must be fixed manually.
+
+## Wrapup
+
+The Git subcommands
+```
+git init
+git clone
+git add
+git commit
+git diff
+git status
+git log
+git help
+git push
+git pull
+git remote
+```
+Allow you to do most of what Git can do for you.  There are many other
+subcommands and a huge number of options to all subcommands, including
+the ones listed above (and we only discussed one such option, the `-a`
+option to `git commit`).
+
+So there is a lot more to learn about Git.  But this is enough for a start.
 
