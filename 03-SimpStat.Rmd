@@ -1,7 +1,13 @@
-# Simple Statistics in R
+---
+title: "Simple Statistics in R"
+author: "Nathaniel E. Helwig"
+date: "Aug 31, 2017"
+output: html_document
+---
 
-*Author: Nathaniel E. Helwig*
-
+```{r chap3-setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 
 ## Chapter Outline and Goals
@@ -37,18 +43,18 @@ Data obtained by NEH from [Beer Advocate](http://beeradvocate.com) and the websi
 ### Load the Data
 
 Use the **read.csv** function to load the *beer* data into R
-```{r}
+```{r chap3-load-beer-data}
 beer <- read.csv("http://users.stat.umn.edu/~helwig/notes/MNbeer.csv")
 ```
 
 The **dim** function returns the number of rows and columns of the data frame
-```{r}
+```{r chap3-dim-beer-data}
 dim(beer)
 ```
 The *beer* data frame has 44 beers (rows) measured on 7 variables (columns). 
 
 The **names** function returns the names of the variables in a data frame
-```{r}
+```{r chap3-names-beer-data}
 names(beer)
 ```
 
@@ -56,31 +62,31 @@ names(beer)
 ### Look at the Data
 
 The **head** function returns the first six lines of a data frame
-```{r}
+```{r chap3-head-beer-data}
 head(beer)
 ```
 
 The **summary** function provides a summary of each variable in a data frame
-```{r}
+```{r chap3-summary-beer-data}
 summary(beer)
 ```
 
 ### Plot the Data
 
 The **brewer.pal** function in the *RColorBrewer* package creates [ColorBrewer palettes](http://ColorBrewer.org) for plotting
-```{r}
+```{r chap3-define-MyColors}
 library(RColorBrewer)
 MyColors <- brewer.pal(nlevels(beer$Style), "Pastel1")
 ```
 
 The **boxplot** function creates simple boxplots
-```{r fig.width=5, fig.height=4, fig.align="center"}
+```{r chap3-boxplot-Style-ABV}
 boxplot(ABV ~ Style, data = beer, ylab = "Alcohol By Volume (ABV)",
         main = "Alcohol by Style of Beer", col = MyColors)
 ```
 
 The **plot** function creates generic X-Y scatterplots
-```{r beercolors, fig.width=5, fig.height=4, fig.align="center"}
+```{r chap3-plot-IBU-ABV}
 StyleInt <- as.integer(beer$Style)
 plot(beer$IBU, beer$ABV, xlab = "International Bitterness Units (IBU)",
      ylab = "Alcohol By Volume (ABV)", pch = StyleInt + 14,
@@ -110,16 +116,16 @@ We often need to calculate simple descriptive statistics of variables in a data 
 ### Minimum and Maximum
 
 To calculate the minimum or maximum of a variable, we could use the **min** or **max** functions
-```{r}
+```{r chap3-minmax-ABV}
 min(beer$ABV)
 max(beer$ABV)
 ```
 or the **range** function to return both the minimum and maximum
-```{r}
+```{r chap3-range-ABV}
 range(beer$ABV)
 ```
 The minimum ABV in the sample is 4.2% and the maximum is 7.5%. To determine which beers have the min/max ABV values, we can use the **which.min** and **which.max** functions
-```{r}
+```{r chap3-which-minmax-ABV}
 minmaxID <- c(which.min(beer$ABV), which.max(beer$ABV))
 beer[minmaxID,]
 ```
@@ -127,17 +133,17 @@ beer[minmaxID,]
 ### Mean, Standard Deviation, and Variance
 
 The **mean** function calculates the sample mean $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$
-```{r}
+```{r chap3-mean-ABV}
 mean(beer$ABV)
 ```
 
 The **sd** function calculates the sample standard deviation $s = \{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2\}^{1/2}$ 
-```{r}
+```{r chap3-sd-ABV}
 sd(beer$ABV)
 ```
 
 The **var** function calculates the sample variance $s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2$
-```{r}
+```{r chap3-var-ABV}
 var(beer$ABV)
 ```
 The mean ABV is about 5.82% with a standard deviation of about 0.82% (variance of about 0.67%). 
@@ -145,11 +151,11 @@ The mean ABV is about 5.82% with a standard deviation of about 0.82% (variance o
 ### Medians and Quantiles
 
 The **median** function calculates the sample median of a vector
-```{r}
+```{r chap3-median-ABV}
 median(beer$ABV)
 ```
 and the **quantile** function can be used for other quantiles
-```{r}
+```{r chap3-quantile-ABV}
 quantile(beer$ABV)
 quantile(beer$ABV, probs = seq(0, 1, length=11))
 ```
@@ -158,11 +164,11 @@ The median is 5.6% ABV, which implies that half of the beers have at least 5.6% 
 ### Factor Level Information
 
 The **levels** function extracts the levels (i.e., unique values) of a factor variable
-```{r}
+```{r chap3-levels-Style}
 levels(beer$Style)
 ```
 and the **nlevels** function returns the number of levels of a factor
-```{r}
+```{r chap3-nlevels-Style}
 nlevels(beer$Style)
 ```
 The 44 beers are classified into one of three Styles: Ale, IPA, or Lager.
@@ -170,20 +176,20 @@ The 44 beers are classified into one of three Styles: Ale, IPA, or Lager.
 ### Covariances and Correlations
 
 The **cov** function calculates the covariance $c = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})$ between two variables
-```{r}
+```{r chap3-cov-ABV-IBU}
 cov(beer$ABV, beer$IBU)
 ```
 or a covariance matrix between the columns of an input data frame
-```{r}
+```{r chap3-cov-ABV-IBU-Rating}
 cov(beer[, c("ABV","IBU","Rating")])
 ```
 
 The **cor** function calculates the correlation $r = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\{\sum_{i=1}^n (x_i - \bar{x})^2 \}^{1/2} \{\sum_{i=1}^n (y_i - \bar{y})^2 \}^{1/2} }$ between two variables
-```{r}
+```{r chap3-cor-ABV-IBU}
 cor(beer$ABV, beer$IBU)
 ```
 or a correlation matrix between the columns of an input data frame
-```{r}
+```{r chap3-cor-ABV-IBU-Rating}
 cor(beer[, c("ABV","IBU","Rating")])
 ```
 
@@ -191,7 +197,7 @@ cor(beer[, c("ABV","IBU","Rating")])
 ### Applying Functions to Multiple Variables
 
 To apply a function to several columns, we can use the **apply** function
-```{r}
+```{r chap3-apply-beer}
 apply(beer[, c("ABV","IBU","Rating")], 2, range)
 apply(beer[, c("ABV","IBU","Rating")], 2, mean)
 ```
@@ -200,7 +206,7 @@ apply(beer[, c("ABV","IBU","Rating")], 2, mean)
 ### Applying Functions at Levels of Factors
 
 Use the **tapply** (ragged apply) function to apply some function to a numeric variable separately at each level of a factor variable. For example, we could apply the **range** function to the *ABV* variable separately for each *Style* of beer
-```{r}
+```{r chap3-tapply-beer}
 tapply(beer$ABV, beer$Style, range)
 ```
 In the given sample, Ales range from 4.2% to 7% ABV, India Pale Ales range from 5.8% to 7.5% ABV, and Lagers range from 4.5% to 5.4% ABV.
@@ -208,7 +214,7 @@ In the given sample, Ales range from 4.2% to 7% ABV, India Pale Ales range from 
 ### Making a Table
 
 Use the **cbind** (column combine) function in combination with the **tapply** function to create tables
-```{r}
+```{r chap3-make-table}
 tab1 <- cbind(tapply(beer$Rating, beer$Style, length),
               tapply(beer$ABV, beer$Style, mean),
               tapply(beer$ABV, beer$Style, sd),
@@ -223,13 +229,13 @@ rtab1
 ```
 
 The **write.csv** function can be used to save the table
-```{r}
+```{r chap3-write-table}
 write.csv(rtab1, file = "~/Desktop/table1.csv", row.names = TRUE)
 ```
 After some minor stylistic edits, the table is ready for publication---without having to manually type or copy-paste numbers!
 
 The **kable** function (in the *knitr* package) includes nicely formatted tables in R Markdown documents
-```{r}
+```{r chap3-knitr-table}
 library(knitr)
 kable(rtab1, caption = "Table 1: Sample size (n) and variable means and standard deviations (SD) for each style of beer.")
 ```
@@ -244,7 +250,7 @@ $$
 H_0: \mu = 4.2 \quad \mbox{vs.} \quad H_1: \mu \neq 4.2
 $$
 where $\mu$ is the mean ABV, and $H_0$ and $H_1$ denote the null and alternative hypotheses. Assuming that the ABV scores are normally distributed, the **t.test** function can be used to test the null hypothesis
-```{r}
+```{r chap3-ttest-1samp-ABV-twosided}
 t.test(beer$ABV, mu = 4.2)
 ```
 The observed *t* statistic is $t = 13.13$ with 43 degrees of freedom, resulting in a p-value of essentially zero---we reject $H_0$ using any standard $\alpha$ level. The sample mean is $\bar{x} = 5.8$% ABV and the 95% confidence interval for the $\mu$ (population mean ABV of Minnesota beers) is 5.6% to 6.1% ABV.
@@ -254,7 +260,7 @@ $$
 H_0: \mu = 4.2 \quad \mbox{vs.} \quad H_1: \mu > 4.2
 $$
 we need to adjust the *alternative* input 
-```{r}
+```{r chap3-ttest-1samp-ABV-onesided}
 t.test(beer$ABV, mu = 4.2, alternative = "greater")
 ```
 The only noteworthy difference is that the confidence interval is now a 95% lower bound for the mean ABV of Minnesota beers, which we expect to be at least 5.6% ABV. Note that changing the alternative also changes the p-value, but for this example we do not notice (because the p-value is so small).
@@ -268,14 +274,14 @@ $$
 where $\mu_1$ and $\mu_2$ denote the mean ABV of IPA and non-IPA beers, respectively.
 
 To use the **t.test** function for a two sample *t*-test, we need to input two vectors
-```{r}
+```{r chap3-ttest-2samp-ABV-unequalvar}
 beer$IPA <- (beer$Style == "IPA")
 t.test(beer$ABV[beer$IPA], beer$ABV[!beer$IPA], alternative = "greater")
 ```
 The observed *t* statistic is $t = 7.45$ with 40.53 degrees of freedom, resulting in a p-value of essentially zero---we reject $H_0$ using any standard $\alpha$ level. The sample mean difference is $\bar{x}_1 - \bar{x}_2 = 1.22$% ABV and the 95% lower-bound confidence interval reveals that we expect IPAs to have at least 0.94% more ABV than non-IPAs.
 
 The default uses the Welch version, which does not assume equal variance for the two groups. The *var.equal* input can be used to change this assumption, which produces the classic two sample *t*-test
-```{r}
+```{r chap3-ttest-2samp-ABV-equalvar}
 t.test(beer$ABV[beer$IPA], beer$ABV[!beer$IPA], alternative = "greater",
        var.equal = TRUE)
 ```
@@ -291,7 +297,7 @@ H_0: \mu_j = \mu  \mbox{ for all } j \quad \mbox{vs.} \quad H_1: \mu_j \neq \mu 
 $$
 where $\mu_j$ denotes the mean ABV of the three Styles of beer: Ales, IPAs, and Lagers. Assuming that the ABV scores a normally distributed, we can use the **aov** (analysis of variance) function
 
-```{r}
+```{r chap3-aov-Style-ABV}
 amod <- aov(ABV ~ Style, data = beer)
 summary(amod)
 ```
@@ -302,7 +308,7 @@ The observed *F* statistic is $F = 28$ with 2 numerator and 41 denominator degre
 
 To determine which Styles significantly differ in their mean ABV, we can use Tukey's Honest Significant Differences (HSD) procedure via the **TukeyHSD** function
 
-```{r}
+```{r chap3-Tukey-Style-ABV}
 TukeyHSD(amod)
 ```
 The pairwise comparisons reveal that
@@ -318,7 +324,7 @@ $$
 H_0: \rho = 0 \quad \mbox{vs.} \quad H_1: \rho > 0
 $$
 where $\rho$ is the population correlation between the ABV and Rating. Assuming that the ABV and Rating variables follow a bivariate normal distribution, we can use the **cor.test** function
-```{r}
+```{r chap3-cortest-ABV-Rating}
 cor.test(beer$ABV, beer$Rating, alternative = "greater")
 ```
 The estimated sample correlation is $r = 0.495$ and the 95% lower-bound confidence interval reveals that we expect the ABV and Ratings to have a positive correlation of at least  $\rho = 0.28$.
