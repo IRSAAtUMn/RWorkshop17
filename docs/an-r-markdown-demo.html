@@ -46,6 +46,11 @@
 
 
 
+<script src="libs/htmlwidgets-0.8/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 
 
 <style type="text/css">
@@ -255,11 +260,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.3.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#organization"><i class="fa fa-check"></i><b>8.3.1</b> Organization</a></li>
 <li class="chapter" data-level="8.3.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#anantomy-of-a-script"><i class="fa fa-check"></i><b>8.3.2</b> Anantomy of a script</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#analysis-script-for-project-a"><i class="fa fa-check"></i><b>8.4</b> Analysis Script for Project A</a></li>
-<li class="chapter" data-level="8.5" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#section"><i class="fa fa-check"></i><b>8.5</b> 2017-09-01</a></li>
-<li class="chapter" data-level="8.6" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#script-takes-in-a_processed_data.csv"><i class="fa fa-check"></i><b>8.6</b> Script takes in “A_processed_data.csv”</a></li>
-<li class="chapter" data-level="8.7" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#creates-tables-1-4-figures-1-2-for-submission-to"><i class="fa fa-check"></i><b>8.7</b> Creates Tables 1-4, Figures 1, 2 for submission to</a></li>
-<li class="chapter" data-level="8.8" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#journal-of-cool-results"><i class="fa fa-check"></i><b>8.8</b> Journal of Cool Results</a></li>
 </ul></li>
 </ul>
 
@@ -288,9 +288,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="r" class="section level2">
 <h2><span class="header-section-number">6.2</span> R</h2>
 <ul>
-<li><p>The version of R used to make this document is 3.4.1.</p></li>
-<li><p>The version of the <code>rmarkdown</code> package used to make this document is 1.6.</p></li>
-<li><p>The version of the <code>knitr</code> package used to make this document is 1.17.</p></li>
+<li><p>The version of R used to make this document is 3.3.2.</p></li>
+<li><p>The version of the <code>rmarkdown</code> package used to make this document is 1.5.</p></li>
+<li><p>The version of the <code>knitr</code> package used to make this document is 1.16.</p></li>
 </ul>
 </div>
 <div id="rendering" class="section level2">
@@ -325,15 +325,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>R Markdown allows you to include R computations and graphics in documents <em>reproducibly</em>. That means that anyone anywhere who gets your R markdown file can satisfy themselves that R did what you say it did.</p>
 <p>This is very different from the old fashioned way of putting results in documents, where one just cut-and-pastes (snarf-and-barfs) the results into the document. Then there is zero evidence that these numbers or figures were produced the way you claim.</p>
 <p>For concreteness, here is a simple example.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> *<span class="st"> </span>pi</code></pre></div>
-<pre><code>## [1] 6.283185</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> *<span class="st"> </span>pi
+## [1] 6.283</code></pre></div>
 <p>The result here was not cut-and-pasted into the document. Instead the R expression <code>2 * pi</code> was executed in R and the result was put in the document <em>by R Markdown, automatically</em>.</p>
 <p>This happens <em>every time the document is generated</em> so the result always matches the R code that generated it. There is no way they can fail to match (which can happen and often does happen with snarf-and-barf).</p>
 <p>Here is another concrete example.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># set.seed(42) # uncomment to always get the same plot</span>
 <span class="kw">hist</span>(<span class="kw">rnorm</span>(<span class="dv">1000</span>), <span class="dt">probability =</span> <span class="ot">TRUE</span>)
 <span class="kw">curve</span>(dnorm, <span class="dt">add =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /> Every time the document is generated, this figure is different because the random sample produced by <code>rnorm(1000)</code> is different. (If I wanted it to be the same, I could uncomment the <code>set.seed(42)</code> statement.)</p>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-110-1.png" width="\textwidth" style="display: block; margin: auto;" /> Every time the document is generated, this figure is different because the random sample produced by <code>rnorm(1000)</code> is different. (If I wanted it to be the same, I could uncomment the <code>set.seed(42)</code> statement.)</p>
 <p>Again, there is no way the figure can fail to match the R code that generates it. The source code for the document (the <code>Rmd</code> file) is <em>proof</em> that everything is as the document claims. Anyone can verify the results by generating the document again.</p>
 </div>
 <div id="why-do-we-want-it" class="section level3">
@@ -439,8 +439,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">6.7.1</span> Code Chunks</h3>
 <p>Code chunks begin with <code>```{r}</code> and end with <code>```</code> (<a href="http://rmarkdown.rstudio.com/lesson-3.html">documentation</a>). The delimiters have to begin in column one (I think).</p>
 <p>Here is an example.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> +<span class="st"> </span><span class="dv">2</span></code></pre></div>
-<pre><code>## [1] 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> +<span class="st"> </span><span class="dv">2</span>
+## [1] 4</code></pre></div>
 <p>This is a “code chunk” processed by <code>rmarkdown</code>. When <code>rmarkdown</code> hits such a thing, it processes it, runs R to get the results, and stuffs the results (by default) in the output file it is creating. The text between code chunks is Markdown.</p>
 </div>
 <div id="code-chunks-with-options" class="section level3">
@@ -451,8 +451,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> +<span class="st"> </span><span class="dv">2</span></code></pre></div>
 <p>The option <code>echo=FALSE</code> says to to <strong>not</strong> show the chunk but <strong>do</strong> evaluate it (just the opposite of <code>eval=FALSE</code>), as here (nothing appears in the output document because of <code>echo=FALSE</code> but the code chunk is executed).</p>
 <p>If you look at the document source you will see a hidden code chunk that assigns a value to the variable <code>hide</code> which we can see in a code chunk with no options</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hide</code></pre></div>
-<pre><code>## [1] 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hide
+## [1] 3</code></pre></div>
 <p>This example also shows that all code chunks are executed in the same R session, so R objects assigned names in earlier chunks can be used in later chunks.</p>
 <p>Many more examples of options for code chunks are exemplified below.</p>
 </div>
@@ -470,33 +470,33 @@ y.true &lt;-<span class="st"> </span>a.true +<span class="st"> </span>b.true *<s
 s.true &lt;-<span class="st"> </span><span class="fl">17.3</span>
 y &lt;-<span class="st"> </span>y.true +<span class="st"> </span>s.true *<span class="st"> </span><span class="kw">rnorm</span>(n)
 out1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x)
-<span class="kw">summary</span>(out1)</code></pre></div>
-<pre><code>## 
+<span class="kw">summary</span>(out1)
+## 
 ## Call:
 ## lm(formula = y ~ x)
 ## 
 ## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -26.174 -13.203  -0.715  11.407  36.031 
+##    Min     1Q Median     3Q    Max 
+## -32.65  -9.35   1.60  10.93  20.38 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   7.9701     4.2356   1.882    0.066 .  
-## x             1.2804     0.1446   8.857 1.15e-11 ***
+## (Intercept)    0.783      3.910     0.2     0.84    
+## x              1.715      0.133    12.9   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 14.75 on 48 degrees of freedom
-## Multiple R-squared:  0.6204, Adjusted R-squared:  0.6125 
-## F-statistic: 78.45 on 1 and 48 DF,  p-value: 1.152e-11</code></pre>
+## Residual standard error: 13.6 on 48 degrees of freedom
+## Multiple R-squared:  0.775,  Adjusted R-squared:  0.77 
+## F-statistic:  165 on 1 and 48 DF,  p-value: &lt;2e-16</code></pre></div>
 </div>
 <div id="figure-with-code-to-make-it-shown" class="section level4">
 <h4><span class="header-section-number">6.7.3.2</span> Figure with Code to Make It Shown</h4>
 <p>The following figure is produced by the following code</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x, y)
 <span class="kw">abline</span>(out1)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
-<img src="RWorkshop17_files/figure-html/unnamed-chunk-12-1.png" alt="Simple Linear Regression" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-118"></span>
+<img src="RWorkshop17_files/figure-html/unnamed-chunk-118-1.png" alt="Simple Linear Regression" width="\textwidth" />
 <p class="caption">
 Figure 6.1: Simple Linear Regression
 </p>
@@ -508,28 +508,28 @@ Figure 6.1: Simple Linear Regression
 <h4><span class="header-section-number">6.7.3.3</span> Figure with Code to Make It Not Shown</h4>
 <p>For this example we do a cubic regression on the same data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out3 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x +<span class="st"> </span><span class="kw">I</span>(x^<span class="dv">2</span>) +<span class="st"> </span><span class="kw">I</span>(x^<span class="dv">3</span>))
-<span class="kw">summary</span>(out3)</code></pre></div>
-<pre><code>## 
+<span class="kw">summary</span>(out3)
+## 
 ## Call:
 ## lm(formula = y ~ x + I(x^2) + I(x^3))
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -24.583 -11.319  -1.254  10.856  34.092 
+## -30.541  -9.835   0.095  11.148  22.984 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)  4.1331730  9.1152109   0.453    0.652
-## x            1.6247856  1.5325686   1.060    0.295
-## I(x^2)      -0.0008955  0.0694566  -0.013    0.990
-## I(x^3)      -0.0001285  0.0008958  -0.143    0.887
+##              Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  8.361871   8.394258    1.00     0.32
+## x            0.452994   1.411353    0.32     0.75
+## I(x^2)       0.047868   0.063963    0.75     0.46
+## I(x^3)      -0.000507   0.000825   -0.61     0.54
 ## 
-## Residual standard error: 14.92 on 46 degrees of freedom
-## Multiple R-squared:  0.6278, Adjusted R-squared:  0.6035 
-## F-statistic: 25.86 on 3 and 46 DF,  p-value: 5.92e-10</code></pre>
+## Residual standard error: 13.7 on 46 degrees of freedom
+## Multiple R-squared:  0.78,   Adjusted R-squared:  0.766 
+## F-statistic: 54.5 on 3 and 46 DF,  p-value: 3.54e-15</code></pre></div>
 Then we plot this figure with a hidden code chunk (so the R commands to make it do not appear in the document).
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
-<img src="RWorkshop17_files/figure-html/unnamed-chunk-14-1.png" alt="Scatter Plot with Cubic Regression Curve" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-120"></span>
+<img src="RWorkshop17_files/figure-html/unnamed-chunk-120-1.png" alt="Scatter Plot with Cubic Regression Curve" width="\textwidth" />
 <p class="caption">
 Figure 6.2: Scatter Plot with Cubic Regression Curve
 </p>
@@ -542,27 +542,27 @@ Figure 6.2: Scatter Plot with Cubic Regression Curve
 <h3><span class="header-section-number">6.7.4</span> R in Text</h3>
 <p>The <em>no snarf and barf</em> rule must be adhered to strictly. None at all!</p>
 <p>When you want to refer to some number in R printout, either make a code chunk that contains the printout you want, or, much nicer looking, you can “inline” R printout.</p>
-<p>Here we show how to do that. The quadratic and cubic regression coefficients in the preceding regression were -8.955174810<sup>{-4} and -1.284691810</sup>{-4}. Magic! See the source for this document to see how the magic works.</p>
+<p>Here we show how to do that. The quadratic and cubic regression coefficients in the preceding regression were 0.0479 and -5.069610^{-4}. Magic! See the source for this document to see how the magic works.</p>
 <p>If you never snarf and barf, and everything in your document is computed by R, then everything is always as claimed.</p>
 </div>
 <div id="rtables" class="section level3">
 <h3><span class="header-section-number">6.7.5</span> Tables</h3>
 <p>The same goes for tables. Here is a “table” of sorts in some R printout.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">out2 &lt;-<span class="st"> </span><span class="kw">lm</span>(y ~<span class="st"> </span>x +<span class="st"> </span><span class="kw">I</span>(x^<span class="dv">2</span>))
-<span class="kw">anova</span>(out1, out2, out3)</code></pre></div>
-<pre><code>## Analysis of Variance Table
+<span class="kw">anova</span>(out1, out2, out3)
+## Analysis of Variance Table
 ## 
 ## Model 1: y ~ x
 ## Model 2: y ~ x + I(x^2)
 ## Model 3: y ~ x + I(x^2) + I(x^3)
-##   Res.Df   RSS Df Sum of Sq      F Pr(&gt;F)
-## 1     48 10445                           
-## 2     47 10245  1   199.239 0.8949 0.3491
-## 3     46 10241  1     4.579 0.0206 0.8866</code></pre>
+##   Res.Df  RSS Df Sum of Sq    F Pr(&gt;F)
+## 1     48 8899                         
+## 2     47 8756  1     143.0 0.76   0.39
+## 3     46 8685  1      71.3 0.38   0.54</code></pre></div>
 <p>We want to turn that into a table in output format we are creating. First we have to figure out what the output of the R function <code>anova</code> is and capture it so we can use it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">foo &lt;-<span class="st"> </span><span class="kw">anova</span>(out1, out2, out3)
-<span class="kw">class</span>(foo)</code></pre></div>
-<pre><code>## [1] &quot;anova&quot;      &quot;data.frame&quot;</code></pre>
+<span class="kw">class</span>(foo)
+## [1] &quot;anova&quot;      &quot;data.frame&quot;</code></pre></div>
 <p>So now we are ready to turn the matrix <code>foo</code> and the simplest way to do that seems to be the <code>kable</code> option on our R chunk</p>
 <table>
 <caption><span id="tab:kable">Table 6.1: </span>ANOVA Table</caption>
@@ -579,7 +579,7 @@ Figure 6.2: Scatter Plot with Cubic Regression Curve
 <tbody>
 <tr class="odd">
 <td align="right">48</td>
-<td align="right">10445</td>
+<td align="right">8899</td>
 <td align="right"></td>
 <td align="right"></td>
 <td align="right"></td>
@@ -587,19 +587,19 @@ Figure 6.2: Scatter Plot with Cubic Regression Curve
 </tr>
 <tr class="even">
 <td align="right">47</td>
-<td align="right">10245</td>
+<td align="right">8756</td>
 <td align="right">1</td>
-<td align="right">199</td>
-<td align="right">0.89</td>
-<td align="right">0.349</td>
+<td align="right">143</td>
+<td align="right">0.76</td>
+<td align="right">0.389</td>
 </tr>
 <tr class="odd">
 <td align="right">46</td>
-<td align="right">10241</td>
+<td align="right">8685</td>
 <td align="right">1</td>
-<td align="right">5</td>
-<td align="right">0.02</td>
-<td align="right">0.887</td>
+<td align="right">71</td>
+<td align="right">0.38</td>
+<td align="right">0.542</td>
 </tr>
 </tbody>
 </table>
