@@ -17,6 +17,11 @@ Attribution-ShareAlike 4.0 International License
 
  * The version of the `knitr` package used to make this document is `r packageVersion("knitr")`.
 
+## Source
+
+The R Markdown source for this document is found at
+<https://github.com/IRSAAtUMn/RWorkshop17/blob/master/06-rmark.Rmd>.
+
 ## Rendering
 
 This is a demo for using the R package `rmarkdown`.  To turn this file
