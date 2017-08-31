@@ -272,7 +272,7 @@ DT::datatable(fd, options = list(pageLength = 6))
 
 
 
-Before constructing graphics of the relationships among these variables, we need to understand what features these graphics should have.  Without peaking at the exercises, challenge yourself to think about how we might graph the relationships among the following sets of variables:
+Before constructing graphics of the relationships among these variables, we need to understand what features these graphics should have.  Without peeking at the exercises, challenge yourself to think about how we might graph the relationships among the following sets of variables:
 
 - `perrep_2016` vs `perrep_2012`
 
