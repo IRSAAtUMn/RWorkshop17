@@ -70,7 +70,7 @@ for most purposes.
 
 R Markdown allows you to include R computations and graphics in documents
 *reproducibly*.  That means that anyone anywhere who gets your R markdown
-file can satisfy themselves that R did you you say it did.
+file can satisfy themselves that R did what you say it did.
 
 This is very different from the old fashioned way of putting results
 in documents, where one just cut-and-pastes (snarf-and-barfs) the results
@@ -135,8 +135,8 @@ make you a lot more careful in doing the analysis.
 #### Business and Consulting
 
 Outside of science there is no buzz about "replication crisis,"
-at least not yet.  The hype about "big data" is so strong that hardly
-**anyone is questioning whether results are correct or actually support
+at least not yet.  The hype about "big data" is so strong that **hardly
+anyone** is questioning whether results are correct or actually support
 conclusions people draw from them.
 
 But even if the results are never made public, R Markdown can still help a lot.
@@ -182,7 +182,7 @@ The way experts use R is
 ```{r eval=FALSE}
 R CMD BATCH --vanilla foo.R
 ```
-   to run R to do the analysis.
+   to run R to do the analysis, or
 
  * type commands with explanations into an R Markdown file, and render it
    in a clean R environment (empty global environment).  Either start R
@@ -269,6 +269,9 @@ For more about links, [here is the documentation](http://rmarkdown.rstudio.com/a
 
 There is Markdown syntax for tables, but we won't illustrate it here
 ([documentation](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html#tables)).
+(Actually there is
+a [small example in the following chapter](<git-version-control.html#plethora>),
+but we won't bother with it now.)
 
 We will be more interested in [tables created by R](#rtables).
 
@@ -276,7 +279,7 @@ We will be more interested in [tables created by R](#rtables).
 
 ### Code Chunks
 
-Code chunks begin with ` ```{r} ` and end with ` ``` `.
+Code chunks begin with ` ```{r} ` and end with ` ``` `
 ([documentation](http://rmarkdown.rstudio.com/lesson-3.html)).
 The delimiters have to begin in column one (I think).
 
@@ -484,7 +487,7 @@ If computations in an R Markdown take so much time that editing the document
 becomes annoying, you can "cache" the computations by adding the option
 `cache=TRUE` to time consuming code chunks.
 
-This feature is rather smart.  Usually if anything changes in the input
+This feature is rather smart.  Usually, if anything changes in the input
 to the cached computations, the computations will be redone (for example
 if there were a change to the raw data), but if nothing has changed the
 computations will not be redone (the cached results will be used again)

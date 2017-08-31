@@ -76,7 +76,7 @@ who did what when.
 
 Using Dropbox for version control isn't any better.
 
-### A Plethora of Version Control Systems
+### A Plethora of Version Control Systems {#plethora}
 
 Ripped off from Wikipedia ([under "Version control"](https://en.wikipedia.org/wiki/Version_control)).
 
