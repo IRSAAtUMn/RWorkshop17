@@ -449,8 +449,13 @@ grid.arrange(g1,g2,g3,g4,ncol=2)
 
 **Plots of 3 quantitative variables**
 
+Let's try visualizing 3 quantitative variables in a single plot.
 
 ```{r eval=FALSE}
+#scatterplot: represent third variable using size
+ggplot(election, aes(y=perrep_2016, x=median_rent, size=perrep_2012)) +
+    geom_point(alpha=0.1)
+
 #scatterplot: represent third variable using color
 ggplot(election, aes(y=perrep_2016, x=median_rent, color=perrep_2012)) +
     geom_point(alpha=0.5)
@@ -471,11 +476,14 @@ ggplot(election, aes(y=perrep_2016, x=median_rent, color=cut(perrep_2012,2))) +
 In summary: 
 
 ```{r echo=FALSE, fig.width=8, fig.height=3, warning=FALSE}
+g0=ggplot(election, aes(y=perrep_2016, x=median_rent, size=perrep_2012)) +
+    geom_point(alpha=0.1)
+
 g1=ggplot(election, aes(y=perrep_2016, x=median_rent, color=perrep_2012)) +
     geom_point(alpha=0.5)
 g2=ggplot(election, aes(y=perrep_2016, x=median_rent, color=cut(perrep_2012,2))) +
     geom_point(alpha=0.5)
-grid.arrange(g1,g2,ncol=2)
+grid.arrange(g0,g1,g2,ncol=3)
 
 ```
 
@@ -553,6 +561,47 @@ Let's graphically explore these variables and the relationships among them!  NOT
     Construct and comment on a plot of that illustrates the distribution of births among Fridays that fall on & off the 13th. Do you see any evidence of superstition?
     
     
+
+
+\
+\
+\
+\
+
+
+
+**SOLUTIONS**
+
+```{r eval=FALSE}
+#1
+Only2014 <- subset(US_births_2000_2014, year==2014)
+ggplot(Only2014, aes(x=births)) + 
+    geom_histogram(color="white")
+
+#2
+ggplot(Only2014, aes(x=date, y=births)) + 
+    geom_point()
+
+#3
+ggplot(Only2014, aes(x=date, y=births, color=day_of_week)) + 
+    geom_point()
+
+#4
+#holidays!
+
+#5
+ggplot(US_births_2000_2014, aes(x=date, y=births, color=day_of_week)) + 
+    geom_point()
+
+#6
+OnlyFridays <- subset(US_births_2000_2014, day_of_week=="Fri")
+OnlyFridays$fri13 <- (OnlyFridays$date_of_month==13)
+ggplot(OnlyFridays, aes(x=births, fill=fri13)) + 
+    geom_density(alpha=0.5)
+```
+
+ 
+
 
 <br>
 <br>
