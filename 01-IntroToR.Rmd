@@ -9,20 +9,6 @@
 \
 \
 
-
-Consider the *4 V's of Big Data*:
-
-<center>
-<div class="image">
-<img src="images/data1.png" style="width: 475px"/>
-<div>source: https://commons.wikimedia.org/wiki/File:Defining-big-data1.png </div>
-</div>
-</center>
-
-
-\
-\
-
 This workshop is motivated in part by the increasing need for tools that can be used to elucidate trends, decisions, and stories from data.  Whether your data are generated via simulation, collected via a survey, observed in a scientific experiment, scraped from the web, etc, you need *software* to explore and construct inferences from these data.  In this workshop, we'll use the **R** statistical software.  Why R?
 
 - it’s free    
@@ -61,12 +47,12 @@ Day 2:
 
 - Quantile Regression
 
-- Github in R
-
 - R Markdown
 
+- Git, GitHub, and RStudio
+
 - Principles of Reproducible Research
-reproducible research / outline for workshop
+reproducible research
 
 
 
