@@ -92,7 +92,7 @@ RCS (1982)     ClearCase (1992)    GNU arch (2001)
 
 There were more, but I've only kept the ones I'd heard of.
 
-Don't worry.  We're only going to talk about one (git).
+Don't worry.  We're only going to talk about one (Git).
 
 ### Why?
 
@@ -108,7 +108,7 @@ Version control systems provide you with three important capabilities:
 
 ### Mindshare
 
-Starting from nowhere in 2005, `git` and GitHub (<https://github.com/>) have
+Starting from nowhere in 2005, Git and GitHub (<https://github.com/>) have
 gotten dominant mindshare, at least among free and open source systems.
 
 In [Google Trends](http://www.google.com/trends/explore#q=%2Fm%2F05vqwg%2C%20%2Fm%2F012ct9%2C%20%2Fm%2F09d6g%2C%20%2Fm%2F08441_%2C%20%2Fm%2F04g0kcw&cmpt=q&tz=), the only searches that are trending up are for `git` and github.
@@ -137,7 +137,7 @@ Facebook for software developers.  You can use `git` without GitHub (or one
 of its competitors) but GitHub helps you show the world what you do and
 collaborate with the world.
 
-One of the GitHub developers wrote the best book introducing Git;
+One of the GitHub developers wrote the best book introducing Git:
 [Pro Git](https://git-scm.com/book/en/v2).
 
 Still, I want to emphasize that you do not need GitHub to use Git
@@ -153,7 +153,7 @@ Git for non-R projects.
 
 ### Getting Git
 
-Type ``git'' into Google and follow the first link it gives you
+Type "git" into Google and follow the first link it gives you
 http://git-scm.com/.
 
 Under "downloads" it tells you how to get Git for Windows and for Mac OS X.
@@ -189,7 +189,8 @@ git help
 ```
 shows the frequently used subcommands (many more than we will discuss here).
 
-As this also says at the bottom `git help -a` shows all subcommands and
+As the output of that also says at the bottom,
+`git help -a` shows all subcommands and
 `git help -g` shows "concept guides."
 
 For example
@@ -215,7 +216,7 @@ then select "Git".
 
 Then you fill in the "Repository URL" which is something like
 ```
-git@github.umn.edu:geyer/Foo.git
+git@github.com:cjgeyer/foo.git
 ```
 (more on this later, Section [GitHub and SSH keys](#keys) below)
 and "Create project as a subdirectory of".  The latter
@@ -227,7 +228,7 @@ and GitHub know about.
 
 The "Repository URL" can also be something like
 ```
-https://github.umn.edu/geyer/Foo.git
+https://github.com:cjgeyer/foo.git
 ```
 (This is easier to use in the beginning but rapidly becomes a nuisance.
 More on this later.  Section [GitHub and SSH keys](#keys) below.)
@@ -333,7 +334,8 @@ id_rsa.pub
 created somewhere (the default is the `.ssh` subdirectory of your home
 directory).  The first is the private key; the second is the public key.
 
-Upload the public key to GitHub.  Log in to your account; on the menu triangle
+Upload the public key to GitHub.  Log in to your GitHub account;
+on the menu triangle
 next to your picture (upper right corner) choose "Settings"; on the settings
 page, choose "SSH and GPG keys" in the navigation area on the left; then on
 the page that takes you to click the green button labeled "New SSH key" and
@@ -532,9 +534,9 @@ will get all of the changes from GitHub.
 **Warning:** Either of these (`git push` or `git pull`) can fail because
 you did effectively simultaneous (as far as Git can tell)
 editing on the two computers.
-Then you have to figure out how to fix the issue.  The commands `git merge`
-and `git stash` may help.  The former will be discussed below, but the latter
-we will skip.  Most of the time, there will be no trouble (there is only
+Then you have to figure out how to fix the issue.  (This is similar to
+fixing merge conflicts discussed in the following section.)
+Most of the time, there will be no trouble (there is only
 trouble when you make changes on both computers with no commits; then you
 have to somehow reconcile the changes).
 
@@ -661,6 +663,23 @@ Most pulls will work.  If changes are made to two different parts of the
 file, Git just makes them automatically and commits the merge.
 It is only overlapping changes that must be fixed manually.
 
+### Another Workflow
+
+Instead of everybody having a different GitHub repository,
+everybody can use the same one, for example
+`git://github.com/jfmuggs/blurfle.git`.
+
+The way this works is that the owner (J. Fred Muggs) makes everyone a
+collaborator on the repo ([documentation](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/)).  Then everyone pushes to and
+pulls from the same repository.  Otherwise, this workflow is much like the
+other.
+
+The main difference is that any of your collaborators can totally screw up
+the repo, especially if they have never heard that *a little knowledge is
+a dangerous thing*, especially especially if they like to try what they
+see on [stackoverflow](https://stackoverflow.com/) without really understanding
+it.
+
 ## Wrapup
 
 The Git subcommands
@@ -677,10 +696,13 @@ git push
 git pull
 git remote
 ```
-Allow you to do most of what Git can do for you.  There are many other
+allow you to do most of what Git can do for you.  There are many other
 subcommands and a huge number of options to all subcommands, including
 the ones listed above (and we only discussed one such option, the `-a`
 option to `git commit`).
 
 So there is a lot more to learn about Git.  But this is enough for a start.
 
+Git takes a while to learn, but if you are going to be working a lot with
+computer code in the future, it is well worth the time spent (just like
+R and R Markdown).

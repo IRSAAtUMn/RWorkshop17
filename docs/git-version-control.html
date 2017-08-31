@@ -201,6 +201,7 @@
 <li class="chapter" data-level="7.13" data-path="git-version-control.html"><a href="git-version-control.html#everyday-git-collaboration"><i class="fa fa-check"></i><b>7.13</b> Everyday Git: Collaboration</a><ul>
 <li class="chapter" data-level="7.13.1" data-path="git-version-control.html"><a href="git-version-control.html#setup"><i class="fa fa-check"></i><b>7.13.1</b> Setup</a></li>
 <li class="chapter" data-level="7.13.2" data-path="git-version-control.html"><a href="git-version-control.html#workflow"><i class="fa fa-check"></i><b>7.13.2</b> Workflow</a></li>
+<li class="chapter" data-level="7.13.3" data-path="git-version-control.html"><a href="git-version-control.html#another-workflow"><i class="fa fa-check"></i><b>7.13.3</b> Another Workflow</a></li>
 </ul></li>
 <li class="chapter" data-level="7.14" data-path="git-version-control.html"><a href="git-version-control.html#wrapup"><i class="fa fa-check"></i><b>7.14</b> Wrapup</a></li>
 </ul></li>
@@ -344,7 +345,7 @@ asterLA.9-11.tex</code></pre>
 </tbody>
 </table>
 <p>There were more, but I’ve only kept the ones I’d heard of.</p>
-<p>Don’t worry. We’re only going to talk about one (git).</p>
+<p>Don’t worry. We’re only going to talk about one (Git).</p>
 </div>
 <div id="why" class="section level3">
 <h3><span class="header-section-number">7.3.4</span> Why?</h3>
@@ -358,7 +359,7 @@ asterLA.9-11.tex</code></pre>
 </div>
 <div id="mindshare" class="section level3">
 <h3><span class="header-section-number">7.3.5</span> Mindshare</h3>
-<p>Starting from nowhere in 2005, <code>git</code> and GitHub (<a href="https://github.com/" class="uri">https://github.com/</a>) have gotten dominant mindshare, at least among free and open source systems.</p>
+<p>Starting from nowhere in 2005, Git and GitHub (<a href="https://github.com/" class="uri">https://github.com/</a>) have gotten dominant mindshare, at least among free and open source systems.</p>
 <p>In <a href="http://www.google.com/trends/explore#q=%2Fm%2F05vqwg%2C%20%2Fm%2F012ct9%2C%20%2Fm%2F09d6g%2C%20%2Fm%2F08441_%2C%20%2Fm%2F04g0kcw&amp;cmpt=q&amp;tz=">Google Trends</a>, the only searches that are trending up are for <code>git</code> and github. Searches for competing version control systems are trending down.</p>
 <p>Many well known open-source projects are on git. The Linux kernel (of course since Linus Torvalds wrote git to be the VCS for the kernel), android (as in phones), Ruby on Rails, Gnome, Qt, KDE, X, Perl, and GNU Emacs.</p>
 <p>Some aren’t. R is still on Subversion. Firefox, Go, Python, Vim are on Mercurial.</p>
@@ -371,7 +372,7 @@ asterLA.9-11.tex</code></pre>
 <p>Git is a version control system. It is a command line program that can be used by itself (and, in fact, is best used that way).</p>
 <p><a href="https://en.wikipedia.org/wiki/Graphical_user_interface">GUI</a> applications are available on all platforms to dumb down Git with menus and buttons.</p>
 <p>GitHub is a company, like Facebook or Google, that is just as famous as them in the geek world. It offers “social coding.” Thus it is something like Facebook for software developers. You can use <code>git</code> without GitHub (or one of its competitors) but GitHub helps you show the world what you do and collaborate with the world.</p>
-<p>One of the GitHub developers wrote the best book introducing Git; <a href="https://git-scm.com/book/en/v2">Pro Git</a>.</p>
+<p>One of the GitHub developers wrote the best book introducing Git: <a href="https://git-scm.com/book/en/v2">Pro Git</a>.</p>
 <p>Still, I want to emphasize that you do not need GitHub to use Git any more than you need RStudio to use R.</p>
 </div>
 <div id="git-and-github-and-rstudio" class="section level3">
@@ -381,7 +382,7 @@ asterLA.9-11.tex</code></pre>
 </div>
 <div id="getting-git" class="section level3">
 <h3><span class="header-section-number">7.4.3</span> Getting Git</h3>
-<p>Type ``git’’ into Google and follow the first link it gives you <a href="http://git-scm.com/" class="uri">http://git-scm.com/</a>.</p>
+<p>Type “git” into Google and follow the first link it gives you <a href="http://git-scm.com/" class="uri">http://git-scm.com/</a>.</p>
 <p>Under “downloads” it tells you how to get Git for Windows and for Mac OS X.</p>
 <p>If you have Linux, it just comes with (use the installer for your distribution).</p>
 <p>E. g., on Ubuntu</p>
@@ -407,7 +408,7 @@ sudo apt-get install git</code></pre>
 <p>There is only one command to use Git and it is called <code>git</code>. The first command line argument specifies one of many subcommands.</p>
 <pre><code>git help</code></pre>
 <p>shows the frequently used subcommands (many more than we will discuss here).</p>
-<p>As this also says at the bottom <code>git help -a</code> shows all subcommands and <code>git help -g</code> shows “concept guides.”</p>
+<p>As the output of that also says at the bottom, <code>git help -a</code> shows all subcommands and <code>git help -g</code> shows “concept guides.”</p>
 <p>For example</p>
 <pre><code>git help everyday</code></pre>
 <p>shows about 20 git subcommands that are enough for straightforward use of git. (We won’t even discuss that many.)</p>
@@ -421,11 +422,11 @@ sudo apt-get install git</code></pre>
 <h4><span class="header-section-number">7.4.5.3</span> With RStudio</h4>
 <p>On the “File” menu select “New Project” and then select “Version Control” and then select “Git”.</p>
 <p>Then you fill in the “Repository URL” which is something like</p>
-<pre><code>git@github.umn.edu:geyer/Foo.git</code></pre>
+<pre><code>git@github.com:cjgeyer/foo.git</code></pre>
 <p>(more on this later, Section <a href="git-version-control.html#keys">GitHub and SSH keys</a> below) and “Create project as a subdirectory of”. The latter is the directory (which Windows and Macintosh call “folder”) into which you want to put the Git repository.</p>
 <p>Then click “Create Project”, and you have an R project that both RStudio and GitHub know about.</p>
 <p>The “Repository URL” can also be something like</p>
-<pre><code>https://github.umn.edu/geyer/Foo.git</code></pre>
+<pre><code>https://github.com:cjgeyer/foo.git</code></pre>
 <p>(This is easier to use in the beginning but rapidly becomes a nuisance. More on this later. Section <a href="git-version-control.html#keys">GitHub and SSH keys</a> below.)</p>
 <p>In RStudio, you can also get a UNIX command line to execute commands. The “Shell” item on the “Tools” menu, gives you a UNIX command line.</p>
 </div>
@@ -477,7 +478,7 @@ git init</code></pre>
 <pre><code>id_rsa
 id_rsa.pub</code></pre>
 <p>created somewhere (the default is the <code>.ssh</code> subdirectory of your home directory). The first is the private key; the second is the public key.</p>
-<p>Upload the public key to GitHub. Log in to your account; on the menu triangle next to your picture (upper right corner) choose “Settings”; on the settings page, choose “SSH and GPG keys” in the navigation area on the left; then on the page that takes you to click the green button labeled “New SSH key” and fill in the resulting text area. The title can be anything. Into the “Key” textarea you cut-and-paste the contents of the <code>id_rsa.pub</code> file. To get the contents in UNIX, do</p>
+<p>Upload the public key to GitHub. Log in to your GitHub account; on the menu triangle next to your picture (upper right corner) choose “Settings”; on the settings page, choose “SSH and GPG keys” in the navigation area on the left; then on the page that takes you to click the green button labeled “New SSH key” and fill in the resulting text area. The title can be anything. Into the “Key” textarea you cut-and-paste the contents of the <code>id_rsa.pub</code> file. To get the contents in UNIX, do</p>
 <pre><code>cat id_rsa.pub</code></pre>
 <p>at the command line. What you see is what you cut-and-paste into the GitHub textarea. Then click the green button labeled “Add SSH key”. If you did this successfully, it will show the “fingerprint” of the key.</p>
 </div>
@@ -578,7 +579,7 @@ git commit -m &quot;A message about what the changes are&quot;</code></pre>
 <p>to push the changes to GitHub. Then on another computer (assuming no changes have been made to the working directory since the last commit on this computer; <code>git status</code> will tell you)</p>
 <pre><code>git pull origin master</code></pre>
 <p>will get all of the changes from GitHub.</p>
-<p><strong>Warning:</strong> Either of these (<code>git push</code> or <code>git pull</code>) can fail because you did effectively simultaneous (as far as Git can tell) editing on the two computers. Then you have to figure out how to fix the issue. The commands <code>git merge</code> and <code>git stash</code> may help. The former will be discussed below, but the latter we will skip. Most of the time, there will be no trouble (there is only trouble when you make changes on both computers with no commits; then you have to somehow reconcile the changes).</p>
+<p><strong>Warning:</strong> Either of these (<code>git push</code> or <code>git pull</code>) can fail because you did effectively simultaneous (as far as Git can tell) editing on the two computers. Then you have to figure out how to fix the issue. (This is similar to fixing merge conflicts discussed in the following section.) Most of the time, there will be no trouble (there is only trouble when you make changes on both computers with no commits; then you have to somehow reconcile the changes).</p>
 </div>
 <div id="everyday-git-collaboration" class="section level2">
 <h2><span class="header-section-number">7.13</span> Everyday Git: Collaboration</h2>
@@ -637,6 +638,12 @@ Foo! Bar! Baz! Qux!
 <p>Then I push and tell Fred to “Pull from me”.</p>
 <p>Most pulls will work. If changes are made to two different parts of the file, Git just makes them automatically and commits the merge. It is only overlapping changes that must be fixed manually.</p>
 </div>
+<div id="another-workflow" class="section level3">
+<h3><span class="header-section-number">7.13.3</span> Another Workflow</h3>
+<p>Instead of everybody having a different GitHub repository, everybody can use the same one, for example <code>git://github.com/jfmuggs/blurfle.git</code>.</p>
+<p>The way this works is that the owner (J. Fred Muggs) makes everyone a collaborator on the repo (<a href="https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/">documentation</a>). Then everyone pushes to and pulls from the same repository. Otherwise, this workflow is much like the other.</p>
+<p>The main difference is that any of your collaborators can totally screw up the repo, especially if they have never heard that <em>a little knowledge is a dangerous thing</em>, especially especially if they like to try what they see on <a href="https://stackoverflow.com/">stackoverflow</a> without really understanding it.</p>
+</div>
 </div>
 <div id="wrapup" class="section level2">
 <h2><span class="header-section-number">7.14</span> Wrapup</h2>
@@ -652,8 +659,9 @@ git help
 git push
 git pull
 git remote</code></pre>
-<p>Allow you to do most of what Git can do for you. There are many other subcommands and a huge number of options to all subcommands, including the ones listed above (and we only discussed one such option, the <code>-a</code> option to <code>git commit</code>).</p>
+<p>allow you to do most of what Git can do for you. There are many other subcommands and a huge number of options to all subcommands, including the ones listed above (and we only discussed one such option, the <code>-a</code> option to <code>git commit</code>).</p>
 <p>So there is a lot more to learn about Git. But this is enough for a start.</p>
+<p>Git takes a while to learn, but if you are going to be working a lot with computer code in the future, it is well worth the time spent (just like R and R Markdown).</p>
 
 </div>
 </div>
