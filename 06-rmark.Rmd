@@ -95,7 +95,7 @@ matches the R code that generated it.  There is no way they can fail to match
 (which can happen and often does happen with snarf-and-barf).
 
 Here is another concrete example.
-```{r fig.align='center'}
+```{r fig.align='center', label="cjgeyer.hist"}
 # set.seed(42) # uncomment to always get the same plot
 hist(rnorm(1000), probability = TRUE)
 curve(dnorm, add = TRUE)
@@ -354,7 +354,7 @@ summary(out1)
 #### Figure with Code to Make It Shown
 
 The following figure is produced by the following code
-```{r fig.align='center', fig.cap='Simple Linear Regression'}
+```{r fig.align='center', fig.cap='Simple Linear Regression', label="cjgeyer-simple"}
 plot(x, y)
 abline(out1)
 ```
@@ -373,7 +373,7 @@ summary(out3)
 ```
 Then we plot this figure with a hidden code chunk (so the R commands
 to make it do not appear in the document).
-```{r fig.cap="Scatter Plot with Cubic Regression Curve", echo=FALSE, fig.align='center'}
+```{r fig.cap="Scatter Plot with Cubic Regression Curve", echo=FALSE, fig.align='center', label="cjgeyer-hide"}
 plot(x, y)
 curve(predict(out3, newdata=data.frame(x=x)), add = TRUE)
 ```
