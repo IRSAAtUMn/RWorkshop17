@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Introduction to Data Analysis with R &amp; Reproducible Data Science</title>
   <meta name="description" content="Introduction to Data Analysis with R &amp; Reproducible Data Science">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Introduction to Data Analysis with R &amp; Reproducible Data Science" />
   <meta property="og:type" content="book" />
@@ -46,6 +46,11 @@
 
 
 
+<script src="libs/htmlwidgets-0.8/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
 
 
 <style type="text/css">
@@ -99,8 +104,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Home</a></li>
-<li class="chapter" data-level="1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R &amp; RStudio</a></li>
-<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html"><i class="fa fa-check"></i><b>1</b> Introduction to R &amp; RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#getting-started"><i class="fa fa-check"></i><b>1.1</b> Getting Started</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#basic-features"><i class="fa fa-check"></i><b>1.2</b> Basic features</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#getting-help"><i class="fa fa-check"></i><b>1.3</b> Getting Help</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#working-with-data"><i class="fa fa-check"></i><b>1.4</b> Working with data</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction-to-r-rstudio.html"><a href="introduction-to-r-rstudio.html#exercises"><i class="fa fa-check"></i><b>1.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2</b> Data Visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-visualization.html"><a href="data-visualization.html#ggplot"><i class="fa fa-check"></i><b>2.1</b> ggplot</a></li>
+<li class="chapter" data-level="2.2" data-path="data-visualization.html"><a href="data-visualization.html#univariate-visualizations"><i class="fa fa-check"></i><b>2.2</b> Univariate visualizations</a></li>
+<li class="chapter" data-level="2.3" data-path="data-visualization.html"><a href="data-visualization.html#visualizing-relationships"><i class="fa fa-check"></i><b>2.3</b> Visualizing Relationships</a></li>
+<li class="chapter" data-level="2.4" data-path="data-visualization.html"><a href="data-visualization.html#exercises-1"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+<li class="chapter" data-level="2.5" data-path="data-visualization.html"><a href="data-visualization.html#extra"><i class="fa fa-check"></i><b>2.5</b> Extra</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html"><i class="fa fa-check"></i><b>3</b> Simple Statistics in R</a><ul>
 <li class="chapter" data-level="3.1" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#chapter-outline-and-goals"><i class="fa fa-check"></i><b>3.1</b> Chapter Outline and Goals</a></li>
 <li class="chapter" data-level="3.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#minnesota-beer-data"><i class="fa fa-check"></i><b>3.2</b> Minnesota Beer Data</a><ul>
@@ -129,13 +146,121 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5.2" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#pairwise-comparisons-tukeys-hsd"><i class="fa fa-check"></i><b>3.5.2</b> Pairwise Comparisons (Tukey’s HSD)</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#correlation-tests-in-r"><i class="fa fa-check"></i><b>3.6</b> Correlation Tests in R</a></li>
-<li class="chapter" data-level="3.7" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#exercises"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
+<li class="chapter" data-level="3.7" data-path="simple-statistics-in-r.html"><a href="simple-statistics-in-r.html#exercises-2"><i class="fa fa-check"></i><b>3.7</b> Exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html"><i class="fa fa-check"></i><b>4</b> Linear Regression in R</a></li>
-<li class="chapter" data-level="5" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html"><i class="fa fa-check"></i><b>5</b> Quantile Regression in R</a></li>
-<li class="chapter" data-level="6" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html"><i class="fa fa-check"></i><b>6</b> An R Markdown Demo</a></li>
-<li class="chapter" data-level="7" data-path="git-version-control.html"><a href="git-version-control.html"><i class="fa fa-check"></i><b>7</b> Git (Version Control)</a></li>
-<li class="chapter" data-level="8" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html"><i class="fa fa-check"></i><b>8</b> Using R Reproducibly</a></li>
+<li class="chapter" data-level="4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html"><i class="fa fa-check"></i><b>4</b> Linear Regression in R</a><ul>
+<li class="chapter" data-level="4.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#chapter-outline-and-goals-1"><i class="fa fa-check"></i><b>4.1</b> Chapter Outline and Goals</a></li>
+<li class="chapter" data-level="4.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#minnesota-beer-data-reminder"><i class="fa fa-check"></i><b>4.2</b> Minnesota Beer Data (Reminder)</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#overview-2"><i class="fa fa-check"></i><b>4.2.1</b> Overview</a></li>
+<li class="chapter" data-level="4.2.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#load-and-look-at-the-data"><i class="fa fa-check"></i><b>4.2.2</b> Load and Look at the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#simple-linear-regression"><i class="fa fa-check"></i><b>4.3</b> Simple Linear Regression</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#fit-the-model"><i class="fa fa-check"></i><b>4.3.1</b> Fit the Model</a></li>
+<li class="chapter" data-level="4.3.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#inference-information"><i class="fa fa-check"></i><b>4.3.2</b> Inference Information</a></li>
+<li class="chapter" data-level="4.3.3" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#plot-the-regression-line"><i class="fa fa-check"></i><b>4.3.3</b> Plot the Regression Line</a></li>
+<li class="chapter" data-level="4.3.4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#diagnostic-and-influence-plots"><i class="fa fa-check"></i><b>4.3.4</b> Diagnostic and Influence Plots</a></li>
+<li class="chapter" data-level="4.3.5" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#prediction-for-new-data"><i class="fa fa-check"></i><b>4.3.5</b> Prediction for New Data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#multiple-linear-regression"><i class="fa fa-check"></i><b>4.4</b> Multiple Linear Regression</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#overview-3"><i class="fa fa-check"></i><b>4.4.1</b> Overview</a></li>
+<li class="chapter" data-level="4.4.2" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#additive-effects"><i class="fa fa-check"></i><b>4.4.2</b> Additive Effects</a></li>
+<li class="chapter" data-level="4.4.3" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#interaction-effects"><i class="fa fa-check"></i><b>4.4.3</b> Interaction Effects</a></li>
+<li class="chapter" data-level="4.4.4" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#comparing-fit-models"><i class="fa fa-check"></i><b>4.4.4</b> Comparing Fit Models</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="linear-regression-in-r.html"><a href="linear-regression-in-r.html#exercises-3"><i class="fa fa-check"></i><b>4.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html"><i class="fa fa-check"></i><b>5</b> Quantile Regression in R</a><ul>
+<li class="chapter" data-level="5.1" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html#goals"><i class="fa fa-check"></i><b>5.1</b> Goals</a></li>
+<li class="chapter" data-level="5.2" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html#r-package-quantreg"><i class="fa fa-check"></i><b>5.2</b> R Package quantreg</a></li>
+<li class="chapter" data-level="5.3" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html#fitting-linear-quantile-regression-in-r"><i class="fa fa-check"></i><b>5.3</b> Fitting linear quantile regression in R</a></li>
+<li class="chapter" data-level="5.4" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html#example-1-fit-quantile-regression-at-one-quantile-level"><i class="fa fa-check"></i><b>5.4</b> Example 1: Fit quantile regression at one quantile level</a></li>
+<li class="chapter" data-level="5.5" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html#example-2-fit-quantile-regression-at-multiple-quantile-levels-simultaneously"><i class="fa fa-check"></i><b>5.5</b> Example 2: Fit quantile regression at multiple quantile levels simultaneously</a></li>
+<li class="chapter" data-level="5.6" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html#inference-on-linear-quantile-regression-in-r"><i class="fa fa-check"></i><b>5.6</b> Inference on linear quantile regression in R</a></li>
+<li class="chapter" data-level="5.7" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html#resampling-methods-for-inference-on-quantile-regression"><i class="fa fa-check"></i><b>5.7</b> Resampling methods for inference on quantile regression</a></li>
+<li class="chapter" data-level="5.8" data-path="quantile-regression-in-r.html"><a href="quantile-regression-in-r.html#pointwise-confidence-intervals"><i class="fa fa-check"></i><b>5.8</b> Pointwise confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html"><i class="fa fa-check"></i><b>6</b> An R Markdown Demo</a><ul>
+<li class="chapter" data-level="6.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#license"><i class="fa fa-check"></i><b>6.1</b> License</a></li>
+<li class="chapter" data-level="6.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#r"><i class="fa fa-check"></i><b>6.2</b> R</a></li>
+<li class="chapter" data-level="6.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#rendering"><i class="fa fa-check"></i><b>6.3</b> Rendering</a></li>
+<li class="chapter" data-level="6.4" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#markdown"><i class="fa fa-check"></i><b>6.4</b> Markdown</a></li>
+<li class="chapter" data-level="6.5" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#r-markdown"><i class="fa fa-check"></i><b>6.5</b> R Markdown</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#look"><i class="fa fa-check"></i><b>6.5.1</b> Look</a></li>
+<li class="chapter" data-level="6.5.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#rdo"><i class="fa fa-check"></i><b>6.5.2</b> What Does It Do?</a></li>
+<li class="chapter" data-level="6.5.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#why-do-we-want-it"><i class="fa fa-check"></i><b>6.5.3</b> Why Do We Want It?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#examples-not-involving-r"><i class="fa fa-check"></i><b>6.6</b> Examples Not Involving R</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#title-author-date"><i class="fa fa-check"></i><b>6.6.1</b> Title, Author, Date</a></li>
+<li class="chapter" data-level="6.6.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#headers"><i class="fa fa-check"></i><b>6.6.2</b> Headers</a></li>
+<li class="chapter" data-level="6.6.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#paragraphs"><i class="fa fa-check"></i><b>6.6.3</b> Paragraphs</a></li>
+<li class="chapter" data-level="6.6.4" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#fonts"><i class="fa fa-check"></i><b>6.6.4</b> Fonts</a></li>
+<li class="chapter" data-level="6.6.5" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#lists"><i class="fa fa-check"></i><b>6.6.5</b> Lists</a></li>
+<li class="chapter" data-level="6.6.6" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#html-links"><i class="fa fa-check"></i><b>6.6.6</b> HTML Links</a></li>
+<li class="chapter" data-level="6.6.7" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#tables"><i class="fa fa-check"></i><b>6.6.7</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#examples-involving-r"><i class="fa fa-check"></i><b>6.7</b> Examples Involving R</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#code-chunks"><i class="fa fa-check"></i><b>6.7.1</b> Code Chunks</a></li>
+<li class="chapter" data-level="6.7.2" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#code-chunks-with-options"><i class="fa fa-check"></i><b>6.7.2</b> Code Chunks With Options</a></li>
+<li class="chapter" data-level="6.7.3" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#plots"><i class="fa fa-check"></i><b>6.7.3</b> Plots</a></li>
+<li class="chapter" data-level="6.7.4" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#r-in-text"><i class="fa fa-check"></i><b>6.7.4</b> R in Text</a></li>
+<li class="chapter" data-level="6.7.5" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#rtables"><i class="fa fa-check"></i><b>6.7.5</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#latex-math"><i class="fa fa-check"></i><b>6.8</b> LaTeX Math</a></li>
+<li class="chapter" data-level="6.9" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#caching-computation"><i class="fa fa-check"></i><b>6.9</b> Caching Computation</a></li>
+<li class="chapter" data-level="6.10" data-path="an-r-markdown-demo.html"><a href="an-r-markdown-demo.html#summary"><i class="fa fa-check"></i><b>6.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="git-version-control.html"><a href="git-version-control.html"><i class="fa fa-check"></i><b>7</b> Git (Version Control)</a><ul>
+<li class="chapter" data-level="7.1" data-path="git-version-control.html"><a href="git-version-control.html#license-1"><i class="fa fa-check"></i><b>7.1</b> License</a></li>
+<li class="chapter" data-level="7.2" data-path="git-version-control.html"><a href="git-version-control.html#r-1"><i class="fa fa-check"></i><b>7.2</b> R</a></li>
+<li class="chapter" data-level="7.3" data-path="git-version-control.html"><a href="git-version-control.html#version-control"><i class="fa fa-check"></i><b>7.3</b> Version Control</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="git-version-control.html"><a href="git-version-control.html#what-is-it"><i class="fa fa-check"></i><b>7.3.1</b> What is It?</a></li>
+<li class="chapter" data-level="7.3.2" data-path="git-version-control.html"><a href="git-version-control.html#very-old-fashioned-version-control"><i class="fa fa-check"></i><b>7.3.2</b> Very Old Fashioned Version Control</a></li>
+<li class="chapter" data-level="7.3.3" data-path="git-version-control.html"><a href="git-version-control.html#plethora"><i class="fa fa-check"></i><b>7.3.3</b> A Plethora of Version Control Systems</a></li>
+<li class="chapter" data-level="7.3.4" data-path="git-version-control.html"><a href="git-version-control.html#why"><i class="fa fa-check"></i><b>7.3.4</b> Why?</a></li>
+<li class="chapter" data-level="7.3.5" data-path="git-version-control.html"><a href="git-version-control.html#mindshare"><i class="fa fa-check"></i><b>7.3.5</b> Mindshare</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="git-version-control.html"><a href="git-version-control.html#git"><i class="fa fa-check"></i><b>7.4</b> Git</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="git-version-control.html"><a href="git-version-control.html#git-versus-github"><i class="fa fa-check"></i><b>7.4.1</b> Git versus GitHub</a></li>
+<li class="chapter" data-level="7.4.2" data-path="git-version-control.html"><a href="git-version-control.html#git-and-github-and-rstudio"><i class="fa fa-check"></i><b>7.4.2</b> Git and GitHub and RStudio</a></li>
+<li class="chapter" data-level="7.4.3" data-path="git-version-control.html"><a href="git-version-control.html#getting-git"><i class="fa fa-check"></i><b>7.4.3</b> Getting Git</a></li>
+<li class="chapter" data-level="7.4.4" data-path="git-version-control.html"><a href="git-version-control.html#what"><i class="fa fa-check"></i><b>7.4.4</b> What?</a></li>
+<li class="chapter" data-level="7.4.5" data-path="git-version-control.html"><a href="git-version-control.html#using-git"><i class="fa fa-check"></i><b>7.4.5</b> Using Git</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="git-version-control.html"><a href="git-version-control.html#tell-git-who-you-are"><i class="fa fa-check"></i><b>7.5</b> Tell Git Who You Are</a></li>
+<li class="chapter" data-level="7.6" data-path="git-version-control.html"><a href="git-version-control.html#starting-a-new-project-locally"><i class="fa fa-check"></i><b>7.6</b> Starting a New Project Locally</a></li>
+<li class="chapter" data-level="7.7" data-path="git-version-control.html"><a href="git-version-control.html#starting-a-r-project-that-will-be-a-cran-package"><i class="fa fa-check"></i><b>7.7</b> Starting a R Project that will be a CRAN Package</a></li>
+<li class="chapter" data-level="7.8" data-path="git-version-control.html"><a href="git-version-control.html#cloning-an-existing-project"><i class="fa fa-check"></i><b>7.8</b> Cloning an Existing Project</a></li>
+<li class="chapter" data-level="7.9" data-path="git-version-control.html"><a href="git-version-control.html#keys"><i class="fa fa-check"></i><b>7.9</b> GitHub and SSH keys</a></li>
+<li class="chapter" data-level="7.10" data-path="git-version-control.html"><a href="git-version-control.html#halftime-summary"><i class="fa fa-check"></i><b>7.10</b> Halftime Summary</a></li>
+<li class="chapter" data-level="7.11" data-path="git-version-control.html"><a href="git-version-control.html#everyday-git-one-computer-no-collaboration"><i class="fa fa-check"></i><b>7.11</b> Everyday Git: One Computer, No Collaboration</a><ul>
+<li class="chapter" data-level="7.11.1" data-path="git-version-control.html"><a href="git-version-control.html#commits"><i class="fa fa-check"></i><b>7.11.1</b> Commits</a></li>
+<li class="chapter" data-level="7.11.2" data-path="git-version-control.html"><a href="git-version-control.html#status"><i class="fa fa-check"></i><b>7.11.2</b> Status</a></li>
+<li class="chapter" data-level="7.11.3" data-path="git-version-control.html"><a href="git-version-control.html#the-file-.gitignore"><i class="fa fa-check"></i><b>7.11.3</b> The File <code>.gitignore</code></a></li>
+<li class="chapter" data-level="7.11.4" data-path="git-version-control.html"><a href="git-version-control.html#log"><i class="fa fa-check"></i><b>7.11.4</b> Log</a></li>
+<li class="chapter" data-level="7.11.5" data-path="git-version-control.html"><a href="git-version-control.html#diff"><i class="fa fa-check"></i><b>7.11.5</b> Diff</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="git-version-control.html"><a href="git-version-control.html#everyday-git-github-or-multiple-computers"><i class="fa fa-check"></i><b>7.12</b> Everyday Git: GitHub or Multiple Computers</a></li>
+<li class="chapter" data-level="7.13" data-path="git-version-control.html"><a href="git-version-control.html#everyday-git-collaboration"><i class="fa fa-check"></i><b>7.13</b> Everyday Git: Collaboration</a><ul>
+<li class="chapter" data-level="7.13.1" data-path="git-version-control.html"><a href="git-version-control.html#setup"><i class="fa fa-check"></i><b>7.13.1</b> Setup</a></li>
+<li class="chapter" data-level="7.13.2" data-path="git-version-control.html"><a href="git-version-control.html#workflow"><i class="fa fa-check"></i><b>7.13.2</b> Workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="7.14" data-path="git-version-control.html"><a href="git-version-control.html#wrapup"><i class="fa fa-check"></i><b>7.14</b> Wrapup</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html"><i class="fa fa-check"></i><b>8</b> Using R Reproducibly</a><ul>
+<li class="chapter" data-level="8.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#types-of-reproducibility"><i class="fa fa-check"></i><b>8.1</b> Types of Reproducibility</a></li>
+<li class="chapter" data-level="8.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#general-principles-of-reproducibility"><i class="fa fa-check"></i><b>8.2</b> General Principles of Reproducibility</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#dont-do-things-by-hand"><i class="fa fa-check"></i><b>8.2.1</b> Don’t do things by hand</a></li>
+<li class="chapter" data-level="8.2.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#automate-where-you-can"><i class="fa fa-check"></i><b>8.2.2</b> Automate where you can</a></li>
+<li class="chapter" data-level="8.2.3" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#use-version-control"><i class="fa fa-check"></i><b>8.2.3</b> Use Version Control</a></li>
+<li class="chapter" data-level="8.2.4" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#document-your-environment"><i class="fa fa-check"></i><b>8.2.4</b> Document your environment</a></li>
+<li class="chapter" data-level="8.2.5" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#document-your-analysis"><i class="fa fa-check"></i><b>8.2.5</b> Document your analysis</a></li>
+<li class="chapter" data-level="8.2.6" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#make-your-data-open"><i class="fa fa-check"></i><b>8.2.6</b> Make your data open</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#starting-a-reproducible-workflow-in-r"><i class="fa fa-check"></i><b>8.3</b> Starting a Reproducible Workflow in R</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#organization"><i class="fa fa-check"></i><b>8.3.1</b> Organization</a></li>
+<li class="chapter" data-level="8.3.2" data-path="using-r-reproducibly.html"><a href="using-r-reproducibly.html#anantomy-of-a-script"><i class="fa fa-check"></i><b>8.3.2</b> Anantomy of a script</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -190,28 +315,35 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Use the <strong>read.csv</strong> function to load the <em>beer</em> data into R</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beer &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://users.stat.umn.edu/~helwig/notes/MNbeer.csv&quot;</span>)</code></pre></div>
 <p>The <strong>dim</strong> function returns the number of rows and columns of the data frame</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(beer)</code></pre></div>
-<pre><code>## [1] 44  7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(beer)
+## [1] 44  7</code></pre></div>
 <p>The <em>beer</em> data frame has 44 beers (rows) measured on 7 variables (columns).</p>
 <p>The <strong>names</strong> function returns the names of the variables in a data frame</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(beer)</code></pre></div>
-<pre><code>## [1] &quot;Brewery&quot;     &quot;Beer&quot;        &quot;Description&quot; &quot;Style&quot;       &quot;ABV&quot;        
-## [6] &quot;IBU&quot;         &quot;Rating&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(beer)
+## [1] &quot;Brewery&quot;     &quot;Beer&quot;        &quot;Description&quot; &quot;Style&quot;      
+## [5] &quot;ABV&quot;         &quot;IBU&quot;         &quot;Rating&quot;</code></pre></div>
 </div>
 <div id="look-at-the-data" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Look at the Data</h3>
 <p>The <strong>head</strong> function returns the first six lines of a data frame</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(beer)</code></pre></div>
-<pre><code>##       Brewery         Beer              Description Style ABV IBU Rating
-## 1     Bauhaus  Wonderstuff     New Bohemian Pilsner Lager 5.4  48     88
-## 2     Bauhaus    Stargazer German Style Schwarzbier Lager 5.0  28     87
-## 3     Bauhaus  Wagon Party    West Cost Style Lager Lager 5.4  55     86
-## 4     Bauhaus    Sky-Five!        Midwest Coast IPA   IPA 6.7  70     86
-## 5 Bent Paddle         Kanu         Session Pale Ale   Ale 4.8  48     85
-## 6 Bent Paddle Venture Pils            Pilsner Lager Lager 5.0  38     87</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(beer)
+##       Brewery         Beer              Description Style ABV IBU
+## 1     Bauhaus  Wonderstuff     New Bohemian Pilsner Lager 5.4  48
+## 2     Bauhaus    Stargazer German Style Schwarzbier Lager 5.0  28
+## 3     Bauhaus  Wagon Party    West Cost Style Lager Lager 5.4  55
+## 4     Bauhaus    Sky-Five!        Midwest Coast IPA   IPA 6.7  70
+## 5 Bent Paddle         Kanu         Session Pale Ale   Ale 4.8  48
+## 6 Bent Paddle Venture Pils            Pilsner Lager Lager 5.0  38
+##   Rating
+## 1     88
+## 2     87
+## 3     86
+## 4     86
+## 5     85
+## 6     87</code></pre></div>
 <p>The <strong>summary</strong> function provides a summary of each variable in a data frame</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(beer)</code></pre></div>
-<pre><code>##           Brewery                Beer                    Description
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(beer)
+##           Brewery                Beer                    Description
 ##  Indeed       :7   14* ESB         : 1   India Pale Ale        : 5  
 ##  Summit       :7   B-Side Pils     : 1   English IPA           : 2  
 ##  Surly        :7   Batch 300       : 1   Pilsner Lager         : 2  
@@ -219,14 +351,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  Fulton       :5   Bent Hop        : 1   American Blonde Ale   : 1  
 ##  Urban Growler:5   Big Boot Rye IPA: 1   Belgian Style Pale Ale: 1  
 ##  (Other)      :8   (Other)         :38   (Other)               :31  
-##    Style         ABV             IBU            Rating     
-##  Ale  :18   Min.   :4.200   Min.   :15.00   Min.   :79.00  
-##  IPA  :17   1st Qu.:5.200   1st Qu.:33.00   1st Qu.:85.00  
-##  Lager: 9   Median :5.600   Median :48.50   Median :87.00  
-##             Mean   :5.818   Mean   :51.07   Mean   :87.18  
-##             3rd Qu.:6.500   3rd Qu.:68.25   3rd Qu.:90.00  
-##             Max.   :7.500   Max.   :99.00   Max.   :98.00  
-## </code></pre>
+##    Style         ABV            IBU           Rating    
+##  Ale  :18   Min.   :4.20   Min.   :15.0   Min.   :79.0  
+##  IPA  :17   1st Qu.:5.20   1st Qu.:33.0   1st Qu.:85.0  
+##  Lager: 9   Median :5.60   Median :48.5   Median :87.0  
+##             Mean   :5.82   Mean   :51.1   Mean   :87.2  
+##             3rd Qu.:6.50   3rd Qu.:68.2   3rd Qu.:90.0  
+##             Max.   :7.50   Max.   :99.0   Max.   :98.0  
+## </code></pre></div>
 </div>
 <div id="plot-the-data" class="section level3">
 <h3><span class="header-section-number">3.2.4</span> Plot the Data</h3>
@@ -236,7 +368,7 @@ MyColors &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span 
 <p>The <strong>boxplot</strong> function creates simple boxplots</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(ABV ~<span class="st"> </span>Style, <span class="dt">data =</span> beer, <span class="dt">ylab =</span> <span class="st">&quot;Alcohol By Volume (ABV)&quot;</span>,
         <span class="dt">main =</span> <span class="st">&quot;Alcohol by Style of Beer&quot;</span>, <span class="dt">col =</span> MyColors)</code></pre></div>
-<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="RWorkshop17_files/figure-html/unnamed-chunk-49-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>The <strong>plot</strong> function creates generic X-Y scatterplots</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">StyleInt &lt;-<span class="st"> </span><span class="kw">as.integer</span>(beer$Style)
 <span class="kw">plot</span>(beer$IBU, beer$ABV, <span class="dt">xlab =</span> <span class="st">&quot;International Bitterness Units (IBU)&quot;</span>,
@@ -244,7 +376,7 @@ MyColors &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span 
      <span class="dt">main =</span> <span class="st">&quot;Bitterness vs Alcohol&quot;</span>, <span class="dt">col =</span> MyColors[StyleInt])
 <span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend =</span> <span class="kw">levels</span>(beer$Style), <span class="dt">pch =</span> <span class="dv">15</span>:<span class="dv">17</span>,
        <span class="dt">col =</span> MyColors, <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>)</code></pre></div>
-<p><img src="RWorkshop17_files/figure-html/beercolors-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="RWorkshop17_files/figure-html/beercolors-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
 <p>R has functions for saving plots to various figure formats:</p>
 <ul>
 <li><strong>bmp</strong> function for bitmap graphics</li>
@@ -265,101 +397,101 @@ MyColors &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span 
 <div id="minimum-and-maximum" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Minimum and Maximum</h3>
 <p>To calculate the minimum or maximum of a variable, we could use the <strong>min</strong> or <strong>max</strong> functions</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(beer$ABV)</code></pre></div>
-<pre><code>## [1] 4.2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(beer$ABV)</code></pre></div>
-<pre><code>## [1] 7.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(beer$ABV)
+## [1] 4.2
+<span class="kw">max</span>(beer$ABV)
+## [1] 7.5</code></pre></div>
 <p>or the <strong>range</strong> function to return both the minimum and maximum</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(beer$ABV)</code></pre></div>
-<pre><code>## [1] 4.2 7.5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(beer$ABV)
+## [1] 4.2 7.5</code></pre></div>
 <p>The minimum ABV in the sample is 4.2% and the maximum is 7.5%. To determine which beers have the min/max ABV values, we can use the <strong>which.min</strong> and <strong>which.max</strong> functions</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">minmaxID &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">which.min</span>(beer$ABV), <span class="kw">which.max</span>(beer$ABV))
-beer[minmaxID,]</code></pre></div>
-<pre><code>##    Brewery              Beer      Description Style ABV IBU Rating
+beer[minmaxID,]
+##    Brewery              Beer      Description Style ABV IBU Rating
 ## 12  Indeed Lucy Session Sour Session Sour Ale   Ale 4.2  27     86
-## 38   Surly         Overrated   West Coast IPA   IPA 7.5  69     91</code></pre>
+## 38   Surly         Overrated   West Coast IPA   IPA 7.5  69     91</code></pre></div>
 </div>
 <div id="mean-standard-deviation-and-variance" class="section level3">
 <h3><span class="header-section-number">3.3.3</span> Mean, Standard Deviation, and Variance</h3>
 <p>The <strong>mean</strong> function calculates the sample mean <span class="math inline">\(\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\)</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(beer$ABV)</code></pre></div>
-<pre><code>## [1] 5.818182</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(beer$ABV)
+## [1] 5.818</code></pre></div>
 <p>The <strong>sd</strong> function calculates the sample standard deviation <span class="math inline">\(s = \{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2\}^{1/2}\)</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(beer$ABV)</code></pre></div>
-<pre><code>## [1] 0.8176178</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(beer$ABV)
+## [1] 0.8176</code></pre></div>
 <p>The <strong>var</strong> function calculates the sample variance <span class="math inline">\(s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2\)</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var</span>(beer$ABV)</code></pre></div>
-<pre><code>## [1] 0.6684989</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var</span>(beer$ABV)
+## [1] 0.6685</code></pre></div>
 <p>The mean ABV is about 5.82% with a standard deviation of about 0.82% (variance of about 0.67%).</p>
 </div>
 <div id="medians-and-quantiles" class="section level3">
 <h3><span class="header-section-number">3.3.4</span> Medians and Quantiles</h3>
 <p>The <strong>median</strong> function calculates the sample median of a vector</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(beer$ABV)</code></pre></div>
-<pre><code>## [1] 5.6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(beer$ABV)
+## [1] 5.6</code></pre></div>
 <p>and the <strong>quantile</strong> function can be used for other quantiles</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(beer$ABV)</code></pre></div>
-<pre><code>##   0%  25%  50%  75% 100% 
-##  4.2  5.2  5.6  6.5  7.5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(beer$ABV, <span class="dt">probs =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length=</span><span class="dv">11</span>))</code></pre></div>
-<pre><code>##   0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% 
-## 4.20 4.86 5.16 5.30 5.42 5.60 6.20 6.40 6.50 6.87 7.50</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(beer$ABV)
+##   0%  25%  50%  75% 100% 
+##  4.2  5.2  5.6  6.5  7.5
+<span class="kw">quantile</span>(beer$ABV, <span class="dt">probs =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length=</span><span class="dv">11</span>))
+##   0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% 
+## 4.20 4.86 5.16 5.30 5.42 5.60 6.20 6.40 6.50 6.87 7.50</code></pre></div>
 <p>The median is 5.6% ABV, which implies that half of the beers have at least 5.6% ABV.</p>
 </div>
 <div id="factor-level-information" class="section level3">
 <h3><span class="header-section-number">3.3.5</span> Factor Level Information</h3>
 <p>The <strong>levels</strong> function extracts the levels (i.e., unique values) of a factor variable</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(beer$Style)</code></pre></div>
-<pre><code>## [1] &quot;Ale&quot;   &quot;IPA&quot;   &quot;Lager&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(beer$Style)
+## [1] &quot;Ale&quot;   &quot;IPA&quot;   &quot;Lager&quot;</code></pre></div>
 <p>and the <strong>nlevels</strong> function returns the number of levels of a factor</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nlevels</span>(beer$Style)</code></pre></div>
-<pre><code>## [1] 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nlevels</span>(beer$Style)
+## [1] 3</code></pre></div>
 <p>The 44 beers are classified into one of three Styles: Ale, IPA, or Lager.</p>
 </div>
 <div id="covariances-and-correlations" class="section level3">
 <h3><span class="header-section-number">3.3.6</span> Covariances and Correlations</h3>
 <p>The <strong>cov</strong> function calculates the covariance <span class="math inline">\(c = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})\)</span> between two variables</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(beer$ABV, beer$IBU)</code></pre></div>
-<pre><code>## [1] 13.22664</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(beer$ABV, beer$IBU)
+## [1] 13.23</code></pre></div>
 <p>or a covariance matrix between the columns of an input data frame</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(beer[, <span class="kw">c</span>(<span class="st">&quot;ABV&quot;</span>,<span class="st">&quot;IBU&quot;</span>,<span class="st">&quot;Rating&quot;</span>)])</code></pre></div>
-<pre><code>##               ABV       IBU    Rating
-## ABV     0.6684989  13.22664  1.510571
-## IBU    13.2266385 461.18129 30.871036
-## Rating  1.5105708  30.87104 13.919662</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(beer[, <span class="kw">c</span>(<span class="st">&quot;ABV&quot;</span>,<span class="st">&quot;IBU&quot;</span>,<span class="st">&quot;Rating&quot;</span>)])
+##            ABV    IBU Rating
+## ABV     0.6685  13.23  1.511
+## IBU    13.2266 461.18 30.871
+## Rating  1.5106  30.87 13.920</code></pre></div>
 <p>The <strong>cor</strong> function calculates the correlation <span class="math inline">\(r = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\{\sum_{i=1}^n (x_i - \bar{x})^2 \}^{1/2} \{\sum_{i=1}^n (y_i - \bar{y})^2 \}^{1/2} }\)</span> between two variables</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(beer$ABV, beer$IBU)</code></pre></div>
-<pre><code>## [1] 0.7532919</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(beer$ABV, beer$IBU)
+## [1] 0.7533</code></pre></div>
 <p>or a correlation matrix between the columns of an input data frame</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(beer[, <span class="kw">c</span>(<span class="st">&quot;ABV&quot;</span>,<span class="st">&quot;IBU&quot;</span>,<span class="st">&quot;Rating&quot;</span>)])</code></pre></div>
-<pre><code>##              ABV       IBU    Rating
-## ABV    1.0000000 0.7532919 0.4951952
-## IBU    0.7532919 1.0000000 0.3853018
-## Rating 0.4951952 0.3853018 1.0000000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(beer[, <span class="kw">c</span>(<span class="st">&quot;ABV&quot;</span>,<span class="st">&quot;IBU&quot;</span>,<span class="st">&quot;Rating&quot;</span>)])
+##           ABV    IBU Rating
+## ABV    1.0000 0.7533 0.4952
+## IBU    0.7533 1.0000 0.3853
+## Rating 0.4952 0.3853 1.0000</code></pre></div>
 </div>
 <div id="applying-functions-to-multiple-variables" class="section level3">
 <h3><span class="header-section-number">3.3.7</span> Applying Functions to Multiple Variables</h3>
 <p>To apply a function to several columns, we can use the <strong>apply</strong> function</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(beer[, <span class="kw">c</span>(<span class="st">&quot;ABV&quot;</span>,<span class="st">&quot;IBU&quot;</span>,<span class="st">&quot;Rating&quot;</span>)], <span class="dv">2</span>, range)</code></pre></div>
-<pre><code>##      ABV IBU Rating
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(beer[, <span class="kw">c</span>(<span class="st">&quot;ABV&quot;</span>,<span class="st">&quot;IBU&quot;</span>,<span class="st">&quot;Rating&quot;</span>)], <span class="dv">2</span>, range)
+##      ABV IBU Rating
 ## [1,] 4.2  15     79
-## [2,] 7.5  99     98</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(beer[, <span class="kw">c</span>(<span class="st">&quot;ABV&quot;</span>,<span class="st">&quot;IBU&quot;</span>,<span class="st">&quot;Rating&quot;</span>)], <span class="dv">2</span>, mean)</code></pre></div>
-<pre><code>##       ABV       IBU    Rating 
-##  5.818182 51.068182 87.181818</code></pre>
+## [2,] 7.5  99     98
+<span class="kw">apply</span>(beer[, <span class="kw">c</span>(<span class="st">&quot;ABV&quot;</span>,<span class="st">&quot;IBU&quot;</span>,<span class="st">&quot;Rating&quot;</span>)], <span class="dv">2</span>, mean)
+##    ABV    IBU Rating 
+##  5.818 51.068 87.182</code></pre></div>
 </div>
 <div id="applying-functions-at-levels-of-factors" class="section level3">
 <h3><span class="header-section-number">3.3.8</span> Applying Functions at Levels of Factors</h3>
 <p>Use the <strong>tapply</strong> (ragged apply) function to apply some function to a numeric variable separately at each level of a factor variable. For example, we could apply the <strong>range</strong> function to the <em>ABV</em> variable separately for each <em>Style</em> of beer</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(beer$ABV, beer$Style, range)</code></pre></div>
-<pre><code>## $Ale
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(beer$ABV, beer$Style, range)
+## $Ale
 ## [1] 4.2 7.0
 ## 
 ## $IPA
 ## [1] 5.8 7.5
 ## 
 ## $Lager
-## [1] 4.5 5.4</code></pre>
+## [1] 4.5 5.4</code></pre></div>
 <p>In the given sample, Ales range from 4.2% to 7% ABV, India Pale Ales range from 5.8% to 7.5% ABV, and Lagers range from 4.5% to 5.4% ABV.</p>
 </div>
 <div id="making-a-table" class="section level3">
@@ -375,11 +507,11 @@ beer[minmaxID,]</code></pre></div>
 <span class="kw">colnames</span>(tab1) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;n&quot;</span>, <span class="st">&quot;ABV.Mean&quot;</span>, <span class="st">&quot;ABV.SD&quot;</span>, <span class="st">&quot;IBU.Mean&quot;</span>, 
                     <span class="st">&quot;IBU.SD&quot;</span>, <span class="st">&quot;Rating.Mean&quot;</span>, <span class="st">&quot;Rating.SD&quot;</span>)
 rtab1 &lt;-<span class="st"> </span><span class="kw">round</span>(tab1, <span class="dv">2</span>)
-rtab1</code></pre></div>
-<pre><code>##        n ABV.Mean ABV.SD IBU.Mean IBU.SD Rating.Mean Rating.SD
+rtab1
+##        n ABV.Mean ABV.SD IBU.Mean IBU.SD Rating.Mean Rating.SD
 ## Ale   18     5.49   0.67    39.00  12.28       86.83      3.50
 ## IPA   17     6.56   0.46    73.53  10.59       88.18      4.54
-## Lager  9     5.06   0.35    32.78  12.58       86.00      1.87</code></pre>
+## Lager  9     5.06   0.35    32.78  12.58       86.00      1.87</code></pre></div>
 <p>The <strong>write.csv</strong> function can be used to save the table</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(rtab1, <span class="dt">file =</span> <span class="st">&quot;~/Desktop/table1.csv&quot;</span>, <span class="dt">row.names =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p>After some minor stylistic edits, the table is ready for publication—without having to manually type or copy-paste numbers!</p>
@@ -387,7 +519,7 @@ rtab1</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
 <span class="kw">kable</span>(rtab1, <span class="dt">caption =</span> <span class="st">&quot;Table 1: Sample size (n) and variable means and standard deviations (SD) for each style of beer.&quot;</span>)</code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-26">Table 3.1: </span>Table 1: Sample size (n) and variable means and standard deviations (SD) for each style of beer.</caption>
+<caption><span id="tab:unnamed-chunk-68">Table 3.1: </span>Table 1: Sample size (n) and variable means and standard deviations (SD) for each style of beer.</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -442,34 +574,34 @@ rtab1</code></pre></div>
 <p>Mass produced beers (e.g., Bud Light, Miller Lite, etc.) have 4.2% ABV. Suppose we want to test if Minnesota beers have the same mean ABV as mass produced beers <span class="math display">\[
 H_0: \mu = 4.2 \quad \mbox{vs.} \quad H_1: \mu \neq 4.2
 \]</span> where <span class="math inline">\(\mu\)</span> is the mean ABV, and <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span> denote the null and alternative hypotheses. Assuming that the ABV scores are normally distributed, the <strong>t.test</strong> function can be used to test the null hypothesis</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(beer$ABV, <span class="dt">mu =</span> <span class="fl">4.2</span>)</code></pre></div>
-<pre><code>## 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(beer$ABV, <span class="dt">mu =</span> <span class="fl">4.2</span>)
+## 
 ##  One Sample t-test
 ## 
 ## data:  beer$ABV
-## t = 13.128, df = 43, p-value &lt; 2.2e-16
+## t = 13, df = 43, p-value &lt;2e-16
 ## alternative hypothesis: true mean is not equal to 4.2
 ## 95 percent confidence interval:
-##  5.569603 6.066760
+##  5.570 6.067
 ## sample estimates:
 ## mean of x 
-##  5.818182</code></pre>
+##     5.818</code></pre></div>
 <p>The observed <em>t</em> statistic is <span class="math inline">\(t = 13.13\)</span> with 43 degrees of freedom, resulting in a p-value of essentially zero—we reject <span class="math inline">\(H_0\)</span> using any standard <span class="math inline">\(\alpha\)</span> level. The sample mean is <span class="math inline">\(\bar{x} = 5.8\)</span>% ABV and the 95% confidence interval for the <span class="math inline">\(\mu\)</span> (population mean ABV of Minnesota beers) is 5.6% to 6.1% ABV.</p>
 <p>If we expect that the Minnesota beers have higher ABV than mass produced beers, i.e., <span class="math display">\[
 H_0: \mu = 4.2 \quad \mbox{vs.} \quad H_1: \mu &gt; 4.2
 \]</span> we need to adjust the <em>alternative</em> input</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(beer$ABV, <span class="dt">mu =</span> <span class="fl">4.2</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
-<pre><code>## 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(beer$ABV, <span class="dt">mu =</span> <span class="fl">4.2</span>, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)
+## 
 ##  One Sample t-test
 ## 
 ## data:  beer$ABV
-## t = 13.128, df = 43, p-value &lt; 2.2e-16
+## t = 13, df = 43, p-value &lt;2e-16
 ## alternative hypothesis: true mean is greater than 4.2
 ## 95 percent confidence interval:
-##  5.610972      Inf
+##  5.611   Inf
 ## sample estimates:
 ## mean of x 
-##  5.818182</code></pre>
+##     5.818</code></pre></div>
 <p>The only noteworthy difference is that the confidence interval is now a 95% lower bound for the mean ABV of Minnesota beers, which we expect to be at least 5.6% ABV. Note that changing the alternative also changes the p-value, but for this example we do not notice (because the p-value is so small).</p>
 </div>
 <div id="two-sample-t-test" class="section level3">
@@ -479,33 +611,33 @@ H_0: \mu_1 = \mu_2 \quad \mbox{vs.} \quad H_1: \mu_1 &gt; \mu_2
 \]</span> where <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> denote the mean ABV of IPA and non-IPA beers, respectively.</p>
 <p>To use the <strong>t.test</strong> function for a two sample <em>t</em>-test, we need to input two vectors</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beer$IPA &lt;-<span class="st"> </span>(beer$Style ==<span class="st"> &quot;IPA&quot;</span>)
-<span class="kw">t.test</span>(beer$ABV[beer$IPA], beer$ABV[!beer$IPA], <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
-<pre><code>## 
+<span class="kw">t.test</span>(beer$ABV[beer$IPA], beer$ABV[!beer$IPA], <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)
+## 
 ##  Welch Two Sample t-test
 ## 
 ## data:  beer$ABV[beer$IPA] and beer$ABV[!beer$IPA]
-## t = 7.4454, df = 40.527, p-value = 2.093e-09
+## t = 7.4, df = 41, p-value = 2e-09
 ## alternative hypothesis: true difference in means is greater than 0
 ## 95 percent confidence interval:
-##  0.9415048       Inf
+##  0.9415    Inf
 ## sample estimates:
 ## mean of x mean of y 
-##  6.564706  5.348148</code></pre>
+##     6.565     5.348</code></pre></div>
 <p>The observed <em>t</em> statistic is <span class="math inline">\(t = 7.45\)</span> with 40.53 degrees of freedom, resulting in a p-value of essentially zero—we reject <span class="math inline">\(H_0\)</span> using any standard <span class="math inline">\(\alpha\)</span> level. The sample mean difference is <span class="math inline">\(\bar{x}_1 - \bar{x}_2 = 1.22\)</span>% ABV and the 95% lower-bound confidence interval reveals that we expect IPAs to have at least 0.94% more ABV than non-IPAs.</p>
 <p>The default uses the Welch version, which does not assume equal variance for the two groups. The <em>var.equal</em> input can be used to change this assumption, which produces the classic two sample <em>t</em>-test</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(beer$ABV[beer$IPA], beer$ABV[!beer$IPA], <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,
-       <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>## 
+       <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)
+## 
 ##  Two Sample t-test
 ## 
 ## data:  beer$ABV[beer$IPA] and beer$ABV[!beer$IPA]
-## t = 6.9809, df = 42, p-value = 7.74e-09
+## t = 7, df = 42, p-value = 8e-09
 ## alternative hypothesis: true difference in means is greater than 0
 ## 95 percent confidence interval:
-##  0.9234437       Inf
+##  0.9234    Inf
 ## sample estimates:
 ## mean of x mean of y 
-##  6.564706  5.348148</code></pre>
+##     6.565     5.348</code></pre></div>
 <p>Note that the observed <em>t</em>-test statistic, p-value, and 95% lower-bound are slightly different, but our conclusion does not change: we expect IPAs to have at least 0.9% more ABV than non-IPAs.</p>
 </div>
 </div>
@@ -517,28 +649,28 @@ H_0: \mu_1 = \mu_2 \quad \mbox{vs.} \quad H_1: \mu_1 &gt; \mu_2
 H_0: \mu_j = \mu  \mbox{ for all } j \quad \mbox{vs.} \quad H_1: \mu_j \neq \mu \mbox{ for some } j
 \]</span> where <span class="math inline">\(\mu_j\)</span> denotes the mean ABV of the three Styles of beer: Ales, IPAs, and Lagers. Assuming that the ABV scores a normally distributed, we can use the <strong>aov</strong> (analysis of variance) function</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">amod &lt;-<span class="st"> </span><span class="kw">aov</span>(ABV ~<span class="st"> </span>Style, <span class="dt">data =</span> beer)
-<span class="kw">summary</span>(amod)</code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-## Style        2  16.59   8.297      28 2.16e-08 ***
-## Residuals   41  12.15   0.296                     
+<span class="kw">summary</span>(amod)
+##             Df Sum Sq Mean Sq F value  Pr(&gt;F)    
+## Style        2   16.6     8.3      28 2.2e-08 ***
+## Residuals   41   12.2     0.3                    
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre></div>
 <p>The observed <em>F</em> statistic is <span class="math inline">\(F = 28\)</span> with 2 numerator and 41 denominator degrees of freedom, resulting in a p-value of essentially zero—we reject <span class="math inline">\(H_0\)</span> using any standard <span class="math inline">\(\alpha\)</span> level. We conclude that the mean ABV of Minnesota beers depends on the Style of beer, but the results do not directly reveal which Styles significantly differ from one another.</p>
 </div>
 <div id="pairwise-comparisons-tukeys-hsd" class="section level3">
 <h3><span class="header-section-number">3.5.2</span> Pairwise Comparisons (Tukey’s HSD)</h3>
 <p>To determine which Styles significantly differ in their mean ABV, we can use Tukey’s Honest Significant Differences (HSD) procedure via the <strong>TukeyHSD</strong> function</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(amod)</code></pre></div>
-<pre><code>##   Tukey multiple comparisons of means
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">TukeyHSD</span>(amod)
+##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
 ## Fit: aov(formula = ABV ~ Style, data = beer)
 ## 
 ## $Style
-##                 diff        lwr        upr     p adj
-## IPA-Ale    1.0702614  0.6225693  1.5179536 0.0000024
-## Lager-Ale -0.4388889 -0.9793078  0.1015301 0.1313124
-## Lager-IPA -1.5091503 -2.0548418 -0.9634589 0.0000001</code></pre>
+##              diff     lwr     upr  p adj
+## IPA-Ale    1.0703  0.6226  1.5180 0.0000
+## Lager-Ale -0.4389 -0.9793  0.1015 0.1313
+## Lager-IPA -1.5092 -2.0548 -0.9635 0.0000</code></pre></div>
 <p>The pairwise comparisons reveal that</p>
 <ul>
 <li>IPAs have significantly higher mean ABV than Ales. The estimated mean difference is <span class="math inline">\(\hat{\delta}_1 = \hat{\mu}_{2} - \hat{\mu}_1 = 1.07\)</span> with 95% confidence interval <span class="math inline">\(\delta_1 \in [0.62, 1.52]\)</span>.</li>
@@ -552,21 +684,21 @@ H_0: \mu_j = \mu  \mbox{ for all } j \quad \mbox{vs.} \quad H_1: \mu_j \neq \mu 
 <p>Suppose that we want to test if a beer’s ABV and Rating are postively correlated <span class="math display">\[
 H_0: \rho = 0 \quad \mbox{vs.} \quad H_1: \rho &gt; 0
 \]</span> where <span class="math inline">\(\rho\)</span> is the population correlation between the ABV and Rating. Assuming that the ABV and Rating variables follow a bivariate normal distribution, we can use the <strong>cor.test</strong> function</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(beer$ABV, beer$Rating, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
-<pre><code>## 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(beer$ABV, beer$Rating, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)
+## 
 ##  Pearson&#39;s product-moment correlation
 ## 
 ## data:  beer$ABV and beer$Rating
-## t = 3.6939, df = 42, p-value = 0.000316
+## t = 3.7, df = 42, p-value = 3e-04
 ## alternative hypothesis: true correlation is greater than 0
 ## 95 percent confidence interval:
-##  0.2784833 1.0000000
+##  0.2785 1.0000
 ## sample estimates:
-##       cor 
-## 0.4951952</code></pre>
+##    cor 
+## 0.4952</code></pre></div>
 <p>The estimated sample correlation is <span class="math inline">\(r = 0.495\)</span> and the 95% lower-bound confidence interval reveals that we expect the ABV and Ratings to have a positive correlation of at least <span class="math inline">\(\rho = 0.28\)</span>.</p>
 </div>
-<div id="exercises" class="section level2">
+<div id="exercises-2" class="section level2">
 <h2><span class="header-section-number">3.7</span> Exercises</h2>
 <ol style="list-style-type: decimal">
 <li>Load the Minnesota Beer Data into R.</li>
@@ -598,7 +730,7 @@ H_0: \rho = 0 \quad \mbox{vs.} \quad H_1: \rho &gt; 0
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,

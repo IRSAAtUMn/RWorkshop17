@@ -1,8 +1,13 @@
-# Linear Regression in R
+---
+title: "Linear Regression in R"
+author: "Nathaniel E. Helwig"
+date: "Aug 31, 2017"
+output: html_document
+---
 
-*Author: Nathaniel E. Helwig*
-
-
+```{r chap4-setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 
 ## Chapter Outline and Goals
@@ -36,13 +41,13 @@ Data obtained by NEH from [Beer Advocate](http://beeradvocate.com) and the websi
 ### Load and Look at the Data
 
 Use the **read.csv** function to load the *beer* data into R
-```{r}
+```{r chap4-load-beer-data}
 beer <- read.csv("http://users.stat.umn.edu/~helwig/notes/MNbeer.csv")
 ```
 
 
 The **head** function returns the first six lines of a data frame
-```{r}
+```{r chap4-head-beer-data}
 head(beer)
 ```
 
@@ -57,16 +62,16 @@ Consider a simple linear regression model of the form
 y_i = \beta_0 + \beta_1 x_i + \epsilon_i
 \]
 where $y_i$ is the Rating of the *i*-th beer (response), $x_i$ is the ABV of the *i*-th beer (predictor), $\beta_0$ is the unknown regression intercept, $\beta_1$ is the unknown regression slope, and $\epsilon_i \sim \mathrm{N}(0, \sigma^2)$ is a latent Gaussian error term. To fit the model, we can use the **lm** function
-```{r}
+```{r chap4-lm-Rating-ABV}
 mod <- lm(Rating ~ ABV, data = beer)
 ```
 The first input is the regression formula (Response ~ Predictor), and the second input is the data frame containing the variables in the regression formula. Note that *mod* is an object of class *lm*, which is a list containing information about the fit model. 
-```{r}
+```{r chap4-mod-class-names}
 class(mod)
 names(mod)
 ```
 For example, the *$coefficients* element contains the estimated regression coefficients
-```{r}
+```{r chap4-mod-coefficients}
 mod$coefficients
 ```
 which reveal that the expected Rating increases by about 2.26 points for every 1 unit (i.e., 1%) increaese in ABV.
@@ -74,7 +79,7 @@ which reveal that the expected Rating increases by about 2.26 points for every 1
 ### Inference Information
 
 To obtain a more detailed summary of the fit model, use the **summary** function
-```{r}
+```{r chap4-mod-summary}
 modsum <- summary(mod)
 names(modsum)
 modsum
@@ -82,7 +87,7 @@ modsum
 Note that summarizing an *lm* object returns the estimated error standard deviation *sigma* ($\hat{\sigma}  = 3.28$), the coefficient of determination *r.squared* ($R^2 = 0.2452$), and a *coefficient* inference table for testing $H_0: \beta_j = 0$ versus $H_1: \beta_j \neq 0$. The observed *t* statistic for testing the slope parameter is $t = 3.69$ with 42 degrees of freedom, resulting in a p-value less than 0.001---we reject $H_0$ using any standard $\alpha$ level.
 
 Use the **confint** function to obtain confidence intervals for regression coefficients
-```{r}
+```{r chap4-mod-confint-ABV}
 confint(mod, "ABV")
 ```
 The 95% confidence interval for $\beta_1$ reveals that we expect the average Rating to increase by 1.03 to 3.49 points for each additional 1% ABV.
@@ -90,7 +95,7 @@ The 95% confidence interval for $\beta_1$ reveals that we expect the average Rat
 ### Plot the Regression Line
 
 The **abline** function makes it easy to include the least-squares regression line on a scatterplot
-```{r fig.width=5, fig.height=4, fig.align="center"}
+```{r chap4-plot-ABV-Rating}
 plot(beer$ABV, beer$Rating, xlab = "Alcohol By Volume", 
      ylab = "Beer Advocate Rating", main = "Alcohol by Rating")
 abline(mod)
@@ -100,31 +105,31 @@ abline(mod)
 ### Diagnostic and Influence Plots
 
 R makes it really easy to create simple diagnostic and influence plots for a fit regression model:
-```{r fig.width=5, fig.height=4, fig.align="center"}
+```{r chap4-plot-mod-diagnostics}
 plot(mod)
 ```
 
 
-### Prediction for New Data
+### Predction for New Data
 
 We often want to use a fit regression model to create predictions for new data. In R, this involves first creating the data frame of new predictor scores
-```{r}
+```{r chap4-define-newdata}
 newdata <- data.frame(ABV = seq(4.2, 7.5, by = 0.1))
 ```
 which we input to the **predict** function along with the fit model
-```{r}
+```{r chap4-predict-newdata}
 newfit <- predict(mod, newdata)
 newfit
 ```
 
 By default, the **predict** function returns a vector of predictions $\hat{y}_{i(\mbox{new})} = \hat{\beta}_0 + \hat{\beta}_1 x_{i(\mbox{new})}$. To obtain the corresponding standard errors of the predictions, we can use the *se.fit* input
-```{r}
+```{r chap4-predict-se}
 newfitse <- predict(mod, newdata, se.fit = TRUE)
 newfitse
 ```
 
 The *interval* input can be used to create confidence and prediction intervals
-```{r}
+```{r chap4-predict-interval}
 newfitCI <- predict(mod, newdata, interval = "confidence")
 newfitPI <- predict(mod, newdata, interval = "prediction")
 head(newfitCI)
@@ -132,7 +137,7 @@ head(newfitPI)
 ```
 
 The confidence and prediction intervals can be plotted using
-```{r fig.width=5, fig.height=4, fig.align="center"}
+```{r chap4-plot-ABV-Rating-CIPI}
 plot(beer$ABV, beer$Rating, xlab = "Alcohol By Volume", 
      ylab = "Beer Advocate Rating", main = "Alcohol by Rating",
      ylim = c(75, 100))
@@ -160,18 +165,18 @@ where $y_i$ is the response for the $i$-th observation, $x_{ij}$ is the *j*-th p
 ### Additive Effects
 
 We will start by considering a model predicting the Rating from the additive effects of ABV and Brewery
-```{r}
+```{r chap4-lm-ABV-Brewery-additive}
 amod <- lm(Rating ~ ABV + Brewery, data = beer)
 ```
 Note that this model allows each Brewery to have a unique regression intercept (Bauhaus is the baseline), but assumes that the slope between ABV and Rating is the same for each Brewery. We can summarize the model using the same approach as before:
-```{r}
+```{r chap4-amod-summary}
 amodsum <- summary(amod)
 amodsum
 ```
 Compared to the simple linear regression model containing only the ABV predictor, we have noticeably reduced the residual standard deviation estimate *sigma* ($\hat{\sigma} = 2.622$) and increased the coefficient of (multiple) determination *r.squared* ($R^2 = 0.5979$).
 
 The **anova** and **Anova** functions can be used to test the significance of terms
-```{r}
+```{r chap4-amod-Anova}
 library(car)
 anova(amod)  # Type I (sequential) SS test
 Anova(amod)  # Type II SS test
@@ -181,18 +186,18 @@ Note that **anova** tests the effects sequentially (ABV alone, then Brewery give
 ### Interaction Effects
 
 Next we consider a model predicting the Rating from the interaction effects of ABV and Brewery
-```{r}
+```{r chap4-lm-ABV-Brewery-interaction}
 imod <- lm(Rating ~ ABV * Brewery, data = beer)
 ```
 Note that formula notation is shorthand for *Rating ~ ABV + Brewery + ABV:Brewery*, so this model allows each Brewery to have a unique regression intercept and slope relating ABV and Rating. We can summarize the model using the same approach as before:
-```{r}
+```{r chap4-imod-summary}
 imodsum <- summary(imod)
 imodsum
 ```
 Compared to the additive model, we have slightly increased the residual standard deviation estimate *sigma* ($\hat{\sigma} = 2.813$) and increased the coefficient of (multiple) determination *r.squared* ($R^2 = 0.6297$).
 
 Use the **Anova** function to test the signifiance of the effects
-```{r}
+```{r chap4-imod-Anova}
 library(car)
 Anova(imod)  # Type II SS test
 ```
@@ -201,11 +206,11 @@ The results reveal that the interaction effect is not significant ($F_{7,28} = 0
 ### Comparing Fit Models
 
 To compare the fit models, we can use the **anova** function for *F*-tests
-```{r}
+```{r chap4-compare-anova}
 anova(mod, amod, imod)
 ```
 or the **AIC** function to extract Akaike's information criterion
-```{r}
+```{r chap4-compare-AIC}
 AIC(mod, amod, imod)
 ```
 
@@ -220,4 +225,4 @@ In this case, the *F*-tests and AIC values suggest that the additive model shoul
 5) Plot the linear relationship, along with 95% confidence and prediction intervals.
 6) Fit a multiple linear regression model predicting Rating from the additive effects of IBU and Brewery.
 7) Fit a multiple linear regression model predicting Rating from the additive and interaction effects of IBU and Brewery.
-8) Considering the models you fit in Ex 3, 7, 8, which do you prefer and why?
+8) Considering the models you fit in Ex 3, 6, 7, which do you prefer and why?
