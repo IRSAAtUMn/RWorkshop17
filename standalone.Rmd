@@ -1,0 +1,29 @@
+---
+title: "Test"
+author: "Charles J. Geyer"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+---
+
+# Level 1 Heading
+
+## Level 2 Heading
+
+This is a test; it is only a test; had it been a real document, it
+would have said something.
+
+## Yet Another Level 2 Heading {#first-yet-another}
+
+An R chunk
+```{r}
+sin(0:5)
+```
+
+## Yet Another Level 2 Heading {#second-yet-another}
+
+### Try 1
+
+Some in-line R.  Blah, blah, blah.  `exp(200) =` `r exp(200)`.
+
+### Try 2
+
+Blah, blah, blah.  `exp(200) =` $`r exp(200)`$.
